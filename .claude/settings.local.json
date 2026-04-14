@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test -f \"C:\\\\\\\\Users\\\\\\\\wanma\\\\\\\\OneDrive - Dalo6116\\\\\\\\Desktop\\\\\\\\websites\\\\\\\\esports2026\\\\\\\\.env.local\")",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(node -e \"const { TablesDB } = require\\('node-appwrite'\\); const t = new TablesDB\\({}\\); console.log\\(Object.getOwnPropertyNames\\(Object.getPrototypeOf\\(t\\)\\).filter\\(n => n !== 'constructor'\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e ':*)",
+      "Bash(node -e \"require\\('dotenv'\\)\")",
+      "Bash(node --experimental-strip-types --no-warnings --check scripts/setup-db.mts)",
+      "Bash(node -e \"const e = require\\('./node_modules/node-appwrite/dist/enums/order-by.js'\\); console.log\\(e\\);\")"
+    ]
+  }
+}

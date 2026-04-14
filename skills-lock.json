@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "appwrite-typescript": {
+      "source": "appwrite/agent-skills",
+      "sourceType": "github",
+      "computedHash": "c2654d10a77e48197df43d29b3dcfe230b6f3b8efc81c5566f0f45afffb28e09"
+    },
+    "coss": {
+      "source": "cosscom/coss",
+      "sourceType": "github",
+      "computedHash": "c4dd795f361381196904e39863133427ddc663415ce6dd05cb13031a51d83579"
+    }
+  }
+}
