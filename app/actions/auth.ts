@@ -51,10 +51,10 @@ export async function signUp(fd: FormData): Promise<ActionResult> {
   }
 
   const { username, email, password } = parsed.data
+  const userId = ID.unique()
 
   try {
     const { account, tablesDB } = createAdminClient()
-    const userId = ID.unique()
 
     await account.create({ userId, email, password, name: username })
 
@@ -76,7 +76,15 @@ export async function signUp(fd: FormData): Promise<ActionResult> {
       ],
     })
 
-    return { success: true }
+    const token = await signToken({ userId, username, tier: "free" })
+    const cookieStore = await cookies()
+    cookieStore.set(COOKIE_NAME, token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: COOKIE_MAX_AGE,
+      path: "/",
+    })
   } catch (err) {
     if (err instanceof AppwriteException) {
       if (err.code === 409) return { success: false, error: "Email already registered" }
@@ -84,6 +92,8 @@ export async function signUp(fd: FormData): Promise<ActionResult> {
     }
     return { success: false, error: "An unexpected error occurred" }
   }
+
+  redirect(`/auth/${userId}/dashboard`)
 }
 
 // ─── login ─────────────────────────────────────────────────────────────────────
@@ -102,7 +112,7 @@ export async function login(fd: FormData): Promise<ActionResult> {
 
   const { email, password } = parsed.data
 
-  let redirectPath = "/dashboard"
+  let userId = ""
 
   try {
     const { account, tablesDB } = createAdminClient()
@@ -120,6 +130,7 @@ export async function login(fd: FormData): Promise<ActionResult> {
     }
 
     const userRow = rows.rows[0] as unknown as UserRow
+    userId = userRow.userId
 
     const token = await signToken({
       userId: userRow.userId,
@@ -143,7 +154,7 @@ export async function login(fd: FormData): Promise<ActionResult> {
     return { success: false, error: "An unexpected error occurred" }
   }
 
-  redirect(redirectPath)
+  redirect(`/auth/${userId}/dashboard`)
 }
 
 // ─── logout ────────────────────────────────────────────────────────────────────

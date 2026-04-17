@@ -1,6 +1,5 @@
 "use client"
 
-import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -23,8 +22,6 @@ const signUpSchema = z.object({
 type SignUpValues = z.infer<typeof signUpSchema>
 
 export function SignupForm() {
-  const router = useRouter()
-
   const {
     register,
     handleSubmit,
@@ -47,14 +44,7 @@ export function SignupForm() {
 
     const result = await signUp(fd)
 
-    if (result.success) {
-      toastManager.add({
-        title: "Account created!",
-        description: "Welcome to the arena. Please sign in.",
-        type: "success",
-      })
-      router.push("/login")
-    } else {
+    if (!result.success) {
       toastManager.add({
         title: "Sign up failed",
         description: result.error ?? "Something went wrong",

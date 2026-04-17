@@ -34,10 +34,12 @@ export interface UserRow {
   stripeCustomerId: string
 }
 
-export const DB_ID                = process.env.DATABASE_ID!
-export const USERS_TABLE_ID       = process.env.USERS_TABLE_ID!
-export const MATCHES_TABLE_ID     = process.env.MATCHES_TABLE_ID!
-export const PREDICTIONS_TABLE_ID = process.env.PREDICTIONS_TABLE_ID!
+export const DB_ID                 = process.env.DATABASE_ID!
+export const USERS_TABLE_ID        = process.env.USERS_TABLE_ID!
+export const MATCHES_TABLE_ID      = process.env.MATCHES_TABLE_ID!
+export const PREDICTIONS_TABLE_ID  = process.env.PREDICTIONS_TABLE_ID!
+export const QUESTIONS_TABLE_ID    = process.env.QUESTIONS_TABLE_ID!
+export const USER_ANSWERS_TABLE_ID = process.env.USER_ANSWERS_TABLE_ID!
 
 export { ID, Query, Permission, Role, AppwriteException }
 export type { Models }

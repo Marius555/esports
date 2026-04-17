@@ -263,6 +263,48 @@ const TABLES: TableDef[] = [
       { key: "idx_user_match",    type: TablesDBIndexType.Unique, columns: ["userId", "matchId"] }, // one prediction per user per match
     ],
   },
+
+  // ── Questions ─────────────────────────────────────────────────────────────────
+  {
+    tableId: "questions",
+    name:    "questions",
+    envKey:  "QUESTIONS_TABLE_ID",
+    columns: [
+      { type: "varchar",  key: "game",             size: 20,  required: true  },
+      { type: "varchar",  key: "tournamentId",      size: 100, required: true  },
+      { type: "varchar",  key: "questionText",      size: 500, required: true  },
+      { type: "varchar",  key: "referenceType",     size: 20,  required: true  }, // match | player | team | tournament
+      { type: "varchar",  key: "referenceId",       size: 100, required: true  },
+      { type: "varchar",  key: "referenceName",     size: 200, required: true  },
+      { type: "varchar",  key: "referenceImageUrl", size: 500, required: false },
+      { type: "boolean",  key: "correctAnswer",               required: false }, // null until resolved
+      { type: "datetime", key: "resolveBy",                   required: true  },
+    ],
+    indexes: [
+      { key: "idx_q_game",         type: TablesDBIndexType.Key, columns: ["game"]                              },
+      { key: "idx_q_tournamentId", type: TablesDBIndexType.Key, columns: ["tournamentId"]                      },
+      { key: "idx_q_resolveBy",    type: TablesDBIndexType.Key, columns: ["resolveBy"],   orders: [OrderBy.Asc] },
+      { key: "idx_q_game_resolve", type: TablesDBIndexType.Key, columns: ["game", "resolveBy"]                 },
+    ],
+  },
+
+  // ── User Answers ──────────────────────────────────────────────────────────────
+  {
+    tableId: "user_answers",
+    name:    "user_answers",
+    envKey:  "USER_ANSWERS_TABLE_ID",
+    columns: [
+      { type: "varchar",  key: "userId",       size: 36,  required: true },
+      { type: "varchar",  key: "questionId",   size: 36,  required: true },
+      { type: "varchar",  key: "tournamentId", size: 100, required: true },
+      { type: "boolean",  key: "answer",                  required: true },
+    ],
+    indexes: [
+      { key: "idx_ua_userId",       type: TablesDBIndexType.Key,    columns: ["userId"]               },
+      { key: "idx_ua_tournamentId", type: TablesDBIndexType.Key,    columns: ["tournamentId"]         },
+      { key: "idx_ua_user_q",       type: TablesDBIndexType.Unique, columns: ["userId", "questionId"] },
+    ],
+  },
 ]
 
 // ─── Main ─────────────────────────────────────────────────────────────────────

@@ -3,18 +3,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-neon-purple: var(--color-neon-purple);
-  --color-neon-cyan: var(--color-neon-cyan);
-  --color-neon-pink: var(--color-neon-pink);
-  --color-surface-900: var(--color-surface-900);
-  --color-surface-800: var(--color-surface-800);
-  --color-surface-700: var(--color-surface-700);
-  --color-surface-600: var(--color-surface-600);
-  --animate-pulse-neon: pulse-neon 2s ease-in-out infinite;
-  @keyframes pulse-neon {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-  }
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -84,13 +72,6 @@
 }
 
 :root {
-  --color-neon-purple: #a855f7;
-  --color-neon-cyan: #22d3ee;
-  --color-neon-pink: #ec4899;
-  --color-surface-900: #0a0a0f;
-  --color-surface-800: #0f0f1a;
-  --color-surface-700: #16162a;
-  --color-surface-600: #1e1e38;
   --destructive-foreground: var(--color-red-700);
   --info: var(--color-blue-500);
   --info-foreground: var(--color-blue-700);
@@ -136,12 +117,6 @@
 }
 
 .dark {
-  --background: var(--color-surface-900);
-  --card: var(--color-surface-800);
-  --popover: var(--color-surface-800);
-  --primary: var(--color-neon-purple);
-  --primary-foreground: #ffffff;
-  --ring: var(--color-neon-purple);
   --destructive-foreground: var(--color-red-400);
   --info: var(--color-blue-500);
   --info-foreground: var(--color-blue-400);
@@ -218,5 +193,16 @@
       linear-gradient(rgb(168 85 247 / 4%) 1px, transparent 1px),
       linear-gradient(90deg, rgb(168 85 247 / 4%) 1px, transparent 1px);
     background-size: 60px 60px;
+  }
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
