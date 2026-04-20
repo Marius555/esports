@@ -12,6 +12,7 @@ const GAME_CONFIG = {
     gradientFrom: "#1a0a00",
     gradientTo: "#6b1a0e",
     accent: "#e84c21",
+    logo: "/logos/dota2.svg",
   },
   leagueoflegends: {
     label: "League of Legends",
@@ -19,6 +20,7 @@ const GAME_CONFIG = {
     gradientFrom: "#0a0e1a",
     gradientTo: "#1a2a0e",
     accent: "#C89B3C",
+    logo: "/logos/leagueoflegends.svg",
   },
   counterstrike: {
     label: "CS2",
@@ -26,12 +28,13 @@ const GAME_CONFIG = {
     gradientFrom: "#0a0f1a",
     gradientTo: "#0e1f2e",
     accent: "#f5a623",
+    logo: "/logos/counterstrike.svg",
   },
 } as const;
 
 type GameKey = keyof typeof GAME_CONFIG;
 
-export function GameCard({ game }: { game: GameKey }) {
+export function GameCard({ game, onTournamentEntered }: { game: GameKey; onTournamentEntered?: () => void }) {
   const [showTournament, setShowTournament] = useState(false);
   const [questions, setQuestions] = useState<Question[] | null>(null);
   const [tournamentId, setTournamentId] = useState<string | null>(null);
@@ -86,9 +89,12 @@ export function GameCard({ game }: { game: GameKey }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-3 left-4 flex items-center gap-2">
-          <div
-            className="h-2 w-2 rounded-full"
-            style={{ background: cfg.accent, boxShadow: `0 0 6px ${cfg.accent}` }}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={cfg.logo}
+            alt={cfg.label}
+            className="h-5 w-5 object-contain"
+            style={{ filter: `drop-shadow(0 0 4px ${cfg.accent})` }}
           />
           <h2 className="font-heading font-bold text-lg tracking-tight text-white drop-shadow">
             {cfg.label}
@@ -117,9 +123,11 @@ export function GameCard({ game }: { game: GameKey }) {
         <TournamentModal
           open={showTournament}
           onClose={() => setShowTournament(false)}
+          onSubmitSuccess={onTournamentEntered}
           questions={questions}
           tournamentId={tournamentId}
           accent={cfg.accent}
+          logoUrl={cfg.logo}
         />
       )}
     </div>

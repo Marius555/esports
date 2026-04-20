@@ -19,7 +19,7 @@ export async function proxy(request: NextRequest) {
     return res
   }
 
-  if (pathname.startsWith("/premium") && payload.tier !== "premium") {
+  if (pathname.startsWith("/premium") && payload.tier === "free") {
     return NextResponse.redirect(new URL("/dashboard?upgrade=true", request.url))
   }
 

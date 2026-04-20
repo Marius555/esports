@@ -7,7 +7,8 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card"
-import { ZapIcon } from "lucide-react"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { ZapIcon } from "@hugeicons/core-free-icons"
 import { LoginForm } from "./login-form"
 
 export const metadata = {
@@ -17,7 +18,7 @@ export const metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="relative min-h-screen flex items-center justify-center bg-[#0a0a0f] p-4">
+    <main className="relative min-h-screen flex items-center justify-center bg-background p-4">
       {/* Background */}
       <div className="absolute inset-0 bg-grid-purple opacity-50 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_40%,rgb(168_85_247/15%),transparent)] pointer-events-none" />
@@ -25,19 +26,19 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <ZapIcon className="size-6 text-[#a855f7]" />
-          <span className="font-heading text-2xl font-black tracking-widest text-[#a855f7] text-glow-purple uppercase">
+          <HugeiconsIcon icon={ZapIcon} size={24} className="text-brand-purple" />
+          <span className="font-heading text-2xl font-black tracking-widest text-brand-purple text-glow-purple uppercase">
             Gamery
           </span>
         </div>
 
-        <Card className="bg-[#0f0f1a] border border-[#a855f7]/30 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#a855f7]/60 to-transparent" />
+        <Card className="bg-card border border-brand-purple/30 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-purple/60 to-transparent" />
           <CardHeader className="text-center pb-2">
-            <CardTitle className="font-heading text-2xl font-black text-white uppercase">
+            <CardTitle className="font-heading text-2xl font-black text-foreground uppercase">
               Welcome Back
             </CardTitle>
-            <CardDescription className="text-neutral-400">
+            <CardDescription className="text-muted-foreground">
               Enter your credentials to continue
             </CardDescription>
           </CardHeader>
@@ -47,11 +48,11 @@ export default function LoginPage() {
           </CardPanel>
 
           <CardFooter className="justify-center pt-0">
-            <p className="text-sm text-neutral-500">
+            <p className="text-sm text-muted-foreground">
               No account?{" "}
               <Link
                 href="/signup"
-                className="text-[#22d3ee] hover:text-[#22d3ee]/80 transition-colors font-medium"
+                className="text-brand-cyan hover:text-brand-cyan/80 transition-colors font-medium"
               >
                 Sign up free
               </Link>

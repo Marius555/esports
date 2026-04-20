@@ -12,6 +12,7 @@ import {
   Permission,
   Role,
   AppwriteException,
+  OAuthProvider,
   type UserRow,
 } from "@/lib/appwrite"
 import { signToken, COOKIE_NAME, COOKIE_MAX_AGE } from "@/lib/auth"
@@ -21,11 +22,6 @@ type ActionResult = { success: boolean; error?: string }
 // ─── Zod Schemas ───────────────────────────────────────────────────────────────
 
 const signUpSchema = z.object({
-  username: z
-    .string()
-    .min(3, "Username must be at least 3 characters")
-    .max(20, "Username must be at most 20 characters")
-    .regex(/^[a-zA-Z0-9_]+$/, "Only letters, numbers, and underscores allowed"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
 })
@@ -39,7 +35,6 @@ const loginSchema = z.object({
 
 export async function signUp(fd: FormData): Promise<ActionResult> {
   const raw = {
-    username: fd.get("username") as string,
     email: fd.get("email") as string,
     password: fd.get("password") as string,
   }
@@ -50,7 +45,8 @@ export async function signUp(fd: FormData): Promise<ActionResult> {
     return { success: false, error: first.message }
   }
 
-  const { username, email, password } = parsed.data
+  const { email, password } = parsed.data
+  const username = email.split("@")[0].replace(/[^a-zA-Z0-9_]/g, "_").slice(0, 20)
   const userId = ID.unique()
 
   try {
@@ -76,7 +72,7 @@ export async function signUp(fd: FormData): Promise<ActionResult> {
       ],
     })
 
-    const token = await signToken({ userId, username, tier: "free" })
+    const token = await signToken({ userId, username, email, tier: "free" })
     const cookieStore = await cookies()
     cookieStore.set(COOKIE_NAME, token, {
       httpOnly: true,
@@ -135,6 +131,7 @@ export async function login(fd: FormData): Promise<ActionResult> {
     const token = await signToken({
       userId: userRow.userId,
       username: userRow.username,
+      email: userRow.email,
       tier: userRow.tier,
     })
 
@@ -155,6 +152,94 @@ export async function login(fd: FormData): Promise<ActionResult> {
   }
 
   redirect(`/auth/${userId}/dashboard`)
+}
+
+// ─── getGoogleOAuthUrl ────────────────────────────────────────────────────────
+
+export async function getGoogleOAuthUrl(origin: string): Promise<string> {
+  const { account } = createAdminClient()
+  const url = await account.createOAuth2Token({
+    provider: OAuthProvider.Google,
+    success: `${origin}/oauth/callback`,
+    failure: `${origin}/login?error=oauth_failed`,
+  })
+  return url.toString()
+}
+
+// ─── processOAuthCallback ──────────────────────────────────────────────────────
+
+export async function processOAuthCallback(
+  userId: string,
+  secret: string,
+): Promise<{ userId: string }> {
+  const { account, tablesDB, users } = createAdminClient()
+
+  await account.createSession({ userId, secret })
+
+  const appwriteUser = await users.get({ userId })
+
+  const rows = await tablesDB.listRows({
+    databaseId: DB_ID,
+    tableId: USERS_TABLE_ID,
+    queries: [Query.equal("userId", userId), Query.limit(1)],
+  })
+
+  let userRow: UserRow
+
+  if (rows.total === 0) {
+    const rawName = appwriteUser.name || appwriteUser.email.split("@")[0]
+    const username =
+      rawName.replace(/[^a-zA-Z0-9_]/g, "_").slice(0, 20) ||
+      "user_" + userId.slice(0, 8)
+
+    await tablesDB.createRow({
+      databaseId: DB_ID,
+      tableId: USERS_TABLE_ID,
+      rowId: userId,
+      data: {
+        userId,
+        username,
+        email: appwriteUser.email,
+        tier: "free",
+        totalPoints: 0,
+        stripeCustomerId: "",
+      },
+      permissions: [
+        Permission.read(Role.user(userId)),
+        Permission.write(Role.user(userId)),
+      ],
+    })
+
+    userRow = {
+      $id: userId,
+      userId,
+      username,
+      email: appwriteUser.email,
+      tier: "free",
+      totalPoints: 0,
+      stripeCustomerId: "",
+    }
+  } else {
+    userRow = rows.rows[0] as unknown as UserRow
+  }
+
+  const token = await signToken({
+    userId: userRow.userId,
+    username: userRow.username,
+    email: userRow.email,
+    tier: userRow.tier,
+  })
+
+  const cookieStore = await cookies()
+  cookieStore.set(COOKIE_NAME, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: COOKIE_MAX_AGE,
+    path: "/",
+  })
+
+  return { userId: userRow.userId }
 }
 
 // ─── logout ────────────────────────────────────────────────────────────────────

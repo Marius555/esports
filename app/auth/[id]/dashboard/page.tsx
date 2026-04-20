@@ -7,8 +7,7 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
-import { GameCard } from "@/components/game-card"
-import { TournamentsTable } from "@/components/tournaments-table"
+import { DashboardContent } from "@/components/dashboard-content"
 
 export default async function DashboardPage({
   params,
@@ -29,20 +28,11 @@ export default async function DashboardPage({
       <SidebarProvider className="flex flex-col">
         <SiteHeader />
         <div className="flex flex-1">
-          <AppSidebar />
+          <AppSidebar userId={session.userId} user={{ email: session.email, tier: session.tier }} />
           <SidebarInset>
-            <div className="flex flex-1 flex-col gap-6 p-4">
-              {/* Game cards */}
-              <div className="grid gap-4 md:grid-cols-3 items-start">
-                <GameCard game="dota2" />
-                <GameCard game="leagueoflegends" />
-                <GameCard game="counterstrike" />
-              </div>
-
-              {/* Tournaments table */}
-              <TournamentsTable userId={session.userId} />
-            </div>
+            <DashboardContent userId={session.userId} />
           </SidebarInset>
+
         </div>
       </SidebarProvider>
     </div>

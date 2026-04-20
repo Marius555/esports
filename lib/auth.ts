@@ -3,7 +3,8 @@ import { SignJWT, jwtVerify } from "jose"
 export interface SessionPayload {
   userId: string
   username: string
-  tier: "free" | "premium"
+  email: string
+  tier: "free" | "pro" | "max"
 }
 
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET!)

@@ -93,6 +93,37 @@ function transformLolEvent(event: LolEvent): MatchData | null {
 // This is the well-known public key embedded in lolesports.com.
 const LOL_ESPORTS_PUBLIC_KEY = "0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z";
 
+export interface LolMatchResult {
+  id: string;
+  state: "completed" | "inProgress" | "unstarted";
+  bestof: number;
+  teams: Array<{ name: string; gameWins: number; outcome: "win" | "loss" | null }>;
+}
+
+export async function getLolMatchById(matchId: string): Promise<LolMatchResult | null> {
+  const apiKey = process.env.LOL_ESPORTS_API_KEY ?? LOL_ESPORTS_PUBLIC_KEY;
+  const url = `${LOL_API_BASE}/getEventDetails?hl=en-US&id=${matchId}`;
+  const res = await fetch(url, { headers: { "x-api-key": apiKey }, cache: "no-store" });
+  if (res.status === 404 || res.status === 403 || res.status === 401) return null;
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`LoL Esports API ${res.status}: ${body.slice(0, 200)}`);
+  }
+  const json = await res.json();
+  const event = json.data?.event;
+  if (!event) return null;
+  return {
+    id: event.match.id,
+    state: event.state,
+    bestof: event.match.strategy.count,
+    teams: (event.match.teams as LolTeam[]).map((t) => ({
+      name: t.name,
+      gameWins: t.result?.gameWins ?? 0,
+      outcome: t.result?.outcome ?? null,
+    })),
+  };
+}
+
 export async function getLolSchedule(): Promise<{
   upcoming: MatchData[];
   recent: MatchData[];

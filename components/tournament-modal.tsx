@@ -16,32 +16,28 @@ interface SwipeAnswer {
 export interface TournamentModalProps {
   open: boolean;
   onClose: () => void;
+  onSubmitSuccess?: () => void;
   questions: Question[];
   tournamentId: string;
   accent: string;
+  logoUrl: string;
 }
 
 // ─── SwipeCard ────────────────────────────────────────────────────────────────
 
-function getInitials(name: string): string {
-  return name
-    .split(/[\s_\-\.]+/)
-    .filter(Boolean)
-    .map((w) => w[0]?.toUpperCase() ?? "")
-    .slice(0, 2)
-    .join("");
-}
 
 function SwipeCard({
   question,
   onAnswer,
   accent,
   flyDir,
+  logoUrl,
 }: {
   question: Question;
   onAnswer: (yes: boolean) => void;
   accent: string;
   flyDir: "left" | "right" | null;
+  logoUrl: string;
 }) {
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -163,14 +159,14 @@ function SwipeCard({
             onError={() => setImgError(true)}
           />
         ) : (
-          <div
-            className="relative z-10 h-32 w-32 rounded-full flex items-center justify-center"
-            style={{ background: accent + "22", border: `2px solid ${accent}44` }}
-          >
-            <span className="text-4xl font-black" style={{ color: accent }}>
-              {getInitials(question.referenceName) || "?"}
-            </span>
-          </div>
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={logoUrl}
+            alt="game logo"
+            className="relative z-10 h-24 w-24 object-contain"
+            style={{ filter: `drop-shadow(0 0 12px ${accent})`, opacity: 0.85 }}
+            draggable={false}
+          />
         )}
       </div>
 
@@ -228,9 +224,11 @@ function SwipeCard({
 export function TournamentModal({
   open,
   onClose,
+  onSubmitSuccess,
   questions,
   tournamentId,
   accent,
+  logoUrl,
 }: TournamentModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flyDir, setFlyDir] = useState<"left" | "right" | null>(null);
@@ -250,6 +248,7 @@ export function TournamentModal({
         body: JSON.stringify({ tournamentId, answers: finalAnswers }),
       });
       if (!res.ok) throw new Error("Submission failed");
+      onSubmitSuccess?.();
     } catch (err) {
       console.error("Failed to submit answers:", err);
     } finally {
@@ -298,9 +297,7 @@ export function TournamentModal({
   return (
     <Dialog
       open={open}
-      onOpenChange={(isOpen) => {
-        if (!isOpen && !submitting) onClose();
-      }}
+      onOpenChange={() => {}}
     >
       <DialogPortal>
         <DialogBackdrop className="bg-black/80 backdrop-blur-md" />
@@ -385,6 +382,7 @@ export function TournamentModal({
                     onAnswer={handleAnswer}
                     accent={accent}
                     flyDir={flyDir}
+                    logoUrl={logoUrl}
                   />
                 </div>
               </div>

@@ -279,6 +279,7 @@ const TABLES: TableDef[] = [
       { type: "varchar",  key: "referenceImageUrl", size: 500, required: false },
       { type: "boolean",  key: "correctAnswer",               required: false }, // null until resolved
       { type: "datetime", key: "resolveBy",                   required: true  },
+      { type: "datetime", key: "matchScheduledAt",            required: false }, // match's own scheduled date
     ],
     indexes: [
       { key: "idx_q_game",         type: TablesDBIndexType.Key, columns: ["game"]                              },

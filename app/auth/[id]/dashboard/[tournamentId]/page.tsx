@@ -1,6 +1,7 @@
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { ChevronLeft } from "lucide-react"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { ArrowLeft01Icon } from "@hugeicons/core-free-icons"
 import Link from "next/link"
 import { verifyToken } from "@/lib/auth"
 import { AppSidebar } from "@/components/app-sidebar"
@@ -44,6 +45,18 @@ const GAME_COLOR: Record<string, string> = {
   dota2: "#e84c21",
   leagueoflegends: "#C89B3C",
   counterstrike: "#f5a623",
+}
+
+function formatDate(iso: string): string {
+  try {
+    return new Intl.DateTimeFormat("en-GB", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(new Date(iso));
+  } catch {
+    return iso;
+  }
 }
 
 function StatusBadge({
@@ -151,7 +164,7 @@ export default async function TournamentDetailPage({
       <SidebarProvider className="flex flex-col">
         <SiteHeader />
         <div className="flex flex-1">
-          <AppSidebar />
+          <AppSidebar userId={session.userId} user={{ name: session.username, email: "" }} />
           <SidebarInset>
             <div className="flex flex-1 flex-col gap-5 p-4">
               {/* Back link + heading */}
@@ -160,7 +173,7 @@ export default async function TournamentDetailPage({
                   href={`/auth/${id}/dashboard`}
                   className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors w-fit"
                 >
-                  <ChevronLeft className="h-3.5 w-3.5" />
+                  <HugeiconsIcon icon={ArrowLeft01Icon} size={14} />
                   Back to Dashboard
                 </Link>
                 <div className="flex items-center gap-3 mt-1">
@@ -232,9 +245,11 @@ export default async function TournamentDetailPage({
                                 </span>
                                 <span className="text-[10px] text-muted-foreground uppercase tracking-wide">
                                   {q.referenceType} · {q.referenceName}
-                                  {q.resolveBy && (
-                                    <> · resolves {new Intl.DateTimeFormat("en-GB", { month: "short", day: "numeric", year: "numeric" }).format(new Date(q.resolveBy))}</>
-                                  )}
+                                  {q.matchScheduledAt ? (
+                                    <> · match on {formatDate(q.matchScheduledAt)}</>
+                                  ) : q.resolveBy ? (
+                                    <> · resolves {formatDate(q.resolveBy)}</>
+                                  ) : null}
                                 </span>
                               </div>
                             </TableCell>

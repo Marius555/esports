@@ -36,6 +36,7 @@ export interface Question {
   referenceImageUrl: string;
   correctAnswer?: boolean | null;
   resolveBy: string;
+  matchScheduledAt?: string | null;
 }
 
 export interface TournamentResponse {
@@ -261,6 +262,10 @@ export async function POST(
 
     const geminiQuestions = await generateTournamentQuestions(tournamentInput);
 
+    const matchScheduleMap = new Map<string, string>(
+      tournamentInput.upcomingMatches.map((m) => [m.matchId, m.scheduledAt])
+    );
+
     const saved = await Promise.all(
       geminiQuestions.map((q) =>
         tablesDB.createRow({
@@ -276,6 +281,7 @@ export async function POST(
             referenceName: q.referenceName,
             referenceImageUrl: q.referenceImageUrl ?? "",
             resolveBy,
+            matchScheduledAt: matchScheduleMap.get(q.referenceId) ?? null,
           },
         })
       )

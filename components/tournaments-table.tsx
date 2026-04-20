@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { RefreshCw } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { RefreshIcon } from "@hugeicons/core-free-icons";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -39,7 +40,7 @@ function formatDate(iso: string): string {
   }
 }
 
-export function TournamentsTable({ userId }: { userId: string }) {
+export function TournamentsTable({ userId, refreshTrigger }: { userId: string; refreshTrigger?: number }) {
   const router = useRouter();
   const [tournaments, setTournaments] = useState<TournamentSummary[]>([]);
   const [loading, setLoading] = useState(true);
@@ -59,8 +60,16 @@ export function TournamentsTable({ userId }: { userId: string }) {
   }, []);
 
   useEffect(() => {
-    fetchTournaments();
-  }, [fetchTournaments]);
+    const autoRefresh = async () => {
+      try {
+        await fetch("/api/user/tournaments/refresh", { method: "POST" });
+      } catch {
+        // non-fatal — still show current data
+      }
+      await fetchTournaments();
+    };
+    autoRefresh();
+  }, [fetchTournaments, refreshTrigger]);
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -97,7 +106,7 @@ export function TournamentsTable({ userId }: { userId: string }) {
           loading={refreshing}
           className="gap-2"
         >
-          <RefreshCw className="h-3.5 w-3.5" />
+          <HugeiconsIcon icon={RefreshIcon} size={14} />
           Refresh Results
         </Button>
       </div>

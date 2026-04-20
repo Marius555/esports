@@ -209,6 +209,58 @@ function buildQuestionCategories(input: TournamentInput, deadline: string): stri
   referenceType="match" or "team"`;
 }
 
+// ─── Question resolver ────────────────────────────────────────────────────────
+
+const RESOLVE_SCHEMA = {
+  type: "OBJECT",
+  properties: {
+    answer: { type: "BOOLEAN" },
+  },
+  required: ["answer"],
+};
+
+/**
+ * Ask Gemini to resolve a yes/no forecasting question given match result data.
+ * Used as fallback when regex-based resolution can't determine the answer.
+ */
+export async function resolveQuestionWithGemini(
+  questionText: string,
+  matchSummary: string
+): Promise<boolean | null> {
+  const apiKey = process.env.GEMINI_KEY;
+  if (!apiKey) return null;
+
+  const ai = new GoogleGenAI({ apiKey });
+
+  const prompt = `You are resolving a yes/no esports forecasting question based on a match result.
+
+MATCH RESULT: ${matchSummary}
+
+QUESTION: ${questionText}
+
+Answer true if the question's condition was met, false if it was not. Base your answer ONLY on the match result provided. If the match result does not contain enough information to answer, still give your best guess.
+
+Return JSON: { "answer": true } or { "answer": false }`;
+
+  try {
+    const result = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: RESOLVE_SCHEMA,
+        temperature: 0.1,
+      },
+    });
+    const text = result.text;
+    if (!text) return null;
+    const parsed = JSON.parse(text) as { answer: boolean };
+    return typeof parsed.answer === "boolean" ? parsed.answer : null;
+  } catch {
+    return null;
+  }
+}
+
 // ─── Main export ──────────────────────────────────────────────────────────────
 
 export async function generateTournamentQuestions(
