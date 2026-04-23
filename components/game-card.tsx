@@ -1,10 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import type { Question } from "@/app/api/tournament/[game]/route";
-import { TournamentModal } from "@/components/tournament-modal";
-import { Button } from "@/components/ui/button";
-
 const GAME_CONFIG = {
   dota2: {
     label: "Dota 2",
@@ -14,13 +9,13 @@ const GAME_CONFIG = {
     accent: "#e84c21",
     logo: "/logos/dota2.svg",
   },
-  leagueoflegends: {
-    label: "League of Legends",
-    banner: "https://static.lolesports.com/leagues/1592594612171_WorldsDark.png",
-    gradientFrom: "#0a0e1a",
-    gradientTo: "#1a2a0e",
-    accent: "#C89B3C",
-    logo: "/logos/leagueoflegends.svg",
+  valorant: {
+    label: "Valorant",
+    banner: "https://cdn.cloudflare.steamstatic.com/steam/apps/2694490/header.jpg",
+    gradientFrom: "#0d0000",
+    gradientTo: "#2a0008",
+    accent: "#FF4655",
+    logo: "/logos/valorant.svg",
   },
   counterstrike: {
     label: "CS2",
@@ -34,46 +29,34 @@ const GAME_CONFIG = {
 
 type GameKey = keyof typeof GAME_CONFIG;
 
-export function GameCard({ game, onTournamentEntered }: { game: GameKey; onTournamentEntered?: () => void }) {
-  const [showTournament, setShowTournament] = useState(false);
-  const [questions, setQuestions] = useState<Question[] | null>(null);
-  const [tournamentId, setTournamentId] = useState<string | null>(null);
-  const [entering, setEntering] = useState(false);
-  const [enterError, setEnterError] = useState<string | null>(null);
-
-  const handleEnterTournament = async () => {
-    if (questions && tournamentId) {
-      setShowTournament(true);
-      return;
-    }
-    setEntering(true);
-    setEnterError(null);
-    try {
-      const res = await fetch(`/api/tournament/${game}`, { method: "POST" });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(
-          (body as { error?: string }).error ?? "Failed to load tournament"
-        );
-      }
-      const body = (await res.json()) as {
-        tournamentId: string;
-        questions: Question[];
-      };
-      setQuestions(body.questions);
-      setTournamentId(body.tournamentId);
-      setShowTournament(true);
-    } catch (e) {
-      setEnterError(e instanceof Error ? e.message : "Unknown error");
-    } finally {
-      setEntering(false);
-    }
-  };
-
+export function GameCard({
+  game,
+  selected,
+  onSelect,
+}: {
+  game: GameKey;
+  selected: boolean;
+  onSelect: () => void;
+}) {
   const cfg = GAME_CONFIG[game];
 
   return (
-    <div className="rounded-2xl border bg-card text-card-foreground overflow-hidden flex flex-col shadow-sm">
+    <div
+      className="rounded-2xl border bg-card text-card-foreground overflow-hidden shadow-sm cursor-pointer transition-all duration-200"
+      style={
+        selected
+          ? {
+              outline: `2px solid ${cfg.accent}`,
+              outlineOffset: "2px",
+              boxShadow: `0 0 20px ${cfg.accent}40`,
+              transform: "scale(1.01)",
+            }
+          : { outline: "2px solid transparent" }
+      }
+      onClick={onSelect}
+      role="button"
+      aria-pressed={selected}
+    >
       {/* Banner */}
       <div
         className="relative h-40 overflow-hidden"
@@ -100,36 +83,15 @@ export function GameCard({ game, onTournamentEntered }: { game: GameKey; onTourn
             {cfg.label}
           </h2>
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className="p-4">
-        <Button
-          variant="default"
-          size="lg"
-          className="w-full font-bold tracking-wide"
-          style={{ background: cfg.accent, borderColor: cfg.accent }}
-          loading={entering}
-          onClick={handleEnterTournament}
-        >
-          Enter Tournament
-        </Button>
-        {enterError && (
-          <p className="text-xs text-destructive mt-1.5 px-1">{enterError}</p>
+        {selected && (
+          <div
+            className="absolute top-2 right-2 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
+            style={{ background: `${cfg.accent}cc`, color: "#fff" }}
+          >
+            Selected
+          </div>
         )}
       </div>
-
-      {showTournament && questions && tournamentId && (
-        <TournamentModal
-          open={showTournament}
-          onClose={() => setShowTournament(false)}
-          onSubmitSuccess={onTournamentEntered}
-          questions={questions}
-          tournamentId={tournamentId}
-          accent={cfg.accent}
-          logoUrl={cfg.logo}
-        />
-      )}
     </div>
   );
 }

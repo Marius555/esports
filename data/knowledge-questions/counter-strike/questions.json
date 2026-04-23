@@ -1,0 +1,902 @@
+[
+  {
+    "id": "e7843f66-e711-451d-a2f4-45a34be01815",
+    "game": "counter-strike",
+    "questionText": "The AK-47 is exclusively available to the Terrorist side.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The AK-47 is a signature rifle for the Terrorist team in Counter-Strike 2."
+  },
+  {
+    "id": "959ee4a7-aa8e-421e-a3be-89e1f409d617",
+    "game": "counter-strike",
+    "questionText": "Dust II is one of the original maps included in Counter-Strike 2's launch map pool.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Dust II, a classic map, was part of the initial competitive map pool for CS2."
+  },
+  {
+    "id": "5bf1ac5e-23f0-4734-b868-86d5e116bf35",
+    "game": "counter-strike",
+    "questionText": "A player can purchase a Defuse Kit on the Terrorist side.",
+    "correctAnswer": false,
+    "category": "economy",
+    "difficulty": "easy",
+    "explanation": "Defuse Kits are only available to the Counter-Terrorist side to speed up bomb defusal."
+  },
+  {
+    "id": "16ae1377-b536-4de0-bb20-b5493899cf76",
+    "game": "counter-strike",
+    "questionText": "The AWP is a one-shot kill to the body at any range if the opponent has no armor.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The AWP is an extremely powerful sniper rifle capable of eliminating unarmored opponents with a single body shot."
+  },
+  {
+    "id": "5cef8c31-daa2-477e-b25e-6ee091f93cd5",
+    "game": "counter-strike",
+    "questionText": "In CS2, players start with a P250 pistol in competitive matches.",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "Terrorists start with a Glock-18 and Counter-Terrorists start with a USP-S (or P2000) in competitive CS2."
+  },
+  {
+    "id": "f0990b5d-cf6d-45aa-9a59-bc9ff8536a57",
+    "game": "counter-strike",
+    "questionText": "A smoke grenade can extinguish a Molotov fire in CS2.",
+    "correctAnswer": true,
+    "category": "strategy",
+    "difficulty": "easy",
+    "explanation": "Deploying a smoke grenade on a Molotov fire will effectively put out the flames in CS2."
+  },
+  {
+    "id": "3eb9ce5e-49ef-4af4-b2e4-18793516c7df",
+    "game": "counter-strike",
+    "questionText": "The primary objective of the Terrorist side is always to plant the bomb.",
+    "correctAnswer": false,
+    "category": "strategy",
+    "difficulty": "easy",
+    "explanation": "Terrorists can also win a round by eliminating all Counter-Terrorist players before the timer runs out."
+  },
+  {
+    "id": "109bd3ee-7ade-4b58-9b7c-51ab5909ee91",
+    "game": "counter-strike",
+    "questionText": "Mirage has an 'Underpass' callout.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Underpass is a common callout located beneath the Mid area of the Mirage map."
+  },
+  {
+    "id": "4ba1f08c-5e75-4cf3-9fbb-90d3ff44b13e",
+    "game": "counter-strike",
+    "questionText": "s1mple is primarily known as an AWPer.",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "easy",
+    "explanation": "Oleksandr 's1mple' Kostyliev is widely recognized as one of the best AWPers in CS:GO and CS2 history."
+  },
+  {
+    "id": "39aee4d0-ac8b-4a32-bcd3-6b386a600e5e",
+    "game": "counter-strike",
+    "questionText": "Astralis is a Danish esports organization.",
+    "correctAnswer": true,
+    "category": "teams",
+    "difficulty": "easy",
+    "explanation": "Astralis is a prominent esports organization based in Denmark, famous for its dominant CS:GO teams."
+  },
+  {
+    "id": "91efa30d-50bc-40ee-8e65-842449b5bd74",
+    "game": "counter-strike",
+    "questionText": "The buy menu can be accessed using the 'B' key by default.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Pressing 'B' is the standard keybind to open the buy menu during the buy phase of a round."
+  },
+  {
+    "id": "92fa4bd5-235a-45da-b41d-75d706c44377",
+    "game": "counter-strike",
+    "questionText": "Headshots with a pistol always deal more damage than body shots.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Headshots are critical hits in CS2 and always deal significantly more damage than shots to the body or limbs."
+  },
+  {
+    "id": "e6bac135-97e7-4240-86c5-0f471e04974c",
+    "game": "counter-strike",
+    "questionText": "Vertigo is set on top of a skyscraper.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "The map Vertigo features bomb sites and combat areas located on the upper floors and rooftop of a towering skyscraper."
+  },
+  {
+    "id": "1199134b-d228-4540-83e5-95af7a5762d2",
+    "game": "counter-strike",
+    "questionText": "An Incendiary Grenade is the CT equivalent of a Molotov.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "Both Molotovs (T-side) and Incendiary Grenades (CT-side) create a spreading fire zone that deals damage over time."
+  },
+  {
+    "id": "3b484969-5b05-4c3d-88f6-15296220c7a2",
+    "game": "counter-strike",
+    "questionText": "The 'eco round' strategy involves buying expensive weapons to save money.",
+    "correctAnswer": false,
+    "category": "economy",
+    "difficulty": "easy",
+    "explanation": "An eco round strategy involves buying minimal or no equipment to save money for a full buy in subsequent rounds."
+  },
+  {
+    "id": "09efa8fb-6716-4bc5-b46c-8d20945488a2",
+    "game": "counter-strike",
+    "questionText": "Flashbangs temporarily blind all players who are looking at them when they explode.",
+    "correctAnswer": true,
+    "category": "strategy",
+    "difficulty": "easy",
+    "explanation": "Flashbangs are designed to temporarily blind and deafen players who are facing their explosion."
+  },
+  {
+    "id": "f555a190-6907-48bc-89d7-cb144bc43184",
+    "game": "counter-strike",
+    "questionText": "The CT side wins a round if the bomb is successfully defused.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Defusing the planted bomb is one of the primary win conditions for the Counter-Terrorist team."
+  },
+  {
+    "id": "e0ab254f-4af9-4a62-8195-6d5732d1f9e4",
+    "game": "counter-strike",
+    "questionText": "Nuke features two bomb sites, one above the other.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Nuke is unique for having its A site on the upper level and B site on the lower level of the facility."
+  },
+  {
+    "id": "0debfa8c-59e4-4d8c-8d59-5a8fa492267d",
+    "game": "counter-strike",
+    "questionText": "The M4A4 has a silencer attached by default.",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The M4A1-S is the silenced variant, while the M4A4 does not come with a silencer."
+  },
+  {
+    "id": "b71888e7-7326-4a02-afd5-55ee3f110584",
+    "game": "counter-strike",
+    "questionText": "In CS2, utility grenades can be dropped for teammates.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Players can drop grenades (HE, smoke, flash, molotov/incendiary) for teammates to pick up and use."
+  },
+  {
+    "id": "93f7be50-8750-4224-acfd-30eca4d08c95",
+    "game": "counter-strike",
+    "questionText": "FaZe Clan won the PGL Major Antwerp 2022.",
+    "correctAnswer": true,
+    "category": "tournaments",
+    "difficulty": "easy",
+    "explanation": "FaZe Clan secured their first Major title by defeating NaVi in the grand final of PGL Major Antwerp 2022."
+  },
+  {
+    "id": "1b69e190-bd52-4be0-8051-fb3a7d98ca08",
+    "game": "counter-strike",
+    "questionText": "The Glock-18 is a Terrorist-exclusive pistol.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Glock-18 is the default starting pistol for the Terrorist side in CS2."
+  },
+  {
+    "id": "82619d82-64ac-4c9b-9289-4198c9dd0893",
+    "game": "counter-strike",
+    "questionText": "The Desert Eagle is a high-damage, low-ammo pistol.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Desert Eagle is known for its powerful shots and low magazine capacity, making it a high-skill weapon."
+  },
+  {
+    "id": "bc9a71e9-bb1c-470d-bbb9-f64f078ae999",
+    "game": "counter-strike",
+    "questionText": "A player can hear the bomb defuse sound from anywhere on the map.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The bomb defuse sound is only audible to players within a certain range of the planted bomb."
+  },
+  {
+    "id": "6a3aad85-7871-4e8b-9450-5f9eb7c49943",
+    "game": "counter-strike",
+    "questionText": "Inferno features a location known as 'Banana'.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Banana is a famous curved pathway on Inferno that leads from the T spawn to the B bomb site."
+  },
+  {
+    "id": "5db3e159-c33f-460c-a85c-97e85779e96c",
+    "game": "counter-strike",
+    "questionText": "The maximum number of players on a standard competitive team is five.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Competitive CS2 matches are played between two teams of five players each."
+  },
+  {
+    "id": "8068c625-be49-4fe2-b2f2-69ef87969d55",
+    "game": "counter-strike",
+    "questionText": "The first person to pick up the bomb on the Terrorist side automatically equips it.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The bomb is an inventory item and must be manually selected to be held or planted."
+  },
+  {
+    "id": "64d33310-8c38-419a-ba56-d9fe683f589c",
+    "game": "counter-strike",
+    "questionText": "The Zeus x27 is a one-hit kill weapon at close range.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Zeus x27, a taser, instantly eliminates an enemy at very close proximity."
+  },
+  {
+    "id": "2f5e6073-c342-4afb-93dc-621d224af310",
+    "game": "counter-strike",
+    "questionText": "The Overpass map features a canal area.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Overpass is known for its distinct water canal area, often a point of contention near the B site."
+  },
+  {
+    "id": "7f5942a6-43ea-431d-8faa-baa346ab8574",
+    "game": "counter-strike",
+    "questionText": "A player can survive a headshot from an AWP if they have full armor and health.",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "An AWP headshot is an instant kill regardless of armor or health, making it the most lethal shot in the game."
+  },
+  {
+    "id": "0c925710-ce28-4c63-8cb1-96bf0c009571",
+    "game": "counter-strike",
+    "questionText": "The default knife can be dropped for a teammate.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The default knife is a permanent item and cannot be dropped or traded with teammates."
+  },
+  {
+    "id": "9dc4fe9a-9835-46b3-a8ba-664c509dae75",
+    "game": "counter-strike",
+    "questionText": "Grenades thrown into water will make a splash sound.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Throwing a grenade into a body of water, such as on Overpass, will produce a distinct splash sound."
+  },
+  {
+    "id": "facab0fb-3038-4d24-b73c-29dce4fc5e94",
+    "game": "counter-strike",
+    "questionText": "Natus Vincere (NaVi) is known for their strong performance in the CS:GO era.",
+    "correctAnswer": true,
+    "category": "teams",
+    "difficulty": "easy",
+    "explanation": "NaVi achieved significant success in CS:GO, including winning the PGL Major Stockholm 2021."
+  },
+  {
+    "id": "cdb569d5-704c-4a92-bf40-36c3f881ca25",
+    "game": "counter-strike",
+    "questionText": "The maximum amount of money a player can have in CS2 is $16,000.",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "easy",
+    "explanation": "Players cannot accumulate more than $16,000 in their in-game bank balance."
+  },
+  {
+    "id": "4855e58a-eba0-42f3-a3c2-8818beb524f8",
+    "game": "counter-strike",
+    "questionText": "The map Ancient is characterized by its bright, open spaces and modern architecture.",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Ancient is known for its ancient ruins, stone structures, and more enclosed, jungle-like areas."
+  },
+  {
+    "id": "780d48f4-dd3e-4b07-b36d-2425cc4c8356",
+    "game": "counter-strike",
+    "questionText": "The M4A1-S has a lower fire rate than the M4A4.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The M4A1-S, the silenced M4 variant, has a slightly slower rate of fire compared to the M4A4."
+  },
+  {
+    "id": "2ee3f570-3852-4c49-b074-f1dfc723effb",
+    "game": "counter-strike",
+    "questionText": "In CS2, the smoke grenade volume is dynamic and expands differently based on terrain.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "CS2's volumetric smokes mean they react to their environment, flowing around objects and expanding more realistically."
+  },
+  {
+    "id": "50ef4409-3b29-420a-9b9c-b8809b5846c9",
+    "game": "counter-strike",
+    "questionText": "The Terrorist side receives a bonus for planting the bomb, even if they lose the round.",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "medium",
+    "explanation": "Terrorists get a $300 bonus for planting the bomb, which they keep even if the round is lost."
+  },
+  {
+    "id": "5bdfde3a-0d66-418c-bee2-71525bb3f098",
+    "game": "counter-strike",
+    "questionText": "The MAC-10 is a Terrorist-exclusive SMG.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The MAC-10 is one of the SMGs exclusively available for purchase by the Terrorist team."
+  },
+  {
+    "id": "009b0014-12f2-4d12-ae87-01d60a428e36",
+    "game": "counter-strike",
+    "questionText": "The maximum number of utility grenades a player can carry is three.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "A player can carry one HE, one smoke, one molotov/incendiary, and two flashbangs, totaling five utility items."
+  },
+  {
+    "id": "cbd9afa4-4050-4e6f-ac96-bb55509c2e52",
+    "game": "counter-strike",
+    "questionText": "The SSG 08 (Scout) can one-shot kill an unarmored opponent to the chest.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The SSG 08 is capable of a one-shot kill to the chest against enemies without armor."
+  },
+  {
+    "id": "25de40c4-6c49-4498-911f-3e495cd43abf",
+    "game": "counter-strike",
+    "questionText": "A full eco round typically involves buying only pistols or nothing at all.",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "medium",
+    "explanation": "An eco round minimizes spending to save money, often resulting in players only buying cheap pistols or saving all their funds."
+  },
+  {
+    "id": "0393a21d-d907-45ec-915d-7a1fa2860976",
+    "game": "counter-strike",
+    "questionText": "The default round time limit in competitive CS2 is 2 minutes.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The standard competitive round time in CS2 is 1 minute and 55 seconds."
+  },
+  {
+    "id": "09a8b500-34ce-489e-874b-e2058164af11",
+    "game": "counter-strike",
+    "questionText": "The map Train features two bomb sites located on train cars.",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "On Train, the bomb sites are located within the train yard, not directly on moving train cars."
+  },
+  {
+    "id": "4f812f92-b8b2-4fe3-a944-8cc36987a80d",
+    "game": "counter-strike",
+    "questionText": "ZywOo plays for Team Vitality.",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "medium",
+    "explanation": "Mathieu 'ZywOo' Herbaut is the star AWPer and rifler for the French esports organization Team Vitality."
+  },
+  {
+    "id": "2958dc92-f684-404f-a059-f923facb3795",
+    "game": "counter-strike",
+    "questionText": "The P90 has a high rate of fire and a large magazine capacity.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The P90 is known for its fast firing speed and generous 50-round magazine, making it effective in close-quarters combat."
+  },
+  {
+    "id": "0327120d-fa8d-487a-988e-9ea7740bc643",
+    "game": "counter-strike",
+    "questionText": "The bonus for a CT defusing the bomb is higher than the bonus for a T planting the bomb.",
+    "correctAnswer": false,
+    "category": "economy",
+    "difficulty": "medium",
+    "explanation": "Both defusing the bomb as a CT and planting the bomb as a T grant a $300 individual bonus."
+  },
+  {
+    "id": "c3641d54-137f-48ee-b475-32c5bab80baa",
+    "game": "counter-strike",
+    "questionText": "In CS2, players can pick up dropped weapons by walking over them.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Walking over a dropped weapon will automatically pick it up, replacing the currently held weapon if a slot is occupied."
+  },
+  {
+    "id": "23748ef6-f706-4d49-880e-8931605d8c27",
+    "game": "counter-strike",
+    "questionText": "The MP9 is a CT-exclusive SMG.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The MP9 is an SMG that can only be purchased by the Counter-Terrorist team."
+  },
+  {
+    "id": "18e1970c-34c2-4369-8dc1-fad1b253e194",
+    "game": "counter-strike",
+    "questionText": "Inferno's 'Mid' area connects directly to both bomb sites.",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Inferno's Mid connects to A site via Apartments and to B site via Arch, but not directly into the B site itself."
+  },
+  {
+    "id": "69640b9e-8413-491a-ac7b-5b57f129cbc7",
+    "game": "counter-strike",
+    "questionText": "Device has won multiple Major titles with Astralis.",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "medium",
+    "explanation": "Nicolai 'device' Reedtz was a key player in Astralis's dominant era, winning four CS:GO Major championships."
+  },
+  {
+    "id": "b4fab741-8ed2-4512-b1a2-20f316e2b135",
+    "game": "counter-strike",
+    "questionText": "The price of an AWP is $4750.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The AWP is one of the most expensive weapons in the game, costing $4750."
+  },
+  {
+    "id": "66e927ed-1213-4928-a1f8-ad9875a9248a",
+    "game": "counter-strike",
+    "questionText": "The loss bonus system resets immediately after a team wins a round.",
+    "correctAnswer": false,
+    "category": "economy",
+    "difficulty": "medium",
+    "explanation": "The loss bonus system reduces by one stage after a team wins, rather than fully resetting to zero bonus."
+  },
+  {
+    "id": "d5eabdd9-4362-4979-9d30-9e372ebbf652",
+    "game": "counter-strike",
+    "questionText": "The jump throw bind is no longer necessary in CS2 for consistent grenade throws.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "CS2 introduced a built-in feature where holding both mouse buttons while throwing a grenade performs a consistent jump-throw."
+  },
+  {
+    "id": "6745351b-99a5-4335-a1df-492d79328a7d",
+    "game": "counter-strike",
+    "questionText": "The AUG is a CT-exclusive rifle.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The AUG is a scoped rifle that is only available for purchase by the Counter-Terrorist team."
+  },
+  {
+    "id": "05d2d457-63aa-45f2-81e8-3d371ef475e6",
+    "game": "counter-strike",
+    "questionText": "The map Anubis features ancient Egyptian architecture.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Anubis is characterized by its setting within ancient Egyptian temples and waterways."
+  },
+  {
+    "id": "4f6f60c0-3bc5-449e-b1d3-f8509beb4993",
+    "game": "counter-strike",
+    "questionText": "The Krieg 552 (SG 553) is a Terrorist-exclusive rifle.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The SG 553, also known as the Krieg, is a scoped rifle exclusively available to the Terrorist side."
+  },
+  {
+    "id": "23fe0b12-1547-4994-aa64-00bb5901a380",
+    "game": "counter-strike",
+    "questionText": "In competitive play, friendly fire is always enabled.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Players can inflict damage on their teammates, including killing them, in competitive CS2 matches."
+  },
+  {
+    "id": "4b3a4b80-c6d3-4863-b5aa-780737529540",
+    "game": "counter-strike",
+    "questionText": "G2 Esports won the IEM Katowice 2023 tournament.",
+    "correctAnswer": true,
+    "category": "tournaments",
+    "difficulty": "medium",
+    "explanation": "G2 Esports famously broke their long-standing trophy drought by winning IEM Katowice 2023 without dropping a single map in playoffs."
+  },
+  {
+    "id": "d8648475-d1d5-4bd1-ac59-9e6acce741e1",
+    "game": "counter-strike",
+    "questionText": "The Galil AR is a cheaper alternative to the AK-47 for the Terrorist side.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Galil AR is a less expensive rifle option for Terrorists, often used on force buy rounds."
+  },
+  {
+    "id": "dd96127a-ce19-4b69-8647-4739f4f21275",
+    "game": "counter-strike",
+    "questionText": "The sound of footsteps is distinct for enemies and teammates in CS2.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Footstep sounds are identical for both enemies and teammates; players must rely on visual cues or team communication to identify them."
+  },
+  {
+    "id": "2d185309-e471-4ace-b8fa-990161ea0aaf",
+    "game": "counter-strike",
+    "questionText": "Vertigo's B site is located on the lower floor relative to A site.",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Both A and B sites on Vertigo are generally on the same or similar elevated levels of the skyscraper."
+  },
+  {
+    "id": "ab50b7c9-e2af-4464-a3f3-664ca5c4081c",
+    "game": "counter-strike",
+    "questionText": "Sh1ro is known for his aggressive rifling style.",
+    "correctAnswer": false,
+    "category": "players",
+    "difficulty": "medium",
+    "explanation": "Dmitry 'sh1ro' Sokolov is predominantly known for his calm, passive, and precise AWPing and rifling."
+  },
+  {
+    "id": "1b8cc83b-e273-4a1f-911b-272318567584",
+    "game": "counter-strike",
+    "questionText": "The bomb defuse time is 7 seconds without a Defuse Kit.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Without a Defuse Kit, Counter-Terrorists must spend 7 seconds defusing the planted bomb."
+  },
+  {
+    "id": "034386fd-0b0f-4425-b983-c86bb1168638",
+    "game": "counter-strike",
+    "questionText": "The MP7 is available to both CT and T sides.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The MP7 is one of the few SMGs that can be purchased by both Terrorist and Counter-Terrorist teams."
+  },
+  {
+    "id": "986f2f2c-b137-4aa6-9150-ac3c80bc8f5c",
+    "game": "counter-strike",
+    "questionText": "In CS2, the smoke grenade now correctly interacts with volumetric light, allowing players to peek through gaps in smoke if lit from certain angles.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "CS2's volumetric smoke allows light to pass through it, creating dynamic shadows and potential visual lines depending on lighting conditions."
+  },
+  {
+    "id": "044f5274-06b7-4f14-95d2-bf39f452b8be",
+    "game": "counter-strike",
+    "questionText": "Overpass has a 'Water' callout near the B bomb site.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "The area around the B site on Overpass is famously referred to as 'Water' due to the canal running through it."
+  },
+  {
+    "id": "e3ab8795-31d8-4ea0-8714-922576a26488",
+    "game": "counter-strike",
+    "questionText": "The MAG-7 is a CT-exclusive shotgun.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The MAG-7 is a pump-action shotgun that can only be purchased by the Counter-Terrorist team."
+  },
+  {
+    "id": "7a2c5094-983a-49cb-bb8a-7489bb46217b",
+    "game": "counter-strike",
+    "questionText": "The minimum number of rounds needed to win a half in competitive CS2 is 13.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "A team must win 16 rounds to win a match in regulation, and the first half ends after 15 rounds, not when a team reaches 13 wins."
+  },
+  {
+    "id": "3cbf7a97-d043-4042-ac9b-bbbb4be9d393",
+    "game": "counter-strike",
+    "questionText": "The 'run boost' mechanic was removed in CS2.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "While some physics were tweaked, run boosting (jumping on a teammate's head for extra height/speed) is still possible in CS2."
+  },
+  {
+    "id": "b990de3f-c1a5-4d08-9abd-4c4e0d619d72",
+    "game": "counter-strike",
+    "questionText": "Mirage's 'Window' callout provides a direct view into the A bomb site from Mid.",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "The Window position in Mid offers a crucial sightline directly into the A bomb site on Mirage."
+  },
+  {
+    "id": "6ae5457f-0429-41cd-9027-c304bfce49c9",
+    "game": "counter-strike",
+    "questionText": "The R8 Revolver can be purchased by both CT and T sides.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The R8 Revolver is a powerful pistol option available to both Terrorist and Counter-Terrorist teams."
+  },
+  {
+    "id": "02b29bcc-bc88-4a8e-89d4-139ad4285fa6",
+    "game": "counter-strike",
+    "questionText": "The maximum number of Molotovs/Incendiary Grenades a player can carry is one.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Players are limited to carrying only one Molotov (T-side) or Incendiary Grenade (CT-side) at a time."
+  },
+  {
+    "id": "1cd87bb6-7ff9-4de0-b2a1-6f88357fb128",
+    "game": "counter-strike",
+    "questionText": "The SG 553 (Krieg 552) has a scope.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The SG 553 is a scoped rifle, providing increased accuracy at longer ranges when zoomed in."
+  },
+  {
+    "id": "d23720d2-f177-4705-9824-68b8f19c4a80",
+    "game": "counter-strike",
+    "questionText": "In CS2, a successful grenade throw will always produce a visual trajectory line for the thrower.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "Grenade trajectory lines are only visible in practice modes or with specific server commands, not in standard competitive play."
+  },
+  {
+    "id": "374d4240-0216-4cfa-a43e-dbbe7647fdfc",
+    "game": "counter-strike",
+    "questionText": "The monetary reward for an individual kill with an AWP is $100.",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "hard",
+    "explanation": "Despite its high cost and power, the AWP has one of the lowest kill rewards in the game, granting only $100 per kill."
+  },
+  {
+    "id": "5262e542-86eb-4d64-b051-2dd02a2702d4",
+    "game": "counter-strike",
+    "questionText": "The weapon switch speed in CS2 is identical to CS:GO.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "CS2 introduced slightly faster weapon switch animations and speeds compared to CS:GO."
+  },
+  {
+    "id": "f138dfe0-7cb4-4576-a09d-c0ee76790231",
+    "game": "counter-strike",
+    "questionText": "The MP5-SD is a CT-exclusive SMG.",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "hard",
+    "explanation": "The MP5-SD, a silenced SMG, is available for purchase by both Terrorist and Counter-Terrorist teams."
+  },
+  {
+    "id": "d8a688ac-d553-4fa6-9c06-2246de601fab",
+    "game": "counter-strike",
+    "questionText": "The bomb timer in CS2 is 40 seconds.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "Once planted, the bomb will explode after 40 seconds if not defused."
+  },
+  {
+    "id": "5a6ed722-25c1-4155-9bbf-a3e194b23992",
+    "game": "counter-strike",
+    "questionText": "The M4A4 kill reward is $300.",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "hard",
+    "explanation": "Like most standard rifles, the M4A4 grants a $300 kill reward."
+  },
+  {
+    "id": "a49bbd22-7725-41cf-bbe5-eeed91aee059",
+    "game": "counter-strike",
+    "questionText": "The P90 kill reward is $300.",
+    "correctAnswer": false,
+    "category": "economy",
+    "difficulty": "hard",
+    "explanation": "The P90, classified as an SMG, gives a $600 kill reward, double that of rifles."
+  },
+  {
+    "id": "518138fd-c85f-4ac7-b864-e04cf7873f55",
+    "game": "counter-strike",
+    "questionText": "The Stinger is a common callout on the map Inferno.",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "hard",
+    "explanation": "Stinger is a callout typically found on the map Nuke, referring to a position near the A site."
+  },
+  {
+    "id": "1d95690b-253b-4b07-a0c3-5cf203e7f77d",
+    "game": "counter-strike",
+    "questionText": "In CS2, water no longer dampens bullet penetration.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "Water still significantly reduces bullet penetration and damage, making it harder to shoot through."
+  },
+  {
+    "id": "2003999b-e5e4-4989-a9bd-f12cc5184301",
+    "game": "counter-strike",
+    "questionText": "The Great Danes refers to the legendary Astralis lineup that dominated CS:GO.",
+    "correctAnswer": true,
+    "category": "teams",
+    "difficulty": "hard",
+    "explanation": "The Astralis core of device, dupreeh, Xyp9x, gla1ve, and Magisk, all Danish players, were famously dubbed 'The Great Danes'."
+  },
+  {
+    "id": "32bafcb8-faa8-4fe4-a152-192846167c80",
+    "game": "counter-strike",
+    "questionText": "The XM1014 shotgun has a higher kill reward than the Nova shotgun.",
+    "correctAnswer": false,
+    "category": "economy",
+    "difficulty": "hard",
+    "explanation": "All shotguns in CS2 (Nova, XM1014, MAG-7, Sawed-Off) provide a $900 kill reward."
+  },
+  {
+    "id": "0d670eaf-0e11-410d-9312-4a29efaf674c",
+    "game": "counter-strike",
+    "questionText": "The FAMAS is a CT-exclusive rifle costing $2050.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "hard",
+    "explanation": "The FAMAS is a Counter-Terrorist rifle and is priced at $2050, making it a common force-buy option."
+  },
+  {
+    "id": "9edb9121-b55f-4789-9bf6-849b482f517d",
+    "game": "counter-strike",
+    "questionText": "The maximum number of HE Grenades a player can carry is two.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "Players are limited to carrying only one High Explosive (HE) Grenade at a time."
+  },
+  {
+    "id": "8c7aa5c5-f694-46c3-b3e6-c9323852e80d",
+    "game": "counter-strike",
+    "questionText": "In CS2, bullet impacts are client-side only and not networked.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "While there's client-side prediction, bullet impacts and hit registration are ultimately networked and validated by the server to ensure accuracy."
+  },
+  {
+    "id": "e8278c3a-7f96-4e85-a8cb-e98876b6f52c",
+    "game": "counter-strike",
+    "questionText": "The first CS:GO Major was ESL One Cologne 2014.",
+    "correctAnswer": false,
+    "category": "tournaments",
+    "difficulty": "hard",
+    "explanation": "The first CS:GO Major was DreamHack Winter 2013, held in Jönköping, Sweden."
+  },
+  {
+    "id": "99906ab7-6d00-4511-ae24-d486fa543e9d",
+    "game": "counter-strike",
+    "questionText": "The P2000 is a CT-exclusive pistol with 13 rounds per magazine.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "hard",
+    "explanation": "The P2000 is a Counter-Terrorist starting pistol that holds 13 rounds in its magazine."
+  },
+  {
+    "id": "29219b26-6c01-4ce9-b661-bd4222bb1ea2",
+    "game": "counter-strike",
+    "questionText": "The 'peekers advantage' was completely eliminated with the move to CS2's sub-tick system.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "While CS2's sub-tick system aims to reduce it, 'peekers advantage' is an inherent aspect of online gaming due to network latency and cannot be completely eliminated."
+  },
+  {
+    "id": "d28e0cdf-ad5a-442c-a487-a4e55c37cfa5",
+    "game": "counter-strike",
+    "questionText": "The Glock-18 has 20 rounds per magazine.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "hard",
+    "explanation": "The Glock-18, the Terrorist starting pistol, has a magazine capacity of 20 rounds."
+  },
+  {
+    "id": "883f3b8e-3bcd-4ba9-a3f3-3aa88318a062",
+    "game": "counter-strike",
+    "questionText": "The map Dust II's 'Mid Doors' area allows visibility directly into the CT spawn.",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "hard",
+    "explanation": "Mid Doors on Dust II offers visibility into the platform and tunnels, but not directly into the CT spawn itself."
+  },
+  {
+    "id": "5f0cb2b9-6129-4359-9316-d3687333f379",
+    "game": "counter-strike",
+    "questionText": "In CS2, the smoke grenade's visual effect is now volumetric, meaning it casts dynamic shadows and interacts with light.",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "CS2's smokes are volumetric objects that dynamically interact with the environment, casting shadows and reacting to light sources."
+  },
+  {
+    "id": "88402816-b583-4aaf-9b9f-79f1d669a03a",
+    "game": "counter-strike",
+    "questionText": "The monetary reward for an individual kill with a P250 is $300.",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "hard",
+    "explanation": "The P250, like most pistols, grants a standard $300 kill reward."
+  },
+  {
+    "id": "38860b8f-1ad4-40de-b611-559c86de0efa",
+    "game": "counter-strike",
+    "questionText": "The AWP can penetrate all walls on the map Nuke.",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "While the AWP has high penetration, many thick walls and structural elements on Nuke are impenetrable to its bullets."
+  },
+  {
+    "id": "abcbc6a4-14a6-4012-b9e4-0b2cfbe8e56c",
+    "game": "counter-strike",
+    "questionText": "Team Liquid won the Intel Grand Slam Season 2.",
+    "correctAnswer": true,
+    "category": "tournaments",
+    "difficulty": "hard",
+    "explanation": "Team Liquid famously won the Intel Grand Slam Season 2 in 2019, securing four major tournament wins in record time."
+  },
+  {
+    "id": "3dc59494-a8c3-46f7-8558-509f46212b56",
+    "game": "counter-strike",
+    "questionText": "The Terrorist side starts with $800 in the first round of a half.",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "easy",
+    "explanation": "Both teams start with $800 at the beginning of the first round of each half (Round 1 and Round 16)."
+  },
+  {
+    "id": "b4aed850-3838-49e2-ab65-3babefe10fbd",
+    "game": "counter-strike",
+    "questionText": "The CZ75-Auto is a full-auto pistol available to both sides.",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "hard",
+    "explanation": "The CZ75-Auto is a unique pistol option for both teams, offering a full-automatic firing mode with limited ammunition."
+  },
+  {
+    "id": "52c8879e-b646-4aa9-a26a-2d09b5615a98",
+    "game": "counter-strike",
+    "questionText": "In the professional CS2 scene, does the PGL Major Copenhagen 2024 mark the first-ever Major championship held for Counter-Strike 2?",
+    "correctAnswer": true,
+    "category": "tournaments",
+    "difficulty": "medium",
+    "explanation": "The PGL Major Copenhagen 2024 was the inaugural Major tournament for Counter-Strike 2, following the transition from CS:GO."
+  }
+]

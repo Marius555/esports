@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -10,11 +13,12 @@ import {
   CardDescription,
 } from "@/components/ui/card"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { Award01Icon, BrainCogIcon, ArrowRight01Icon, CheckmarkCircle01Icon, Shield01Icon, SparklesIcon, Target01Icon, UserAdd01Icon, ZapIcon } from "@hugeicons/core-free-icons"
+import { Award01Icon, BrainCogIcon, ArrowRight01Icon, CheckmarkCircle01Icon, Crown02Icon, Shield01Icon, SparklesIcon, Target01Icon, UserAdd01Icon, ZapIcon } from "@hugeicons/core-free-icons"
+import { AuthModal } from "@/components/auth-modal"
 
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
-function Navbar() {
+function Navbar({ onAuthOpen }: { onAuthOpen: () => void }) {
   return (
     <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
@@ -32,11 +36,11 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" render={<Link href="/login" />}>Login</Button>
+          <Button variant="ghost" size="sm" onClick={onAuthOpen}>Login</Button>
           <Button
             size="sm"
             className="bg-brand-purple hover:bg-brand-purple-hover text-foreground glow-purple border-0"
-            render={<Link href="/signup" />}
+            onClick={onAuthOpen}
           >
             Sign Up Free
           </Button>
@@ -48,7 +52,7 @@ function Navbar() {
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
-function Hero() {
+function Hero({ onAuthOpen }: { onAuthOpen: () => void }) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16 bg-background">
       {/* Background */}
@@ -91,7 +95,7 @@ function Hero() {
               <Button
                 size="lg"
                 className="bg-brand-purple hover:bg-brand-purple-hover text-foreground glow-purple border-0 h-12 px-7 font-semibold"
-                render={<Link href="/signup" />}
+                onClick={onAuthOpen}
               >
                 Start for Free
                 <HugeiconsIcon icon={ArrowRight01Icon} size={16} className="ml-1" />
@@ -154,7 +158,7 @@ function Hero() {
 
 // ─── Built for Competitors ────────────────────────────────────────────────────
 
-function FeaturesDetail() {
+function FeaturesDetail({ onAuthOpen }: { onAuthOpen: () => void }) {
   const features = [
     {
       num: "01",
@@ -269,7 +273,7 @@ function FeaturesDetail() {
             <Button
               variant="outline"
               className="self-start border-border text-foreground/70 hover:bg-accent mt-2"
-              render={<Link href="/signup" />}
+              onClick={onAuthOpen}
             >
               Start competing
               <HugeiconsIcon icon={ArrowRight01Icon} size={16} className="ml-1" />
@@ -284,9 +288,9 @@ function FeaturesDetail() {
 
 // ─── Pricing ─────────────────────────────────────────────────────────────────
 
-function Pricing() {
+function Pricing({ onAuthOpen }: { onAuthOpen: () => void }) {
   const freeFeatures = [
-    "Full tournament access",
+    "1 active tournament at a time",
     "Unlimited match forecasts",
     "Live match data",
     "Monthly leaderboard",
@@ -295,12 +299,21 @@ function Pricing() {
   ]
 
   const premiumFeatures = [
+    "2 active tournaments at a time",
     "Everything in Free",
     "AI-powered win probability",
     "Tactical team breakdowns",
     "Historical team performance",
     "Head-to-head analysis",
-    "Priority support",
+  ]
+
+  const maxFeatures = [
+    "3 active tournaments at a time",
+    "Everything in Oracle",
+    "Priority AI processing",
+    "Fastest answer tiebreaker edge",
+    "Early access to new features",
+    "Dedicated priority support",
   ]
 
   return (
@@ -312,7 +325,7 @@ function Pricing() {
           <span className="text-brand-purple text-xs font-semibold uppercase tracking-[0.2em]">Pricing</span>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 items-start max-w-4xl">
+        <div className="flex flex-col lg:flex-row gap-6 items-start">
           {/* Free */}
           <Card className="bg-card border border-border flex flex-col flex-1">
             <CardHeader>
@@ -333,19 +346,19 @@ function Pricing() {
               ))}
             </CardPanel>
             <CardFooter>
-              <Button variant="outline" className="w-full border-border text-foreground hover:bg-accent" render={<Link href="/signup" />}>
+              <Button variant="outline" className="w-full border-border text-foreground hover:bg-accent" onClick={onAuthOpen}>
                 Get Started Free
               </Button>
             </CardFooter>
           </Card>
 
-          {/* Premium */}
+          {/* Oracle (Pro) */}
           <Card className="bg-card border border-brand-purple/40 glow-purple flex flex-col flex-1 relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-purple to-transparent" />
             <CardHeader>
               <div className="flex items-center gap-2 mb-3">
                 <Badge className="bg-brand-purple text-foreground text-xs uppercase tracking-widest hover:bg-brand-purple">
-                  <HugeiconsIcon icon={SparklesIcon} size={12} className="mr-1" />Premium
+                  <HugeiconsIcon icon={SparklesIcon} size={12} className="mr-1" />Pro
                 </Badge>
               </div>
               <CardTitle className="font-heading text-3xl font-black text-foreground uppercase">Oracle</CardTitle>
@@ -364,8 +377,39 @@ function Pricing() {
               ))}
             </CardPanel>
             <CardFooter>
-              <Button className="w-full bg-brand-purple hover:bg-brand-purple-hover text-foreground border-0" render={<Link href="/signup" />}>
+              <Button className="w-full bg-brand-purple hover:bg-brand-purple-hover text-foreground border-0" onClick={onAuthOpen}>
                 Start with Oracle
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* Legend (Max) */}
+          <Card className="bg-card border border-amber-500/40 flex flex-col flex-1 relative overflow-hidden" style={{ boxShadow: "0 0 24px rgba(245,158,11,0.12)" }}>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent" />
+            <CardHeader>
+              <div className="flex items-center gap-2 mb-3">
+                <Badge className="bg-amber-500 text-black text-xs uppercase tracking-widest hover:bg-amber-400">
+                  <HugeiconsIcon icon={Crown02Icon} size={12} className="mr-1" />Max
+                </Badge>
+              </div>
+              <CardTitle className="font-heading text-3xl font-black text-foreground uppercase">Legend</CardTitle>
+              <CardDescription className="text-muted-foreground text-sm">Maximum competitive advantage</CardDescription>
+              <div className="pt-3">
+                <span className="text-4xl font-heading font-black text-amber-400">$35</span>
+                <span className="text-muted-foreground ml-1 text-sm">/ month</span>
+              </div>
+            </CardHeader>
+            <CardPanel className="flex flex-col gap-2.5 flex-1">
+              {maxFeatures.map((f) => (
+                <div key={f} className="flex items-start gap-2.5 text-sm text-foreground/70">
+                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={16} className="text-amber-400 shrink-0 mt-0.5" />
+                  {f}
+                </div>
+              ))}
+            </CardPanel>
+            <CardFooter>
+              <Button className="w-full text-black border-0 font-bold hover:opacity-90" style={{ background: "#f59e0b" }} onClick={onAuthOpen}>
+                Go Legend
               </Button>
             </CardFooter>
           </Card>
@@ -377,7 +421,7 @@ function Pricing() {
 
 // ─── How It Works ─────────────────────────────────────────────────────────────
 
-function HowItWorks() {
+function HowItWorks({ onAuthOpen }: { onAuthOpen: () => void }) {
   const steps = [
     {
       num: "01",
@@ -447,7 +491,7 @@ function HowItWorks() {
             <Button
               size="lg"
               className="self-start mt-10 bg-brand-purple hover:bg-brand-purple-hover text-foreground glow-purple border-0 h-12 px-7 font-semibold"
-              render={<Link href="/signup" />}
+              onClick={onAuthOpen}
             >
               Join Free
               <HugeiconsIcon icon={ArrowRight01Icon} size={16} className="ml-1" />
@@ -480,7 +524,7 @@ function HowItWorks() {
 
 // ─── CTA ─────────────────────────────────────────────────────────────────────
 
-function CTASection() {
+function CTASection({ onAuthOpen }: { onAuthOpen: () => void }) {
   return (
     <section className="py-28 bg-card relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_100%,rgb(168_85_247/12%),transparent)]" />
@@ -504,7 +548,7 @@ function CTASection() {
         <Button
           size="lg"
           className="bg-brand-purple hover:bg-brand-purple-hover text-foreground glow-purple border-0 h-12 px-10 font-semibold"
-          render={<Link href="/signup" />}
+          onClick={onAuthOpen}
         >
           Join Free — No Card Needed
           <HugeiconsIcon icon={ArrowRight01Icon} size={16} className="ml-1.5" />
@@ -542,15 +586,19 @@ function Footer() {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function LandingPage() {
+  const [authOpen, setAuthOpen] = useState(false)
+  const openAuth = () => setAuthOpen(true)
+
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      <Hero />
-      <FeaturesDetail />
-      <Pricing />
-      <HowItWorks />
-      <CTASection />
+      <Navbar onAuthOpen={openAuth} />
+      <Hero onAuthOpen={openAuth} />
+      <FeaturesDetail onAuthOpen={openAuth} />
+      <Pricing onAuthOpen={openAuth} />
+      <HowItWorks onAuthOpen={openAuth} />
+      <CTASection onAuthOpen={openAuth} />
       <Footer />
+      <AuthModal open={authOpen} onOpenChange={setAuthOpen} />
     </div>
   )
 }

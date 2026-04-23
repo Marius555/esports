@@ -6,6 +6,8 @@ import {
   DB_ID,
   QUESTIONS_TABLE_ID,
   USER_ANSWERS_TABLE_ID,
+  KNOWLEDGE_QUESTIONS_TABLE_ID,
+  USER_ROUND_ASSIGNMENTS_TABLE_ID,
   Query,
   withRetry,
 } from "@/lib/appwrite";
@@ -17,6 +19,16 @@ interface UserAnswer {
   questionId: string;
   tournamentId: string;
   answer: boolean;
+  roundNumber: number | null;
+}
+
+interface RoundAssignment {
+  $id: string;
+  userId: string;
+  tournamentId: string;
+  roundNumber: number;
+  roundType: string;
+  completedAt: string | null;
 }
 
 export interface TournamentSummary {
@@ -28,6 +40,7 @@ export interface TournamentSummary {
   wrongAnswers: number;
   pending: number;
   resolveBy: string;
+  roundsCompleted: number;
 }
 
 export async function GET(): Promise<NextResponse> {
@@ -58,44 +71,86 @@ export async function GET(): Promise<NextResponse> {
 
     const summaries = await Promise.all(
       tournamentIds.map(async (tournamentId): Promise<TournamentSummary> => {
+        const tournamentAnswers = answers.filter((a) => a.tournamentId === tournamentId);
+
+        // Fetch esports questions (in questions table)
         const questionsRes = await withRetry(() =>
           tablesDB.listRows({
             databaseId: DB_ID,
             tableId: QUESTIONS_TABLE_ID,
-            queries: [Query.equal("tournamentId", tournamentId), Query.limit(50)],
+            queries: [Query.equal("tournamentId", tournamentId), Query.limit(200)],
           })
+        ).catch(() => null);
+
+        const questions = (questionsRes?.rows ?? []) as unknown as Question[];
+        const correctAnswerMap = new Map<string, boolean | null | undefined>(
+          questions.map((q) => [q.$id, q.correctAnswer])
         );
 
-        const questions = questionsRes.rows as unknown as Question[];
-        const tournamentAnswers = answers.filter((a) => a.tournamentId === tournamentId);
-        const answerMap = new Map(tournamentAnswers.map((a) => [a.questionId, a.answer]));
+        // Fetch knowledge question correctAnswers for skill round answers
+        const unknownIds = tournamentAnswers
+          .map((a) => a.questionId)
+          .filter((id) => !correctAnswerMap.has(id));
+        if (unknownIds.length > 0) {
+          const kqRes = await withRetry(() =>
+            tablesDB.listRows({
+              databaseId: DB_ID,
+              tableId: KNOWLEDGE_QUESTIONS_TABLE_ID,
+              queries: [Query.equal("$id", unknownIds), Query.limit(unknownIds.length + 5)],
+            })
+          ).catch(() => null);
+          if (kqRes) {
+            for (const row of kqRes.rows as unknown as { $id: string; correctAnswer: boolean }[]) {
+              correctAnswerMap.set(row.$id, row.correctAnswer);
+            }
+          }
+        }
+
+        // Fetch round assignments for rounds completed count
+        const assignmentsRes = await withRetry(() =>
+          tablesDB.listRows({
+            databaseId: DB_ID,
+            tableId: USER_ROUND_ASSIGNMENTS_TABLE_ID,
+            queries: [
+              Query.equal("userId", session.userId),
+              Query.equal("tournamentId", tournamentId),
+              Query.limit(100),
+            ],
+          })
+        ).catch(() => null);
+
+        const roundsCompleted = (assignmentsRes?.rows ?? []).filter(
+          (r) => (r as unknown as RoundAssignment).completedAt !== null
+        ).length;
 
         let correctAnswers = 0;
         let wrongAnswers = 0;
         let pending = 0;
 
-        for (const q of questions) {
-          const userAnswer = answerMap.get(q.$id);
-          if (userAnswer === undefined) continue;
-
-          if (q.correctAnswer === null || q.correctAnswer === undefined) {
+        for (const ans of tournamentAnswers) {
+          const correctAnswer = correctAnswerMap.get(ans.questionId);
+          if (correctAnswer === null || correctAnswer === undefined) {
             pending++;
-          } else if (userAnswer === q.correctAnswer) {
+          } else if (ans.answer === correctAnswer) {
             correctAnswers++;
           } else {
             wrongAnswers++;
           }
         }
 
+        const game = questions[0]?.game ?? tournamentId.split("-")[0];
+        const resolveBy = questions[0]?.resolveBy ?? "";
+
         return {
           tournamentId,
-          game: questions[0]?.game ?? tournamentId.split("-")[0],
-          totalQuestions: questions.length,
+          game,
+          totalQuestions: tournamentAnswers.length,
           answeredQuestions: tournamentAnswers.length,
           correctAnswers,
           wrongAnswers,
           pending,
-          resolveBy: questions[0]?.resolveBy ?? "",
+          resolveBy,
+          roundsCompleted,
         };
       })
     );

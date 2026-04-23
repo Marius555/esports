@@ -1,13 +1,15 @@
 "use client"
 
-import { Suspense, useEffect, useRef } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { processOAuthCallback } from "@/app/actions/auth"
+import { UsernameSetupModal } from "@/components/username-setup-modal"
 
 function OAuthCallbackInner() {
   const router = useRouter()
   const params = useSearchParams()
   const called = useRef(false)
+  const [inlineSetup, setInlineSetup] = useState<{ userId: string } | null>(null)
 
   useEffect(() => {
     if (called.current) return
@@ -18,7 +20,7 @@ function OAuthCallbackInner() {
 
     const isPopup = Boolean(window.opener)
 
-    function broadcast(type: "success" | "error", data?: Record<string, string>) {
+    function broadcast(type: "success" | "error" | "needs_username", data?: Record<string, string>) {
       const bc = new BroadcastChannel("oauth_google")
       bc.postMessage({ type, ...data })
       bc.close()
@@ -29,7 +31,7 @@ function OAuthCallbackInner() {
         broadcast("error")
         window.close()
       } else {
-        router.replace("/login?error=oauth_failed")
+        router.replace("/")
       }
     }
 
@@ -43,11 +45,20 @@ function OAuthCallbackInner() {
     processOAuthCallback(userId, secret)
       .then((result) => {
         clearTimeout(timeout)
-        if (isPopup) {
-          broadcast("success", { userId: result.userId })
-          window.close()
+        if (result.isNew) {
+          if (isPopup) {
+            broadcast("needs_username", { userId: result.userId })
+            window.close()
+          } else {
+            setInlineSetup({ userId: result.userId })
+          }
         } else {
-          router.replace(`/auth/${result.userId}/dashboard`)
+          if (isPopup) {
+            broadcast("success", { userId: result.userId })
+            window.close()
+          } else {
+            router.replace(`/auth/${result.userId}/dashboard`)
+          }
         }
       })
       .catch(() => {
@@ -55,6 +66,16 @@ function OAuthCallbackInner() {
         fail()
       })
   }, [params, router])
+
+  if (inlineSetup) {
+    return (
+      <UsernameSetupModal
+        open={true}
+        userId={inlineSetup.userId}
+        onSuccess={(uid) => router.replace(`/auth/${uid}/dashboard`)}
+      />
+    )
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background gap-6">

@@ -43,7 +43,8 @@
       "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(l['name'], l['id']\\) for l in data['data']['leagues']]\")",
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('recent:', len\\(d['recent']\\), 'upcoming:', len\\(d['upcoming']\\)\\); [print\\(' -', m['teams'][0]['name'], 'vs', m['teams'][1]['name'], '|', m['tournament']\\) for m in d['upcoming'][:3]]\")",
       "Bash(sed 's/\\\\.js$//')",
-      "Bash(grep -v \"components\\\\\\\\ui\\\\\\\\\")"
+      "Bash(grep -v \"components\\\\\\\\ui\\\\\\\\\")",
+      "Bash(xargs grep *)"
     ],
     "allowedTools": [
       "Bash(*)",

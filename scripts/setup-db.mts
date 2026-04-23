@@ -276,10 +276,12 @@ const TABLES: TableDef[] = [
       { type: "varchar",  key: "referenceType",     size: 20,  required: true  }, // match | player | team | tournament
       { type: "varchar",  key: "referenceId",       size: 100, required: true  },
       { type: "varchar",  key: "referenceName",     size: 200, required: true  },
-      { type: "varchar",  key: "referenceImageUrl", size: 500, required: false },
+      { type: "varchar",  key: "referenceImageUrl",  size: 500, required: false },
+      { type: "varchar",  key: "referenceImageUrlB", size: 500, required: false },
       { type: "boolean",  key: "correctAnswer",               required: false }, // null until resolved
       { type: "datetime", key: "resolveBy",                   required: true  },
       { type: "datetime", key: "matchScheduledAt",            required: false }, // match's own scheduled date
+      { type: "integer",  key: "roundNumber",                 required: false, min: 1 }, // which round this question belongs to
     ],
     indexes: [
       { key: "idx_q_game",         type: TablesDBIndexType.Key, columns: ["game"]                              },
@@ -295,15 +297,88 @@ const TABLES: TableDef[] = [
     name:    "user_answers",
     envKey:  "USER_ANSWERS_TABLE_ID",
     columns: [
-      { type: "varchar",  key: "userId",       size: 36,  required: true },
-      { type: "varchar",  key: "questionId",   size: 36,  required: true },
-      { type: "varchar",  key: "tournamentId", size: 100, required: true },
-      { type: "boolean",  key: "answer",                  required: true },
+      { type: "varchar",  key: "userId",       size: 36,  required: true  },
+      { type: "varchar",  key: "questionId",   size: 36,  required: true  },
+      { type: "varchar",  key: "tournamentId", size: 100, required: true  },
+      { type: "boolean",  key: "answer",                  required: true  },
+      { type: "integer",  key: "timeTaken",               required: false, min: 0, max: 10000 },
+      { type: "integer",  key: "roundNumber",             required: false, min: 1 },
     ],
     indexes: [
       { key: "idx_ua_userId",       type: TablesDBIndexType.Key,    columns: ["userId"]               },
       { key: "idx_ua_tournamentId", type: TablesDBIndexType.Key,    columns: ["tournamentId"]         },
       { key: "idx_ua_user_q",       type: TablesDBIndexType.Unique, columns: ["userId", "questionId"] },
+    ],
+  },
+
+  // ── Knowledge Questions ────────────────────────────────────────────────────────
+  {
+    tableId: "knowledge_questions",
+    name:    "knowledge_questions",
+    envKey:  "KNOWLEDGE_QUESTIONS_TABLE_ID",
+    columns: [
+      { type: "varchar",  key: "game",         size: 20,  required: true  }, // counter-strike | dota2 | valorant
+      { type: "varchar",  key: "questionText", size: 500, required: true  },
+      { type: "boolean",  key: "correctAnswer",            required: true  }, // always known
+      { type: "varchar",  key: "category",     size: 50,  required: true  }, // mechanics | weapons | maps | etc.
+      { type: "varchar",  key: "difficulty",   size: 10,  required: true  }, // easy | medium | hard
+      { type: "varchar",  key: "explanation",  size: 500, required: true  },
+    ],
+    indexes: [
+      { key: "idx_kq_game",       type: TablesDBIndexType.Key, columns: ["game"]                     },
+      { key: "idx_kq_difficulty", type: TablesDBIndexType.Key, columns: ["difficulty"]               },
+      { key: "idx_kq_game_diff",  type: TablesDBIndexType.Key, columns: ["game", "difficulty"]       },
+    ],
+  },
+
+  // ── User Round Assignments ─────────────────────────────────────────────────────
+  // Tracks which questions each user was assigned for each round.
+  // questionIds stores a JSON string of question IDs (knowledge $ids for skill rounds,
+  // question $ids for esports rounds). Esports rounds share the same question IDs.
+  {
+    tableId: "user_round_assignments",
+    name:    "user_round_assignments",
+    envKey:  "USER_ROUND_ASSIGNMENTS_TABLE_ID",
+    columns: [
+      { type: "varchar",  key: "userId",       size: 36,   required: true  },
+      { type: "varchar",  key: "tournamentId", size: 100,  required: true  },
+      { type: "integer",  key: "roundNumber",              required: true, min: 1 },
+      { type: "varchar",  key: "roundType",    size: 10,   required: true  }, // skill | esports
+      { type: "varchar",  key: "questionIds",  size: 1000, required: true  }, // JSON array of IDs
+      { type: "datetime", key: "startedAt",               required: true  },
+      { type: "datetime", key: "completedAt",             required: false },
+    ],
+    indexes: [
+      { key: "idx_ura_userId_tid",   type: TablesDBIndexType.Key,    columns: ["userId", "tournamentId"]                           },
+      { key: "idx_ura_unique",       type: TablesDBIndexType.Unique, columns: ["userId", "tournamentId", "roundNumber"]            },
+      { key: "idx_ura_tournamentId", type: TablesDBIndexType.Key,    columns: ["tournamentId"]                                     },
+    ],
+  },
+
+  // ── Winners ───────────────────────────────────────────────────────────────────
+  // Populated when a tournament's 7-day window closes and final rankings are saved.
+  {
+    tableId: "winners",
+    name:    "winners",
+    envKey:  "WINNERS_TABLE_ID",
+    columns: [
+      { type: "varchar",  key: "tournamentId",     size: 100, required: true  },
+      { type: "varchar",  key: "userId",           size: 36,  required: true  },
+      { type: "varchar",  key: "username",         size: 100, required: true  },
+      { type: "varchar",  key: "game",             size: 20,  required: true  },
+      { type: "integer",  key: "rank",                        required: true, min: 1 },
+      { type: "integer",  key: "correctAnswers",             required: true, min: 0 },
+      { type: "integer",  key: "totalAnswers",               required: true, min: 0 },
+      { type: "integer",  key: "totalTimeTakenMs",           required: true, min: 0 },
+      { type: "varchar",  key: "prize",            size: 20,  required: true  }, // e.g. "€25" or ""
+      { type: "datetime", key: "resolvedAt",                  required: true  },
+      { type: "integer",  key: "roundsCompleted",            required: true, min: 0 },
+    ],
+    indexes: [
+      { key: "idx_w_tournament",     type: TablesDBIndexType.Key,    columns: ["tournamentId"]              },
+      { key: "idx_w_tid_uid",        type: TablesDBIndexType.Unique, columns: ["tournamentId", "userId"]    },
+      { key: "idx_w_game",           type: TablesDBIndexType.Key,    columns: ["game"]                      },
+      { key: "idx_w_rank",           type: TablesDBIndexType.Key,    columns: ["rank"], orders: [OrderBy.Asc] },
     ],
   },
 ]

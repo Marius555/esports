@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { pandaUpcoming, pandaPast, type PandaMatch } from "@/lib/pandascore";
+import { pandaUpcoming, pandaPast, pandaRunning, type PandaMatch } from "@/lib/pandascore";
 import { getDota2RecentSeries } from "@/lib/opendota";
-import { getLolSchedule } from "@/lib/riot-esports";
 
-const VALID_GAMES = new Set(["dota2", "leagueoflegends", "counterstrike"]);
+const VALID_GAMES = new Set(["dota2", "valorant", "counterstrike"]);
 
 export interface TeamData {
   name: string;
@@ -82,8 +81,28 @@ export async function GET(
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
         .slice(0, 5);
       recent = await getDota2RecentSeries();
-    } else if (game === "leagueoflegends") {
-      ({ upcoming, recent } = await getLolSchedule());
+    } else if (game === "valorant") {
+      const [rawUpcoming, rawPast] = await Promise.all([
+        pandaUpcoming("valorant"),
+        pandaPast("valorant"),
+      ]);
+      upcoming = rawUpcoming
+        .map(transformPandaMatch)
+        .filter((m): m is MatchData => m !== null)
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+        .slice(0, 5);
+      recent = rawPast
+        .map(transformPandaMatch)
+        .filter((m): m is MatchData => m !== null)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .slice(0, 5);
+      if (recent.length === 0) {
+        const rawRunning = await pandaRunning("valorant").catch(() => []);
+        recent = rawRunning
+          .map(transformPandaMatch)
+          .filter((m): m is MatchData => m !== null)
+          .slice(0, 5);
+      }
     } else if (game === "counterstrike") {
       // PandaScore free tier: upcoming works, past requires paid tier (returns [])
       const [rawUpcoming, rawPast] = await Promise.all([

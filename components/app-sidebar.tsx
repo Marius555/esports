@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
-import { Award01Icon, Certificate01Icon, CreditCardIcon, DashboardSquare01Icon, Logout01Icon, ZapIcon } from "@hugeicons/core-free-icons"
+import { Award01Icon, Certificate01Icon, CreditCardIcon, DashboardSquare01Icon, Logout01Icon, Medal01Icon, ZapIcon } from "@hugeicons/core-free-icons"
 import {
   Sidebar,
   SidebarContent,
@@ -30,12 +30,13 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 
 const tierLabel: Record<Tier, string> = { free: "Free", pro: "Pro", max: "Max" }
 const tierClass: Record<"pro" | "max", string> = {
-  pro: "text-primary border-primary/50",
-  max: "text-amber-400 border-amber-400/50",
+  pro: "text-primary",
+  max: "text-amber-400",
 }
 
 const navItems = (userId: string): { title: string; url: string; icon: IconSvgElement }[] => [
   { title: "Dashboard", url: `/auth/${userId}/dashboard`, icon: DashboardSquare01Icon },
+  { title: "My Tournaments", url: `/auth/${userId}/my-tournaments`, icon: Medal01Icon },
   { title: "Leaderboard", url: "#", icon: Award01Icon },
 ]
 
@@ -54,15 +55,9 @@ export function AppSidebar({ userId, user, ...props }: AppSidebarProps) {
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight min-w-0">
                 <span className="truncate font-medium text-sm">{user.email}</span>
-                {user.tier === "free" ? (
-                  <span className="text-[10px] font-semibold tracking-widest uppercase mt-0.5 text-muted-foreground">
-                    {tierLabel[user.tier]}
-                  </span>
-                ) : (
-                  <span className={`text-[10px] font-semibold tracking-widest uppercase border rounded px-1.5 py-0.5 w-fit mt-0.5 ${tierClass[user.tier]}`}>
-                    {tierLabel[user.tier]}
-                  </span>
-                )}
+                <span className={`text-[10px] font-semibold tracking-widest uppercase mt-0.5 ${user.tier === "free" ? "text-muted-foreground" : tierClass[user.tier as "pro" | "max"]}`}>
+                  {tierLabel[user.tier]}
+                </span>
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -99,7 +94,7 @@ export function AppSidebar({ userId, user, ...props }: AppSidebarProps) {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton render={<a href="#" />}>
+                <SidebarMenuButton render={<a href={`/auth/${userId}/billing`} />}>
                   <HugeiconsIcon icon={CreditCardIcon} size={16} />
                   <span>Billing</span>
                 </SidebarMenuButton>

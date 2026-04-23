@@ -1,5 +1,6 @@
 "use server"
 
+import { SignJWT, jwtVerify } from "jose"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { z } from "zod"
@@ -7,7 +8,6 @@ import {
   createAdminClient,
   DB_ID,
   USERS_TABLE_ID,
-  ID,
   Query,
   Permission,
   Role,
@@ -17,42 +17,126 @@ import {
 } from "@/lib/appwrite"
 import { signToken, COOKIE_NAME, COOKIE_MAX_AGE } from "@/lib/auth"
 
-type ActionResult = { success: boolean; error?: string }
+const PENDING_COOKIE_NAME = "pending_setup"
+const SECRET = new TextEncoder().encode(process.env.JWT_SECRET!)
 
-// ─── Zod Schemas ───────────────────────────────────────────────────────────────
+// ─── getGoogleOAuthUrl ────────────────────────────────────────────────────────
 
-const signUpSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-})
+export async function getGoogleOAuthUrl(origin: string): Promise<string> {
+  const { account } = createAdminClient()
+  const url = await account.createOAuth2Token({
+    provider: OAuthProvider.Google,
+    success: `${origin}/oauth/callback`,
+    failure: `${origin}/`,
+  })
+  return url.toString()
+}
 
-const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(1, "Password is required"),
-})
+// ─── processOAuthCallback ──────────────────────────────────────────────────────
 
-// ─── signUp ────────────────────────────────────────────────────────────────────
+export async function processOAuthCallback(
+  userId: string,
+  secret: string,
+): Promise<{ userId: string; isNew: boolean }> {
+  const { account, tablesDB, users } = createAdminClient()
 
-export async function signUp(fd: FormData): Promise<ActionResult> {
-  const raw = {
-    email: fd.get("email") as string,
-    password: fd.get("password") as string,
+  await account.createSession({ userId, secret })
+
+  const appwriteUser = await users.get({ userId })
+
+  const rows = await tablesDB.listRows({
+    databaseId: DB_ID,
+    tableId: USERS_TABLE_ID,
+    queries: [Query.equal("userId", userId), Query.limit(1)],
+  })
+
+  if (rows.total === 0) {
+    const pendingToken = await new SignJWT({ userId, email: appwriteUser.email })
+      .setProtectedHeader({ alg: "HS256" })
+      .setIssuedAt()
+      .setExpirationTime("10m")
+      .sign(SECRET)
+
+    const cookieStore = await cookies()
+    cookieStore.set(PENDING_COOKIE_NAME, pendingToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 600,
+      path: "/",
+    })
+
+    return { userId, isNew: true }
   }
 
-  const parsed = signUpSchema.safeParse(raw)
+  const userRow = rows.rows[0] as unknown as UserRow
+
+  const token = await signToken({
+    userId: userRow.userId,
+    username: userRow.username,
+    email: userRow.email,
+    tier: userRow.tier,
+  })
+
+  const cookieStore = await cookies()
+  cookieStore.set(COOKIE_NAME, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: COOKIE_MAX_AGE,
+    path: "/",
+  })
+
+  return { userId: userRow.userId, isNew: false }
+}
+
+// ─── setupUsername ─────────────────────────────────────────────────────────────
+
+const usernameSchema = z
+  .string()
+  .min(3, "At least 3 characters")
+  .max(20, "At most 20 characters")
+  .regex(/^[a-zA-Z0-9_]+$/, "Letters, numbers, and underscores only")
+
+export async function setupUsername(
+  userId: string,
+  username: string,
+): Promise<{ success: true; userId: string } | { success: false; error: string }> {
+  const cookieStore = await cookies()
+  const pendingToken = cookieStore.get(PENDING_COOKIE_NAME)?.value
+
+  if (!pendingToken) {
+    return { success: false, error: "Session expired. Please sign in again." }
+  }
+
+  let email: string
+  try {
+    const { payload } = await jwtVerify(pendingToken, SECRET)
+    if (payload.userId !== userId) {
+      return { success: false, error: "Invalid session." }
+    }
+    email = payload.email as string
+  } catch {
+    return { success: false, error: "Invalid session." }
+  }
+
+  const parsed = usernameSchema.safeParse(username)
   if (!parsed.success) {
-    const first = parsed.error.issues[0]
-    return { success: false, error: first.message }
+    return { success: false, error: parsed.error.issues[0].message }
   }
 
-  const { email, password } = parsed.data
-  const username = email.split("@")[0].replace(/[^a-zA-Z0-9_]/g, "_").slice(0, 20)
-  const userId = ID.unique()
+  const { tablesDB } = createAdminClient()
 
   try {
-    const { account, tablesDB } = createAdminClient()
+    const existing = await tablesDB.listRows({
+      databaseId: DB_ID,
+      tableId: USERS_TABLE_ID,
+      queries: [Query.equal("username", username), Query.limit(1)],
+    })
 
-    await account.create({ userId, email, password, name: username })
+    if (existing.total > 0) {
+      return { success: false, error: "Username already taken" }
+    }
 
     await tablesDB.createRow({
       databaseId: DB_ID,
@@ -73,7 +157,6 @@ export async function signUp(fd: FormData): Promise<ActionResult> {
     })
 
     const token = await signToken({ userId, username, email, tier: "free" })
-    const cookieStore = await cookies()
     cookieStore.set(COOKIE_NAME, token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -81,165 +164,16 @@ export async function signUp(fd: FormData): Promise<ActionResult> {
       maxAge: COOKIE_MAX_AGE,
       path: "/",
     })
+    cookieStore.delete(PENDING_COOKIE_NAME)
+
+    return { success: true, userId }
   } catch (err) {
     if (err instanceof AppwriteException) {
-      if (err.code === 409) return { success: false, error: "Email already registered" }
+      if (err.code === 409) return { success: false, error: "Username already taken" }
       return { success: false, error: err.message }
     }
     return { success: false, error: "An unexpected error occurred" }
   }
-
-  redirect(`/auth/${userId}/dashboard`)
-}
-
-// ─── login ─────────────────────────────────────────────────────────────────────
-
-export async function login(fd: FormData): Promise<ActionResult> {
-  const raw = {
-    email: fd.get("email") as string,
-    password: fd.get("password") as string,
-  }
-
-  const parsed = loginSchema.safeParse(raw)
-  if (!parsed.success) {
-    const first = parsed.error.issues[0]
-    return { success: false, error: first.message }
-  }
-
-  const { email, password } = parsed.data
-
-  let userId = ""
-
-  try {
-    const { account, tablesDB } = createAdminClient()
-
-    const session = await account.createEmailPasswordSession({ email, password })
-
-    const rows = await tablesDB.listRows({
-      databaseId: DB_ID,
-      tableId: USERS_TABLE_ID,
-      queries: [Query.equal("userId", session.userId), Query.limit(1)],
-    })
-
-    if (rows.total === 0) {
-      return { success: false, error: "User profile not found" }
-    }
-
-    const userRow = rows.rows[0] as unknown as UserRow
-    userId = userRow.userId
-
-    const token = await signToken({
-      userId: userRow.userId,
-      username: userRow.username,
-      email: userRow.email,
-      tier: userRow.tier,
-    })
-
-    const cookieStore = await cookies()
-    cookieStore.set(COOKIE_NAME, token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: COOKIE_MAX_AGE,
-      path: "/",
-    })
-  } catch (err) {
-    if (err instanceof AppwriteException) {
-      if (err.code === 401) return { success: false, error: "Invalid email or password" }
-      return { success: false, error: err.message }
-    }
-    return { success: false, error: "An unexpected error occurred" }
-  }
-
-  redirect(`/auth/${userId}/dashboard`)
-}
-
-// ─── getGoogleOAuthUrl ────────────────────────────────────────────────────────
-
-export async function getGoogleOAuthUrl(origin: string): Promise<string> {
-  const { account } = createAdminClient()
-  const url = await account.createOAuth2Token({
-    provider: OAuthProvider.Google,
-    success: `${origin}/oauth/callback`,
-    failure: `${origin}/login?error=oauth_failed`,
-  })
-  return url.toString()
-}
-
-// ─── processOAuthCallback ──────────────────────────────────────────────────────
-
-export async function processOAuthCallback(
-  userId: string,
-  secret: string,
-): Promise<{ userId: string }> {
-  const { account, tablesDB, users } = createAdminClient()
-
-  await account.createSession({ userId, secret })
-
-  const appwriteUser = await users.get({ userId })
-
-  const rows = await tablesDB.listRows({
-    databaseId: DB_ID,
-    tableId: USERS_TABLE_ID,
-    queries: [Query.equal("userId", userId), Query.limit(1)],
-  })
-
-  let userRow: UserRow
-
-  if (rows.total === 0) {
-    const rawName = appwriteUser.name || appwriteUser.email.split("@")[0]
-    const username =
-      rawName.replace(/[^a-zA-Z0-9_]/g, "_").slice(0, 20) ||
-      "user_" + userId.slice(0, 8)
-
-    await tablesDB.createRow({
-      databaseId: DB_ID,
-      tableId: USERS_TABLE_ID,
-      rowId: userId,
-      data: {
-        userId,
-        username,
-        email: appwriteUser.email,
-        tier: "free",
-        totalPoints: 0,
-        stripeCustomerId: "",
-      },
-      permissions: [
-        Permission.read(Role.user(userId)),
-        Permission.write(Role.user(userId)),
-      ],
-    })
-
-    userRow = {
-      $id: userId,
-      userId,
-      username,
-      email: appwriteUser.email,
-      tier: "free",
-      totalPoints: 0,
-      stripeCustomerId: "",
-    }
-  } else {
-    userRow = rows.rows[0] as unknown as UserRow
-  }
-
-  const token = await signToken({
-    userId: userRow.userId,
-    username: userRow.username,
-    email: userRow.email,
-    tier: userRow.tier,
-  })
-
-  const cookieStore = await cookies()
-  cookieStore.set(COOKIE_NAME, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: COOKIE_MAX_AGE,
-    path: "/",
-  })
-
-  return { userId: userRow.userId }
 }
 
 // ─── logout ────────────────────────────────────────────────────────────────────
@@ -247,5 +181,5 @@ export async function processOAuthCallback(
 export async function logout(): Promise<never> {
   const cookieStore = await cookies()
   cookieStore.delete(COOKIE_NAME)
-  redirect("/login")
+  redirect("/")
 }

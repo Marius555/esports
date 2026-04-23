@@ -11,6 +11,7 @@ export interface GeminiQuestion {
   referenceId: string;
   referenceName: string;
   referenceImageUrl: string;
+  referenceImageUrlB?: string;
 }
 
 export interface EnrichedMatchTeam {
@@ -57,8 +58,9 @@ const QUESTION_SCHEMA = {
       questionText:      { type: "STRING" },
       referenceType:     { type: "STRING" },
       referenceId:       { type: "STRING" },
-      referenceName:     { type: "STRING" },
-      referenceImageUrl: { type: "STRING" },
+      referenceName:      { type: "STRING" },
+      referenceImageUrl:  { type: "STRING" },
+      referenceImageUrlB: { type: "STRING" },
     },
     required: [
       "questionText",
@@ -66,6 +68,7 @@ const QUESTION_SCHEMA = {
       "referenceId",
       "referenceName",
       "referenceImageUrl",
+      "referenceImageUrlB",
     ],
   },
 };
@@ -107,7 +110,36 @@ function buildHeroSection(heroData: RecentMatchHeroData[]): string {
   return lines.join("\n");
 }
 
-function buildQuestionCategories(input: TournamentInput, deadline: string): string {
+function buildFormContext(results: RecentResult[]): string {
+  if (results.length === 0) return "";
+
+  const teamRecord = new Map<string, { wins: number; losses: number; lastOpponent?: string; lastResult?: "win" | "loss" }>();
+  for (const r of results) {
+    const w = teamRecord.get(r.winner) ?? { wins: 0, losses: 0 };
+    w.wins++;
+    w.lastOpponent = r.winner === r.teamA ? r.teamB : r.teamA;
+    w.lastResult = "win";
+    teamRecord.set(r.winner, w);
+
+    const loser = r.winner === r.teamA ? r.teamB : r.teamA;
+    const l = teamRecord.get(loser) ?? { wins: 0, losses: 0 };
+    l.losses++;
+    l.lastOpponent = r.winner;
+    l.lastResult = "loss";
+    teamRecord.set(loser, l);
+  }
+
+  const lines: string[] = ["CURRENT FORM (use this for form/streak questions):"];
+  for (const [team, rec] of teamRecord.entries()) {
+    if (rec.wins >= 2) lines.push(`  • ${team} is on a ${rec.wins}-win streak`);
+    else if (rec.losses >= 2) lines.push(`  • ${team} has lost ${rec.losses} series in a row`);
+    else if (rec.lastResult === "loss") lines.push(`  • ${team} lost their most recent series vs ${rec.lastOpponent}`);
+    else if (rec.lastResult === "win") lines.push(`  • ${team} won their most recent series vs ${rec.lastOpponent}`);
+  }
+  return lines.length > 1 ? lines.join("\n") : "";
+}
+
+function buildQuestionCategories(input: TournamentInput): string {
   const hasPlayers = input.upcomingMatches.some(
     (m) => m.teamA.players.length > 0 || m.teamB.players.length > 0
   );
@@ -115,98 +147,126 @@ function buildQuestionCategories(input: TournamentInput, deadline: string): stri
     (input.recentHeroData?.length ?? 0) > 0 && hasPlayers;
 
   if (hasHeroData) {
-    // Dota 2 — full data: match outcomes + series margins + heroes + players + streaks
-    return `GENERATE EXACTLY 30 YES/NO QUESTIONS in this distribution:
+    // Dota 2 — full data: heroes + players + form
+    return `GENERATE EXACTLY 20 YES/NO QUESTIONS in this distribution:
 
-[5] MATCH WINNERS
-  "Will [Team A] defeat [Team B] in [Tournament]?"
+[3] MATCH WINNERS — include tournament name and context
+  • "Will [Team] defeat [Opponent] in [Tournament]?"
+  • "Will [underdog team] upset [favored team] in [Tournament]?"
   referenceType="match", referenceId=PandaScore match ID (numeric string)
 
-[7] SERIES MARGINS — how the series plays out score-wise
-  These CAN be verified from the final series scoreline.
-  • "Will [Team] win their series against [Opponent] with a clean sweep?"
+[3] SERIES MARGINS — verifiable from final scoreline
+  • "Will [Team] sweep [Opponent] 2-0 in [Tournament]?"
   • "Will [TeamA] vs [TeamB] go to a deciding Game 3?"
   • "Will [Team] win their series without dropping a single game?"
-  • "Will [TeamA] vs [TeamB] go the full distance?"
-  • "Will [Team] come back from a 0-1 deficit to win the series?"
   referenceType="match", referenceId=PandaScore match ID
 
-[6] HERO PICKS & BANS — use ONLY heroes that appear in the RECENT HERO PICKS above
-  These heroes are in active meta and likely to appear again.
-  • "Will [hero from recent data] be picked in the [TeamA] vs [TeamB] series?"
-  • "Will [frequently banned hero] be banned in the [TeamA] vs [TeamB] match?"
-  • "Will [hero that carried a top performer] appear in the [TeamA] vs [TeamB] series?"
+[4] HERO META — ONLY heroes from RECENT HERO PICKS above (never invent heroes)
+  • "Will [hero seen in recent games] be picked in the [TeamA] vs [TeamB] draft?"
+  • "Will [hero that was banned repeatedly] appear in the [TeamA] vs [TeamB] series?"
+  • "Will the hero [player] played to a top KDA recently be picked again in [TeamA] vs [TeamB]?"
   referenceType="hero", referenceId=PandaScore match ID, referenceName=hero name
 
-[7] PLAYER PERFORMANCE — use ONLY player names from the ROSTERS above
-  • "Will [player] be the highest kill player for [Team] in their next series?"
-  • "Will [player] finish with a positive kill-death ratio in [TeamA] vs [TeamB]?"
-  • "Will [player] top-frag for [Team] in this week's matches?"
+[5] PLAYER PERFORMANCE — ONLY player names from ROSTERS above
+  • "Will [player] be the highest-networth hero in [TeamA] vs [TeamB]?"
+  • "Will [player] finish with a positive KDA in [TeamA] vs [TeamB]?"
   • "Will [player] record more assists than kills in [TeamA] vs [TeamB]?"
+  • "Will [player] lead their team in kills in the decisive game of [TeamA] vs [TeamB]?"
   referenceType="player", referenceId=PandaScore match ID, referenceName=player name
 
-[5] UPSETS & STREAKS — based on recent form from results above
-  • "Will [team on losing streak] finally win this week?"
-  • "Will [underdog] pull off an upset against [favorite]?"
-  • "Will [team on win streak] maintain their unbeaten run?"
-  referenceType="match" or "team"`;
+[3] CURRENT FORM — use FORM CONTEXT above; these require knowing current state, making them hard to cheat with AI
+  • "Will [team on win streak] keep their run going against [Opponent]?"
+  • "Will [team who just lost] bounce back with a win against [Opponent]?"
+  • "Will [team who previously lost to this same opponent] get their revenge this week?"
+  referenceType="match", referenceId=PandaScore match ID
+
+[2] IN-GAME EVENTS — specific events that require watching the match
+  • "Will a Roshan fight occur before 25 minutes in the [TeamA] vs [TeamB] series?"
+  • "Will [Team] end a game in under 35 minutes in [TeamA] vs [TeamB]?"
+  • "Will the team that gets the first Roshan go on to win that game in [TeamA] vs [TeamB]?"
+  referenceType="match", referenceId=PandaScore match ID`;
   }
 
   if (hasPlayers) {
-    // CS2 — player names available, no hero data
-    return `GENERATE EXACTLY 30 YES/NO QUESTIONS in this distribution:
+    // CS2 and Valorant — player rosters available
+    const isValorant = input.game === "valorant";
+    const mapWord = "map";
+    const gameLabel = isValorant ? "Valorant" : "CS2";
+    const roles = isValorant
+      ? "(duelist, sentinel, initiator, controller, IGL)"
+      : "(AWPer, IGL, entry fragger, rifler, lurker)";
 
-[5] MATCH WINNERS
-  "Will [Team A] defeat [Team B] in [Tournament]?"
+    return `GENERATE EXACTLY 20 YES/NO QUESTIONS in this distribution:
+
+[3] MATCH WINNERS — include tournament name
+  • "Will [Team] defeat [Opponent] in [Tournament]?"
   referenceType="match", referenceId=PandaScore match ID
 
-[8] SERIES MARGINS — how the series plays out score-wise
-  These CAN be verified from the final series scoreline.
-  • "Will [Team] win with a clean sweep (2-0)?"
-  • "Will [TeamA] vs [TeamB] go to a deciding Game 3?"
-  • "Will [Team] win their series without dropping a single map?"
+[3] SERIES MARGINS — verifiable from final scoreline
+  • "Will [Team] sweep [Opponent] without dropping a ${mapWord} (2-0)?"
+  • "Will [TeamA] vs [TeamB] go to a deciding third ${mapWord}?"
+  • "Will [Team] win their series without dropping a single ${mapWord}?"
   referenceType="match", referenceId=PandaScore match ID
 
-[10] PLAYER PERFORMANCE — use ONLY player names and roles from the ROSTERS above
-  Use player roles (AWPer, IGL, entry fragger) to make specific performance questions.
-  • "Will [AWPer name] be the top fragger for [Team] in [TeamA] vs [TeamB]?"
-  • "Will [player] finish with a positive kill-death ratio across the series?"
-  • "Will [player] record more than 20 kills in a single map?"
-  • "Will [IGL/entry] lead [Team] in total kills?"
+[5] PLAYER PERFORMANCE — ONLY player names and roles from ROSTERS above
+  Use roles ${roles} for specificity.
+  • "Will [player role] be the highest-rated player for [Team] in [TeamA] vs [TeamB]?"
+  • "Will [player] finish with a positive K/D ratio across all ${mapWord}s in [TeamA] vs [TeamB]?"
+  • "Will [player] lead [Team] in total kills in the [TeamA] vs [TeamB] series?"
+  • "Will [player] record more than 25 kills in a single ${mapWord} of [TeamA] vs [TeamB]?"
   referenceType="player", referenceId=PandaScore match ID, referenceName=player name
 
-[7] UPSETS, STREAKS & ADVANCEMENT — based on recent form
-  • "Will [underdog] pull off an upset against [favorite]?"
-  • "Will [team on losing streak] get their first win this week?"
-  • "Will [team] advance to the next stage of [tournament]?"
-  referenceType="match" or "team"`;
+[3] ROUND EVENTS — specific in-match events, hard to predict from historical stats alone
+  • "Will the team that wins the pistol round on ${mapWord} 1 of [TeamA] vs [TeamB] go on to win that ${mapWord}?"
+  • "Will [TeamA] vs [TeamB] feature a ${mapWord} that goes to overtime?"
+  • "Will [Team] win an eco round during the [TeamA] vs [TeamB] series?"
+  referenceType="match", referenceId=PandaScore match ID
+
+[3] CURRENT FORM — use FORM CONTEXT above; require knowing real-time standings, hard to cheat with AI
+  • "Will [team on win streak] stay undefeated in [TeamA] vs [TeamB]?"
+  • "Will [team who just lost] recover with a win against [Opponent] this week?"
+  • "Will [team who swept their last opponent] sweep again in [TeamA] vs [TeamB]?"
+  referenceType="match", referenceId=PandaScore match ID
+
+[3] UPSETS & ADVANCEMENT
+  • "Will [underdog] pull off an upset against [favorite] in [Tournament]?"
+  • "Will [lower-ranked team] take at least one ${mapWord} off [higher-ranked team]?"
+  • "Will [team] advance to the next stage of [Tournament] this week?"
+  referenceType="match", referenceId=PandaScore match ID
+
+Note: This is ${gameLabel} — use correct terminology (${mapWord}s, rounds, ${isValorant ? "agents" : "rifles/AWP"}).`;
   }
 
-  // LoL — team-level only
-  return `GENERATE EXACTLY 30 YES/NO QUESTIONS in this distribution:
+  // Fallback: team-level only (no player data available)
+  return `GENERATE EXACTLY 20 YES/NO QUESTIONS in this distribution:
 
-[5] MATCH WINNERS
-  "Will [Team A] defeat [Team B] in [Tournament]?"
+[3] MATCH WINNERS
+  • "Will [Team A] defeat [Team B] in [Tournament]?"
   referenceType="match", referenceId=match ID
 
-[8] SERIES MARGINS — how the series plays out score-wise
-  • "Will [Team] win with a clean sweep (2-0 or 3-0)?"
+[5] SERIES MARGINS
+  • "Will [Team] win with a clean sweep?"
   • "Will [TeamA] vs [TeamB] go to a deciding final game?"
   • "Will [Team] win their series without dropping a single game?"
   referenceType="match", referenceId=match ID
 
-[10] TEAM FORM & ADVANCEMENT
-  • "Will [Team] win at least 2 matches in [tournament] this week?"
-  • "Will [Team] advance to the next stage of [Tournament]?"
-  • "Will [Team] avoid relegation / elimination this week?"
-  • "Will [Team] end the week with a positive win-loss record?"
-  referenceType="team", referenceId=team ID or "tournament"
+[6] MATCH CONTEXT — tie to specific upcoming matches
+  • "Will [lower-seeded Team] avoid a sweep in [TeamA] vs [TeamB]?"
+  • "Will [Team] win despite having lost their previous series?"
+  • "Will [favorite Team] win [TeamA] vs [TeamB] without dropping a game?"
+  referenceType="match", referenceId=match ID
 
-[7] UPSETS & STREAKS — based on recent form
-  • "Will [underdog] upset [favorite] in [tournament]?"
-  • "Will [team on winning streak] keep their unbeaten run?"
-  • "Will [team ranked lower] beat the higher-ranked team?"
-  referenceType="match" or "team"`;
+[3] CURRENT FORM — use FORM CONTEXT, hard to cheat with AI
+  • "Will [team on streak] extend their run in [TeamA] vs [TeamB]?"
+  • "Will [team who just lost] bounce back with a win?"
+  referenceType="match", referenceId=match ID
+
+[3] UPSETS & STREAKS
+  • "Will [underdog] upset [favorite] in [TeamA] vs [TeamB]?"
+  • "Will [team ranked lower] beat the higher-ranked team in [Tournament]?"
+  referenceType="match", referenceId=match ID
+
+CRITICAL RULE: Do NOT use referenceType="team". ALL 20 questions must use referenceType="match".`;
 }
 
 // ─── Question resolver ────────────────────────────────────────────────────────
@@ -278,7 +338,8 @@ export async function generateTournamentQuestions(
 
   const heroSection = buildHeroSection(input.recentHeroData ?? []);
   const recentSection = buildRecentResultsSection(input.recentResults);
-  const categoriesSection = buildQuestionCategories(input, deadline);
+  const formSection = buildFormContext(input.recentResults);
+  const categoriesSection = buildQuestionCategories(input);
 
   const prompt = `You are a creative esports analyst generating yes/no forecasting questions for a 7-day prediction competition.
 
@@ -291,6 +352,7 @@ ${JSON.stringify(input.upcomingMatches, null, 2)}
 
 ${recentSection}
 ${heroSection ? "\n" + heroSection : ""}
+${formSection ? "\n" + formSection : ""}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ${categoriesSection}
@@ -302,13 +364,16 @@ HARD RULES:
 3. Player names must come ONLY from the roster data above — never invent players
 4. Hero names must come ONLY from the RECENT HERO PICKS section — never invent heroes
 5. referenceId: use the PandaScore or match numeric ID (as a string) for match/team/player/hero questions; use the team ID for team questions
-6. referenceImageUrl: team imageUrl for team/match questions; player imageUrl for player questions; "" for hero/team questions
-7. DO NOT generate more than 5 direct "Will X defeat Y?" winner questions
+6. referenceImageUrl: teamA.imageUrl for match questions; team imageUrl for team questions; player imageUrl for player questions; "" for hero questions
+   referenceImageUrlB: teamB.imageUrl for match questions (the OPPONENT team's imageUrl); "" for all other referenceTypes
+7. DO NOT generate more than 3 direct "Will X defeat Y?" winner questions
 8. referenceType must be one of: "match", "player", "team", "hero"
 
-Return ONLY a valid JSON array of exactly 30 objects. No prose, no markdown, no explanation.`;
+Return ONLY a valid JSON array of exactly 20 objects. No prose, no markdown, no explanation.`;
 
-  const MODELS = ["gemini-2.5-flash", "gemini-3.1-flash-lite-preview"];
+  // Primary: gemini-3.1-flash-lite-preview (500 RPD free tier)
+  // Fallback: gemini-2.5-flash (lower RPD, higher quality)
+  const MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.5-flash"];
   const contents = [{ role: "user" as const, parts: [{ text: prompt }] }];
   const config = {
     responseMimeType: "application/json",
@@ -321,20 +386,23 @@ Return ONLY a valid JSON array of exactly 30 objects. No prose, no markdown, no 
 
   for (const model of MODELS) {
     try {
+      console.log(`[Gemini] Trying model: ${model}`);
       const result = await ai.models.generateContent({ model, contents, config });
+      console.log(`[Gemini] Success with model: ${model}`);
       text = result.text ?? undefined;
       break;
     } catch (err) {
       lastError = err;
       const msg = err instanceof Error ? err.message : String(err);
-      if (
-        !msg.includes("503") &&
-        !msg.includes("UNAVAILABLE") &&
-        !msg.includes("high demand")
-      ) {
-        throw err;
-      }
-      console.warn(`Gemini model ${model} unavailable, trying next…`);
+      const isRetryable =
+        msg.includes("503") ||
+        msg.includes("UNAVAILABLE") ||
+        msg.includes("high demand") ||
+        msg.includes("429") ||
+        msg.includes("RESOURCE_EXHAUSTED") ||
+        msg.includes("quota");
+      if (!isRetryable) throw err;
+      console.warn(`[Gemini] Model ${model} unavailable/quota exceeded, trying next…`);
     }
   }
 
@@ -343,9 +411,9 @@ Return ONLY a valid JSON array of exactly 30 objects. No prose, no markdown, no 
   const questions = JSON.parse(text) as GeminiQuestion[];
   if (!Array.isArray(questions))
     throw new Error("Gemini response is not an array");
-  if (questions.length !== 30)
+  if (questions.length !== 20)
     throw new Error(
-      `Gemini returned ${questions.length} questions, expected 30`
+      `Gemini returned ${questions.length} questions, expected 20`
     );
 
   return questions;

@@ -17,13 +17,13 @@ import type { TournamentSummary } from "@/app/api/user/tournaments/route";
 
 const GAME_LABEL: Record<string, string> = {
   dota2: "Dota 2",
-  leagueoflegends: "League of Legends",
+  valorant: "Valorant",
   counterstrike: "CS2",
 };
 
 const GAME_COLOR: Record<string, string> = {
   dota2: "#e84c21",
-  leagueoflegends: "#C89B3C",
+  valorant: "#FF4655",
   counterstrike: "#f5a623",
 };
 
@@ -37,6 +37,15 @@ function formatDate(iso: string): string {
     }).format(new Date(iso));
   } catch {
     return iso;
+  }
+}
+
+function isResolved(resolveBy: string): boolean {
+  if (!resolveBy) return false;
+  try {
+    return new Date(resolveBy) < new Date();
+  } catch {
+    return false;
   }
 }
 
@@ -83,8 +92,9 @@ export function TournamentsTable({ userId, refreshTrigger }: { userId: string; r
     }
   };
 
-  const handleRowClick = (tournamentId: string) => {
-    router.push(`/auth/${userId}/dashboard/${tournamentId}`);
+  const handleRowClick = (t: TournamentSummary) => {
+    if (!isResolved(t.resolveBy)) return;
+    router.push(`/auth/${userId}/dashboard/${t.tournamentId}`);
   };
 
   return (
@@ -96,7 +106,7 @@ export function TournamentsTable({ userId, refreshTrigger }: { userId: string; r
             My Tournaments
           </h2>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Click a row to view your results
+            Results are available once a tournament ends
           </p>
         </div>
         <Button
@@ -133,7 +143,8 @@ export function TournamentsTable({ userId, refreshTrigger }: { userId: string; r
             <TableRow className="hover:bg-transparent">
               <TableHead>Tournament</TableHead>
               <TableHead>Game</TableHead>
-              <TableHead className="text-center">Questions</TableHead>
+              <TableHead className="w-28 text-center">Status</TableHead>
+              <TableHead className="text-center">Rounds</TableHead>
               <TableHead className="text-center text-green-500">Correct</TableHead>
               <TableHead className="text-center text-red-500">Wrong</TableHead>
               <TableHead className="text-center text-muted-foreground">Pending</TableHead>
@@ -143,11 +154,18 @@ export function TournamentsTable({ userId, refreshTrigger }: { userId: string; r
           <TableBody>
             {tournaments.map((t) => {
               const accent = GAME_COLOR[t.game] ?? "#888";
+              const ended = isResolved(t.resolveBy);
               return (
                 <TableRow
                   key={t.tournamentId}
-                  className="cursor-pointer hover:bg-muted/40 transition-colors"
-                  onClick={() => handleRowClick(t.tournamentId)}
+                  className={[
+                    "transition-colors",
+                    ended
+                      ? "cursor-pointer hover:bg-muted/40"
+                      : "cursor-not-allowed opacity-70",
+                  ].join(" ")}
+                  onClick={() => handleRowClick(t)}
+                  title={ended ? undefined : "Results available after tournament ends"}
                 >
                   <TableCell>
                     <div className="flex items-center gap-2">
@@ -168,8 +186,19 @@ export function TournamentsTable({ userId, refreshTrigger }: { userId: string; r
                       {GAME_LABEL[t.game] ?? t.game}
                     </span>
                   </TableCell>
+                  <TableCell className="text-center">
+                    {ended ? (
+                      <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border border-green-500/30 bg-green-500/10 text-green-500">
+                        Ended
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border border-amber-500/30 bg-amber-500/10 text-amber-500">
+                        In Progress
+                      </span>
+                    )}
+                  </TableCell>
                   <TableCell className="text-center text-sm tabular-nums">
-                    {t.answeredQuestions}/{t.totalQuestions}
+                    {t.roundsCompleted}
                   </TableCell>
                   <TableCell className="text-center">
                     <span className="text-green-500 font-bold text-sm tabular-nums">

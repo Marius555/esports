@@ -1,0 +1,875 @@
+[
+  {
+    "id": "5727ee8f-ab29-4a78-bd63-0b5ca7889723",
+    "game": "dota2",
+    "questionText": "Can Pudge's Meat Hook pull an enemy hero through terrain?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Meat Hook ignores terrain and pulls the target directly to Pudge's location."
+  },
+  {
+    "id": "23acd647-d864-45d6-8f22-ecad33d52735",
+    "game": "dota2",
+    "questionText": "Does the Aegis of the Immortal expire after 5 minutes?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The Aegis of the Immortal disappears from the inventory after 5 minutes if not used."
+  },
+  {
+    "id": "2302d4e1-c5fd-477b-9634-1c6638bfcbc1",
+    "game": "dota2",
+    "questionText": "Is Anti-Mage primarily played as a support hero?",
+    "correctAnswer": false,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Anti-Mage is a hard carry hero that requires significant farm to be effective."
+  },
+  {
+    "id": "c06efa25-5979-4bad-80e6-6f5cbe5efc92",
+    "game": "dota2",
+    "questionText": "Can you deny your own allied creeps to reduce the experience the enemy gains?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Denying allied creeps grants the enemy only 50% of the experience they would have otherwise received."
+  },
+  {
+    "id": "14712eb0-312d-4c81-9af5-ab74bd2e886e",
+    "game": "dota2",
+    "questionText": "Does Blink Dagger provide any stats like strength, agility, or intelligence?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "easy",
+    "explanation": "Blink Dagger is a utility item that provides no raw stats to the hero."
+  },
+  {
+    "id": "fac1aa3f-8f24-48f4-9149-3f61f188b284",
+    "game": "dota2",
+    "questionText": "Did Team OG win The International twice consecutively in 2018 and 2019?",
+    "correctAnswer": true,
+    "category": "tournaments",
+    "difficulty": "easy",
+    "explanation": "OG made history by winning TI8 and TI9 back-to-back with the same roster."
+  },
+  {
+    "id": "e0429da4-2636-44c8-a286-5459e44f3988",
+    "game": "dota2",
+    "questionText": "Is Roshan located in the center of the map?",
+    "correctAnswer": false,
+    "category": "map",
+    "difficulty": "easy",
+    "explanation": "Roshan is located in the pits situated in the top-right and bottom-left corners of the map."
+  },
+  {
+    "id": "16be305d-bc9e-49c3-aefc-6a07c4da29a1",
+    "game": "dota2",
+    "questionText": "Does Black King Bar grant total immunity to all magical spells?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "easy",
+    "explanation": "BKB grants Spell Immunity, but many spells with the 'pierces spell immunity' tag still affect the target."
+  },
+  {
+    "id": "4a5a91f0-c29b-470c-ba20-ca70b27e5592",
+    "game": "dota2",
+    "questionText": "Is Dendi a professional Dota 2 player known for his time at Natus Vincere?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "easy",
+    "explanation": "Dendi is a legendary mid-laner who won the first-ever The International with Na'Vi."
+  },
+  {
+    "id": "d96cd131-c0a3-4478-a542-867764adefa5",
+    "game": "dota2",
+    "questionText": "Does the game end when the Ancient is destroyed?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The primary objective of Dota 2 is to destroy the enemy's Ancient structure."
+  },
+  {
+    "id": "37e558ce-16e3-4d0b-8e3c-4df768305407",
+    "game": "dota2",
+    "questionText": "Can Earthshaker's Echo Slam damage invisible units?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Echo Slam is an area-of-effect ability that damages all enemies in range, including invisible ones."
+  },
+  {
+    "id": "6d8a0aa9-beee-44e4-9bfe-717a58ba2aa0",
+    "game": "dota2",
+    "questionText": "Are bounty runes spawned at the start of the match?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Bounty runes spawn at the 0:00 mark at specific locations in the river and jungle."
+  },
+  {
+    "id": "e29cbd4c-fb3f-409e-b97f-170a42c86cf8",
+    "game": "dota2",
+    "questionText": "Is Axe a Strength-based hero?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Axe is a melee Strength hero often played in the offlane."
+  },
+  {
+    "id": "672e7631-e34b-4119-933c-b9ae2d2ff41c",
+    "game": "dota2",
+    "questionText": "Does Daedalus provide critical strike chance?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "easy",
+    "explanation": "Daedalus is an item specifically used to increase physical damage output via critical strikes."
+  },
+  {
+    "id": "2213b572-38d7-427d-96a0-f572cf4d534c",
+    "game": "dota2",
+    "questionText": "Is the 'Pos 1' role commonly referred to as the Support?",
+    "correctAnswer": false,
+    "category": "roles",
+    "difficulty": "easy",
+    "explanation": "Pos 1 is the hard carry, while positions 4 and 5 are the supports."
+  },
+  {
+    "id": "a5c8166f-a002-43b6-b610-af0cc8d8034f",
+    "game": "dota2",
+    "questionText": "Can you buy back into the game after dying?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Players can spend gold to respawn instantly after dying, provided the ability is not on cooldown."
+  },
+  {
+    "id": "afe283bb-355c-46fb-a89c-57c93a06f941",
+    "game": "dota2",
+    "questionText": "Is Invoker known for having ten different spells?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Invoker uses combinations of Quas, Wex, and Exort to invoke ten distinct abilities."
+  },
+  {
+    "id": "7fa0b4bd-927b-4e99-a7af-1247051d5a60",
+    "game": "dota2",
+    "questionText": "Does Phantom Assassin have a passive ability that provides evasion?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Blur provides Phantom Assassin with evasion against physical attacks."
+  },
+  {
+    "id": "7da7605a-a1eb-4dce-9b1d-b6765661d903",
+    "game": "dota2",
+    "questionText": "Is Puppey a famous captain in the Dota 2 professional scene?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "easy",
+    "explanation": "Puppey is the long-time captain of Team Secret and a TI winner."
+  },
+  {
+    "id": "e8e16cbd-bbe9-4286-bc52-80203ee9cfb4",
+    "game": "dota2",
+    "questionText": "Are courier kills worth gold to the killer?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Killing an enemy courier grants gold to the player who delivered the final blow."
+  },
+  {
+    "id": "1bf68946-8691-4efd-a161-84afff82e959",
+    "game": "dota2",
+    "questionText": "Does Tiny start as a small hero and grow in size?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Tiny's ultimate, Grow, increases his size and physical stats."
+  },
+  {
+    "id": "464e83c2-d01c-4fb8-970d-b9f59dd36b7d",
+    "game": "dota2",
+    "questionText": "Is Aghanim's Scepter an item that upgrades hero abilities?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "easy",
+    "explanation": "Aghanim's Scepter provides unique upgrades or new abilities to almost every hero in the game."
+  },
+  {
+    "id": "5ac6fde4-9871-49c1-a12d-2f52ce1e6db6",
+    "game": "dota2",
+    "questionText": "Can you stack neutral camps by pulling them at specific times?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Moving neutral creeps out of their camp at the right time allows a new set to spawn, creating a stack."
+  },
+  {
+    "id": "16d07db7-4092-49fe-80af-3f369dbe3e42",
+    "game": "dota2",
+    "questionText": "Is Captain's Mode used in professional tournament drafts?",
+    "correctAnswer": true,
+    "category": "draft",
+    "difficulty": "easy",
+    "explanation": "Captain's Mode is the standard format for competitive Dota 2, featuring a ban/pick phase."
+  },
+  {
+    "id": "97d39fdc-58ce-45c5-a69d-7965e6d8ed0d",
+    "game": "dota2",
+    "questionText": "Did Miracle- play for Team Liquid during their TI7 victory?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "easy",
+    "explanation": "Miracle- was the star carry player for Team Liquid when they won The International 2017."
+  },
+  {
+    "id": "650e76cc-d28a-4da7-862d-0ca94edd7066",
+    "game": "dota2",
+    "questionText": "Does the shopkeeper sell items in the middle of the lanes?",
+    "correctAnswer": false,
+    "category": "map",
+    "difficulty": "easy",
+    "explanation": "The main shop is located at the base, and there is a secret shop in the jungle, but no shop in the middle lane."
+  },
+  {
+    "id": "3928c1e8-1bd6-4c72-b552-437d7ec255fe",
+    "game": "dota2",
+    "questionText": "Are outposts neutral structures that can be captured by either team?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Outposts provide vision and experience, and can be toggled to either team's control."
+  },
+  {
+    "id": "dc8c9774-a545-43d9-881b-d1852504583e",
+    "game": "dota2",
+    "questionText": "Is N0tail the player with the most TI wins in history?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "easy",
+    "explanation": "N0tail won The International twice, currently sharing the record for most TI wins."
+  },
+  {
+    "id": "f0aace49-da2c-486f-8ec1-9bbe155d8377",
+    "game": "dota2",
+    "questionText": "Does every hero have a unique ultimate ability?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Every hero in Dota 2 features a unique ultimate ability typically unlocked at level 6."
+  },
+  {
+    "id": "92d28400-0990-47d1-a77b-42e8f79f8a37",
+    "game": "dota2",
+    "questionText": "Can you teleport to towers using a Town Portal Scroll?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "easy",
+    "explanation": "Town Portal Scrolls are essential items for moving across the map to allied towers."
+  },
+  {
+    "id": "cffd413f-bd99-4e0f-bdaf-abbe156c445d",
+    "game": "dota2",
+    "questionText": "Are there more than 100 heroes in Dota 2?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "easy",
+    "explanation": "Dota 2 features over 120 playable heroes as of 2024."
+  },
+  {
+    "id": "a5bfd3b2-4cae-43c3-b9e8-6700a4f33838",
+    "game": "dota2",
+    "questionText": "Is the map symmetrical?",
+    "correctAnswer": false,
+    "category": "map",
+    "difficulty": "easy",
+    "explanation": "The map is rotated and asymmetrical, which creates different geometry for the Radiant and Dire sides."
+  },
+  {
+    "id": "7b675bec-2877-4575-b054-37a1bf2ca63f",
+    "game": "dota2",
+    "questionText": "Do you need to last hit a creep to get gold?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Gold is primarily earned by landing the killing blow on units."
+  },
+  {
+    "id": "a3c6e276-9644-4ae9-a189-6a3bbd232c7e",
+    "game": "dota2",
+    "questionText": "Is mana used to cast spells?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Most hero abilities consume mana to be activated."
+  },
+  {
+    "id": "71d70de8-b037-4d6f-b25b-df5347d97928",
+    "game": "dota2",
+    "questionText": "Does the game feature a day/night cycle?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Dota 2 cycles between day and night, which affects vision and certain hero abilities."
+  },
+  {
+    "id": "52b100e9-a880-4d67-a907-48cf6d10d0f6",
+    "game": "dota2",
+    "questionText": "Does BKB pierce spell immunity?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "BKB grants spell immunity; it is the item that provides the effect rather than piercing it."
+  },
+  {
+    "id": "fce2d967-4250-43f4-80ee-76b5501a36e9",
+    "game": "dota2",
+    "questionText": "Can Rubick steal an ultimate ability from an enemy hero?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Rubick's Spell Steal allows him to copy the last ability used by an enemy hero."
+  },
+  {
+    "id": "592b12e5-e676-4c17-9fd9-93659f1316e7",
+    "game": "dota2",
+    "questionText": "Does Monkey King have a passive ability that requires him to hit the same target four times?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Jingu Mastery grants bonus damage and lifesteal after four successful hits on an enemy."
+  },
+  {
+    "id": "63851190-a4ce-4197-8243-f9fdf01d7d1a",
+    "game": "dota2",
+    "questionText": "Is the mid-laner typically the player that receives the most farm in the early game?",
+    "correctAnswer": true,
+    "category": "roles",
+    "difficulty": "medium",
+    "explanation": "Mid-laners usually get solo experience and farm to reach their level 6 power spike quickly."
+  },
+  {
+    "id": "e908ffd4-6eaf-4578-b9f6-9b28e91255ca",
+    "game": "dota2",
+    "questionText": "Does the Gem of True Sight reveal invisible units?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Carrying a Gem of True Sight provides an aura that reveals nearby invisible units and wards."
+  },
+  {
+    "id": "37038429-8d4d-49b5-aeb7-f7f5994351fc",
+    "game": "dota2",
+    "questionText": "Is the Aegis of the Immortal transferable between teammates?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The Aegis of the Immortal cannot be dropped, sold, or shared with teammates."
+  },
+  {
+    "id": "388380f6-000e-4afe-a2d2-c947c997dcbc",
+    "game": "dota2",
+    "questionText": "Does Shadow Blade provide invisibility upon activation?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Shadow Blade grants invisibility and bonus movement speed for a short duration."
+  },
+  {
+    "id": "817128f4-8f29-41f2-a82d-c41e2c3e04d3",
+    "game": "dota2",
+    "questionText": "Are there secondary Roshan pits on the map?",
+    "correctAnswer": false,
+    "category": "map",
+    "difficulty": "medium",
+    "explanation": "There is only one Roshan pit, though it changes location depending on the time of day."
+  },
+  {
+    "id": "c10f454f-3a8a-426d-bf11-9839cb3fb3a3",
+    "game": "dota2",
+    "questionText": "Does Medusa have an ability that turns enemies to stone?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Stone Gaze petrifies enemies who look at Medusa, slowing them and increasing physical damage taken."
+  },
+  {
+    "id": "04697c29-21f7-4364-a286-93b360883cf5",
+    "game": "dota2",
+    "questionText": "Did Team Secret win a TI tournament?",
+    "correctAnswer": false,
+    "category": "tournaments",
+    "difficulty": "medium",
+    "explanation": "Despite being a top-tier team for years, Team Secret has never won a The International title."
+  },
+  {
+    "id": "676add87-ebf8-486a-91d8-a40a82628070",
+    "game": "dota2",
+    "questionText": "Does Linken's Sphere block all targeted spells?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Linken's Sphere blocks one targeted spell every 14 seconds; it does not block passive or ground-targeted spells."
+  },
+  {
+    "id": "c2f382e4-e257-4ac0-84d6-667c8476786c",
+    "game": "dota2",
+    "questionText": "Is the 'Pos 5' role responsible for buying vision wards?",
+    "correctAnswer": true,
+    "category": "roles",
+    "difficulty": "medium",
+    "explanation": "The hard support (Pos 5) is typically tasked with vision and team utility."
+  },
+  {
+    "id": "357fb1fd-85d3-4d1b-add8-2641b08815e8",
+    "game": "dota2",
+    "questionText": "Does Sniper's 'Assassinate' have a global cast range?",
+    "correctAnswer": false,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Assassinate has a long range, but it is not global."
+  },
+  {
+    "id": "aee7b46f-ddcb-4619-8850-83a6119cd0da",
+    "game": "dota2",
+    "questionText": "Is there a limit to how many items can be placed in a backpack?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The backpack allows for three extra slots, but items placed there are inactive."
+  },
+  {
+    "id": "910133e6-545d-4bf2-acce-f865ba8bb4fa",
+    "game": "dota2",
+    "questionText": "Does Manta Style create two illusions?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Manta Style creates two illusions of the hero that last for a short duration."
+  },
+  {
+    "id": "267d3c89-427e-425e-83ba-1b21dbd96262",
+    "game": "dota2",
+    "questionText": "Is Storm Spirit an Intelligence hero?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Storm Spirit is an Intelligence hero known for high mobility."
+  },
+  {
+    "id": "14506c15-3ab9-4a5f-840e-924f82e7cbd3",
+    "game": "dota2",
+    "questionText": "Can you deny your own towers?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Towers can be denied when they drop below 10% health."
+  },
+  {
+    "id": "ca8404c7-eaac-4965-a59b-bc10cd8dd411",
+    "game": "dota2",
+    "questionText": "Does a Rapier drop on death?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Divine Rapier drops on the ground when the owner dies, allowing anyone to pick it up."
+  },
+  {
+    "id": "004466be-a369-4207-915f-35f268ced025",
+    "game": "dota2",
+    "questionText": "Is Faceless Void's 'Chronosphere' able to trap allies?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Chronosphere stops time for all units inside except for Faceless Void."
+  },
+  {
+    "id": "76d6899c-7f56-4d6a-a7bc-e96a46e8f40c",
+    "game": "dota2",
+    "questionText": "Are there runes that grant invisibility?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The Invisibility rune grants the user temporary invisibility."
+  },
+  {
+    "id": "876d234b-d386-43c1-adda-7d97dbebc2e2",
+    "game": "dota2",
+    "questionText": "Is the Ancient Apparition's 'Ice Blast' a global ability?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Ice Blast can be fired across the entire map."
+  },
+  {
+    "id": "e9aa5b0c-59d6-49b7-a998-38cf0cf2ab03",
+    "game": "dota2",
+    "questionText": "Does Orchid Malevolence silence enemies?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Orchid Malevolence silences the target and deals bonus damage at the end of the duration."
+  },
+  {
+    "id": "efa28f8e-44ba-4603-ad45-84fced89163a",
+    "game": "dota2",
+    "questionText": "Is a 'Double Damage' rune effective on spell-based damage?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Double Damage runes only increase base attack damage, not spell damage."
+  },
+  {
+    "id": "2f402794-b4de-404b-84e8-a8624ca69cb8",
+    "game": "dota2",
+    "questionText": "Can you teleport to friendly units?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Town Portal Scrolls allow teleportation to friendly structures and, in some cases, specific units or wards."
+  },
+  {
+    "id": "a7533268-4d9f-4712-bf42-088ea6ae252e",
+    "game": "dota2",
+    "questionText": "Does Huskar gain attack speed as his health decreases?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Huskar's passive, Berserker's Blood, increases attack speed and health regeneration as he loses health."
+  },
+  {
+    "id": "59e2cf0a-8f6c-48d4-a71c-c1d5bf9c9590",
+    "game": "dota2",
+    "questionText": "Are there different tiers of neutral items?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Neutral items are categorized by tiers that drop at specific game times."
+  },
+  {
+    "id": "6ccabc3a-b138-4ee5-8676-31435f787924",
+    "game": "dota2",
+    "questionText": "Is Queen of Pain a Strength hero?",
+    "correctAnswer": false,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Queen of Pain is an Intelligence hero."
+  },
+  {
+    "id": "e8348b5f-6303-4b06-b3c5-c31a7a062290",
+    "game": "dota2",
+    "questionText": "Does the courier have a speed burst ability?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The courier has a 'Speed Burst' ability to travel faster for a short time."
+  },
+  {
+    "id": "f7006b04-db22-4c20-969a-54b2c89899a7",
+    "game": "dota2",
+    "questionText": "Can Bounty Hunter track invisible enemies?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Track provides vision of the target, even if they become invisible."
+  },
+  {
+    "id": "da7b4ca7-8d59-40bc-b8d1-c67996885725",
+    "game": "dota2",
+    "questionText": "Does Dagon deal magic damage?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Dagon deals a burst of magical damage to the targeted unit."
+  },
+  {
+    "id": "983b8cd1-cea2-401b-87a6-854f0ba0f1c2",
+    "game": "dota2",
+    "questionText": "Is the fountain in the base invincible?",
+    "correctAnswer": true,
+    "category": "map",
+    "difficulty": "medium",
+    "explanation": "The fountain structure is indestructible and deals massive damage to enemies."
+  },
+  {
+    "id": "923b35bb-8fe6-4689-b57b-c48c28b10611",
+    "game": "dota2",
+    "questionText": "Can you buy wards from the neutral shop?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Wards must be purchased from the main shop or the fountain."
+  },
+  {
+    "id": "6942b0a6-b377-4e02-b4c1-714fd6a76de6",
+    "game": "dota2",
+    "questionText": "Does Bloodseeker get stronger when nearby enemies are low on health?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Thirst grants Bloodseeker bonus movement speed and damage when enemy heroes are below a certain health threshold."
+  },
+  {
+    "id": "ff246cc3-96d0-42e7-8047-d251f50c5b93",
+    "game": "dota2",
+    "questionText": "Is the 'Buyback' penalty removed after a certain amount of time?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Buyback has a cooldown, and the gold cost increases as the game progresses."
+  },
+  {
+    "id": "8eedafd4-adc2-4760-b2c5-b607e627bd34",
+    "game": "dota2",
+    "questionText": "Does Juggernaut's 'Blade Fury' make him immune to magic?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "Blade Fury grants magic immunity while active."
+  },
+  {
+    "id": "785e1bcc-8ee0-4a04-a7d0-2ed23eb72120",
+    "game": "dota2",
+    "questionText": "Are there items that can be disassembled?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "medium",
+    "explanation": "Certain items, like Arcane Boots, can be disassembled into their component parts."
+  },
+  {
+    "id": "766419c0-a9a9-462a-941f-0c9f26197139",
+    "game": "dota2",
+    "questionText": "Does Terrorblade's 'Sunder' swap health percentages?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Sunder swaps the health percentage between Terrorblade and the target."
+  },
+  {
+    "id": "d80e606f-f69e-49ba-9c82-3ee0620cf3f0",
+    "game": "dota2",
+    "questionText": "Is there a limit to how many sentry wards you can carry?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "There is no limit to the number of sentry wards a player can hold in their inventory."
+  },
+  {
+    "id": "f6e8b153-d04b-4d50-a88b-71c8dda89dc1",
+    "game": "dota2",
+    "questionText": "Does Morphling's 'Attribute Shift' cost mana?",
+    "correctAnswer": false,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Attribute Shift costs no mana, only health/mana pool conversion."
+  },
+  {
+    "id": "617549de-320a-4708-b000-7c0a57e1ea3e",
+    "game": "dota2",
+    "questionText": "Can you use Midas on an Ancient creep?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "Hand of Midas cannot be used on Ancient-tier creeps."
+  },
+  {
+    "id": "4b6f1c9e-0ab3-488c-b766-8335875e530f",
+    "game": "dota2",
+    "questionText": "Does the 'Aegis' buff show in the status bar?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "The Aegis of the Immortal appears as a buff icon in the status bar."
+  },
+  {
+    "id": "cf299d09-2c59-44ad-bc92-0c647baa6b0a",
+    "game": "dota2",
+    "questionText": "Is the max level in Dota 2 currently 25?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "The maximum level a hero can reach is 30."
+  },
+  {
+    "id": "4a86c683-8494-4c7f-8ace-6e6c6a9d5b1f",
+    "game": "dota2",
+    "questionText": "Does Lotus Orb reflect all spells?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "Lotus Orb only reflects single-target spells."
+  },
+  {
+    "id": "50624002-2767-4443-bb41-bb5cac8e13d6",
+    "game": "dota2",
+    "questionText": "Can Brewmaster's Primal Split units be killed individually?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "The Earth, Storm, and Fire pandas can be killed, and if all three die, the hero dies."
+  },
+  {
+    "id": "c239c77a-4001-42b3-bdbf-3a3a5a165f78",
+    "game": "dota2",
+    "questionText": "Does the 'Refresher Orb' reset the cooldown of all items?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "Refresher Orb does not reset the cooldown of itself or certain other items."
+  },
+  {
+    "id": "5518c83a-b519-4065-9a15-5465ddfaa8a1",
+    "game": "dota2",
+    "questionText": "Is the 'Aghanim's Shard' a consumable item?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "Yes, once purchased, the shard is consumed to grant an ability upgrade."
+  },
+  {
+    "id": "333235d4-0675-4ea9-9c08-3aec766b609f",
+    "game": "dota2",
+    "questionText": "Does Winter Wyvern's 'Winter's Curse' prevent the target from being attacked by their allies?",
+    "correctAnswer": false,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Winter's Curse forces the target's allies to attack them."
+  },
+  {
+    "id": "c40e22e8-e675-4e01-8eb9-9ed96aff4045",
+    "game": "dota2",
+    "questionText": "Is the gold bounty of a hero dependent on their streak?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "Higher kill streaks provide larger gold bounties to the player that kills them."
+  },
+  {
+    "id": "7357b25c-df27-48b9-b9c5-203eda4651ac",
+    "game": "dota2",
+    "questionText": "Does Shiva's Guard provide an attack speed slow aura?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "Shiva's Guard has an aura that reduces the attack speed of nearby enemies."
+  },
+  {
+    "id": "ba37b690-99b0-47e9-b6f0-245a3438767e",
+    "game": "dota2",
+    "questionText": "Can you use 'Blink Dagger' if you have taken damage in the last 3 seconds?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "Blink Dagger goes on a 3-second cooldown if the hero takes damage from an enemy."
+  },
+  {
+    "id": "a421b3d1-17e6-4413-9116-a4f29951d919",
+    "game": "dota2",
+    "questionText": "Does the 'Axe's Culling Blade' kill the target if they are above the threshold?",
+    "correctAnswer": false,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Culling Blade only kills the target if their health is below the threshold; otherwise, it deals minor damage."
+  },
+  {
+    "id": "012b28d4-cdf5-4a07-95b0-cb56bb9b50de",
+    "game": "dota2",
+    "questionText": "Does 'Eul's Scepter of Divinity' make the target invulnerable?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "The target is cycloned and becomes invulnerable for the duration."
+  },
+  {
+    "id": "3a452154-5555-423d-8c3f-afcb925c0b52",
+    "game": "dota2",
+    "questionText": "Is 'Spectre' a hero that can haunt all enemies across the map?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Spectre's ultimate, Haunt, creates illusions of herself to attack all enemy heroes."
+  },
+  {
+    "id": "df9fa552-5b9c-4ab8-a9bc-95a0aa31de01",
+    "game": "dota2",
+    "questionText": "Does 'Black King Bar' have a decreasing duration with each use?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "BKB duration decreases by 1 second each time it is used, down to a minimum."
+  },
+  {
+    "id": "103adc8d-9c89-470f-b580-ac1cd5f09e49",
+    "game": "dota2",
+    "questionText": "Is 'Chen' a hero that can convert neutral creeps to his side?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Holy Persuasion allows Chen to convert and control neutral creeps."
+  },
+  {
+    "id": "5b9e0444-51a2-4fa2-a3e6-40245042a46d",
+    "game": "dota2",
+    "questionText": "Does 'Aeon Disk' activate when the hero is at full health?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "Aeon Disk only triggers when the hero's health drops below a certain percentage."
+  },
+  {
+    "id": "9413a866-a8b6-46af-aefd-9beca6694d1a",
+    "game": "dota2",
+    "questionText": "Can 'Slark' remove debuffs with his Q ability?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Dark Pact removes most negative status effects from Slark."
+  },
+  {
+    "id": "e29bb038-c7dc-42a6-9ee6-71a214278892",
+    "game": "dota2",
+    "questionText": "Does 'Ursa's Fury Swipes' stack infinitely?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Fury Swipes stacks infinitely as long as the attacks continue within the duration."
+  },
+  {
+    "id": "8fa029d7-6cb1-4ae9-a747-fb0a13c01faa",
+    "game": "dota2",
+    "questionText": "Is there a 'Courier' unit that has its own inventory?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "In modern Dota 2, the courier is a courier-only unit that delivers items; it does not have a player-controllable inventory."
+  },
+  {
+    "id": "42b1b6ef-2ea7-4734-b286-5a488259c84f",
+    "game": "dota2",
+    "questionText": "Does 'Nullifier' mute items?",
+    "correctAnswer": true,
+    "category": "items",
+    "difficulty": "hard",
+    "explanation": "Nullifier mutes the target, preventing them from using items."
+  },
+  {
+    "id": "c9389dae-30f0-44ab-948b-836a8fba8430",
+    "game": "dota2",
+    "questionText": "Is 'Techies' still in the game as a playable hero?",
+    "correctAnswer": true,
+    "category": "heroes",
+    "difficulty": "hard",
+    "explanation": "Techies remains a playable hero, though their abilities have been reworked several times."
+  },
+  {
+    "id": "34fd4a5d-ce91-4b40-a971-e0ffc902c3dc",
+    "game": "dota2",
+    "questionText": "Can you deny the 'Aegis of the Immortal'?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "The Aegis cannot be denied; it must expire or be consumed upon death."
+  }
+]

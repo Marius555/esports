@@ -9,8 +9,7 @@ import {
   Query,
   AppwriteException,
 } from "@/lib/appwrite";
-import { pandaMatchById, type PandaMatch } from "@/lib/pandascore";
-import { getLolMatchById, type LolMatchResult } from "@/lib/riot-esports";
+import { pandaMatchById, pandaRunning, type PandaMatch } from "@/lib/pandascore";
 import { resolveQuestionWithGemini } from "@/lib/gemini";
 import type { Question } from "@/app/api/tournament/[game]/route";
 
@@ -22,8 +21,7 @@ interface UserAnswer {
   answer: boolean;
 }
 
-const PANDA_GAMES = new Set(["dota2", "counterstrike"]);
-const LOL_GAMES   = new Set(["leagueoflegends"]);
+const PANDA_GAMES = new Set(["dota2", "valorant", "counterstrike"]);
 
 /**
  * Attempt to resolve a match-referencing question from PandaScore data.
@@ -97,62 +95,6 @@ function resolveMatchQuestion(
   );
 }
 
-function resolveLolMatchQuestion(
-  questionText: string,
-  match: LolMatchResult
-): boolean | null {
-  if (match.state !== "completed") return null;
-
-  const [teamA, teamB] = match.teams;
-  if (!teamA || !teamB) return null;
-
-  const scores = [teamA.gameWins, teamB.gameWins];
-  const minScore = Math.min(...scores);
-
-  // ── Sweep ─────────────────────────────────────────────────────────────────
-  const isSweepQuestion =
-    /clean sweep|won.?t drop|without dropping|without losing a (game|map|match)|2-0|3-0/i.test(
-      questionText
-    );
-
-  if (isSweepQuestion) {
-    const m = questionText.match(/Will (.+?) (?:win|sweep|defeat|beat)/i);
-    const winner = match.teams.find((t) => t.outcome === "win");
-    if (!winner) return null;
-    if (!m) return minScore === 0;
-    const expectedTeam = m[1].trim().toLowerCase();
-    const expectedWon =
-      winner.name.toLowerCase().includes(expectedTeam) ||
-      expectedTeam.includes(winner.name.toLowerCase());
-    return expectedWon && minScore === 0;
-  }
-
-  // ── Deciding game ──────────────────────────────────────────────────────────
-  const isDecidingQuestion =
-    /deciding (game|map|match)|go (the )?full (distance|[0-9])|full (three|five|3|5) (game|map)|go to (game|map) [35]|series (goes?|went) (to )?(game|map) [35]|(game|map) [35]$/i.test(
-      questionText
-    );
-
-  if (isDecidingQuestion) {
-    return minScore > 0;
-  }
-
-  // ── Winner ────────────────────────────────────────────────────────────────
-  const m = questionText.match(
-    /Will (.+?) (?:defeat|beat|win against|win over|secure a win(?: against| over)?)\s/i
-  );
-  if (!m) return null;
-
-  const expectedWinner = m[1].trim().toLowerCase();
-  const winner = match.teams.find((t) => t.outcome === "win");
-  if (!winner) return null;
-
-  return (
-    winner.name.toLowerCase().includes(expectedWinner) ||
-    expectedWinner.includes(winner.name.toLowerCase())
-  );
-}
-
 function pandaMatchSummary(match: PandaMatch): string {
   if (match.status !== "finished" || !match.winner_id) return match.name;
   const winner = match.opponents.find((o) => o.opponent.id === match.winner_id);
@@ -162,14 +104,6 @@ function pandaMatchSummary(match: PandaMatch): string {
   const loserScore =
     match.results.find((r) => r.team_id !== match.winner_id)?.score ?? "?";
   return `${winner.opponent.name} beat ${loser.opponent.name} ${winnerScore}-${loserScore}`;
-}
-
-function lolMatchSummary(match: LolMatchResult): string {
-  if (match.state !== "completed") return "Match not completed";
-  const winner = match.teams.find((t) => t.outcome === "win");
-  const loser = match.teams.find((t) => t.outcome !== "win");
-  if (!winner || !loser) return "Match completed";
-  return `${winner.name} beat ${loser.name} ${winner.gameWins}-${loser.gameWins}`;
 }
 
 type TablesDBClient = ReturnType<typeof createAdminClient>["tablesDB"];
@@ -232,49 +166,59 @@ export async function POST(): Promise<NextResponse> {
   const pandaMatchQuestions = allUnresolved.filter(
     (q) => q.referenceType === "match" && PANDA_GAMES.has(q.game)
   );
-  // player/hero/team questions for Dota2/CS2 — referenceId is still a match ID
+  // player/hero/team questions — referenceId is still a match ID
   const pandaGeminiQuestions = allUnresolved.filter(
     (q) =>
       ["player", "hero", "team"].includes(q.referenceType) &&
       PANDA_GAMES.has(q.game)
   );
 
-  const lolResolvable = allUnresolved.filter(
-    (q) => q.referenceType === "match" && LOL_GAMES.has(q.game)
-  );
-  const lolGeminiQuestions = allUnresolved.filter(
-    (q) =>
-      ["player", "hero", "team"].includes(q.referenceType) &&
-      LOL_GAMES.has(q.game)
-  );
-
   let updated = 0;
 
   // ── PandaScore: fetch each match once, share across questions ─────────────
   const pandaMatchCache = new Map<string, PandaMatch | null>();
-  const getPandaMatch = async (id: string) => {
+
+  // Pre-load running matches per game — free tier always returns these.
+  // If pandaMatchById fails (free tier 402 for finished matches), we fall back
+  // to finding the match in the running list (catches matches that JUST finished).
+  const runningMatchesByGame = new Map<string, PandaMatch[]>();
+  const getRunningForGame = async (game: string) => {
+    if (!runningMatchesByGame.has(game)) {
+      runningMatchesByGame.set(game, await pandaRunning(game).catch(() => []));
+    }
+    return runningMatchesByGame.get(game)!;
+  };
+
+  const getPandaMatch = async (id: string, game: string) => {
     if (!pandaMatchCache.has(id)) {
-      pandaMatchCache.set(id, await pandaMatchById(id).catch(() => null));
+      let match = await pandaMatchById(id).catch(() => null);
+      // Fallback: scan running matches for this game (catches recently finished matches)
+      if (!match) {
+        const running = await getRunningForGame(game);
+        match = running.find((m) => String(m.id) === id) ?? null;
+      }
+      pandaMatchCache.set(id, match);
     }
     return pandaMatchCache.get(id) ?? null;
   };
 
-  // ── LoL: same caching pattern ─────────────────────────────────────────────
-  const lolMatchCache = new Map<string, LolMatchResult | null>();
-  const getLolMatch = async (id: string) => {
-    if (!lolMatchCache.has(id)) {
-      lolMatchCache.set(id, await getLolMatchById(id).catch(() => null));
-    }
-    return lolMatchCache.get(id) ?? null;
-  };
-
   await Promise.all([
-    // ── PandaScore regex pass (Dota 2 + CS2 match questions) ─────────────────
+    // ── PandaScore regex pass ─────────────────────────────────────────────────
     ...pandaMatchQuestions.map(async (question) => {
       try {
         if (question.matchScheduledAt && new Date(question.matchScheduledAt) > new Date()) return;
-        const match = await getPandaMatch(question.referenceId);
-        if (!match) return;
+        const match = await getPandaMatch(question.referenceId, question.game);
+        if (!match) {
+          // pandaMatchById returned null AND match not in running list.
+          // If the match is clearly overdue (scheduled > 6h ago), log it so we can diagnose.
+          if (question.matchScheduledAt) {
+            const hoursAgo = (Date.now() - new Date(question.matchScheduledAt).getTime()) / 3_600_000;
+            if (hoursAgo > 6) {
+              console.warn(`[refresh] Cannot fetch match ${question.referenceId} (${question.game}) — ${Math.floor(hoursAgo)}h overdue. Possible free-tier restriction.`);
+            }
+          }
+          return;
+        }
         let correctAnswer = resolveMatchQuestion(question.questionText, match);
         // Gemini fallback when regex can't determine the answer
         if (correctAnswer === null && match.status === "finished") {
@@ -297,7 +241,7 @@ export async function POST(): Promise<NextResponse> {
     ...pandaGeminiQuestions.map(async (question) => {
       try {
         if (question.matchScheduledAt && new Date(question.matchScheduledAt) > new Date()) return;
-        const match = await getPandaMatch(question.referenceId);
+        const match = await getPandaMatch(question.referenceId, question.game);
         if (!match || match.status !== "finished") return;
         const correctAnswer = await resolveQuestionWithGemini(
           question.questionText,
@@ -313,48 +257,6 @@ export async function POST(): Promise<NextResponse> {
       }
     }),
 
-    // ── LoL regex pass ────────────────────────────────────────────────────────
-    ...lolResolvable.map(async (question) => {
-      try {
-        if (question.matchScheduledAt && new Date(question.matchScheduledAt) > new Date()) return;
-        const match = await getLolMatch(question.referenceId);
-        if (!match) return;
-        let correctAnswer = resolveLolMatchQuestion(question.questionText, match);
-        if (correctAnswer === null && match.state === "completed") {
-          correctAnswer = await resolveQuestionWithGemini(
-            question.questionText,
-            lolMatchSummary(match)
-          );
-        }
-        if (correctAnswer === null) return;
-        await updateQuestion(tablesDB, question.$id, { correctAnswer });
-        updated++;
-      } catch (err) {
-        if (!(err instanceof AppwriteException)) {
-          console.error(`Failed to resolve LoL question ${question.$id}:`, err);
-        }
-      }
-    }),
-
-    // ── LoL Gemini pass (player/hero/team questions) ───────────────────────────
-    ...lolGeminiQuestions.map(async (question) => {
-      try {
-        if (question.matchScheduledAt && new Date(question.matchScheduledAt) > new Date()) return;
-        const match = await getLolMatch(question.referenceId);
-        if (!match || match.state !== "completed") return;
-        const correctAnswer = await resolveQuestionWithGemini(
-          question.questionText,
-          lolMatchSummary(match)
-        );
-        if (correctAnswer === null) return;
-        await updateQuestion(tablesDB, question.$id, { correctAnswer });
-        updated++;
-      } catch (err) {
-        if (!(err instanceof AppwriteException)) {
-          console.error(`Failed to resolve LoL question ${question.$id}:`, err);
-        }
-      }
-    }),
   ]);
 
   return NextResponse.json({ updated });
