@@ -43,14 +43,14 @@ const navItems = (userId: string): { title: string; url: string; icon: IconSvgEl
 export function AppSidebar({ userId, user, ...props }: AppSidebarProps) {
   return (
     <Sidebar
-      className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
+      className="top-(--header-height) h-[calc(100svh-var(--header-height))]! border-r border-brand-purple/10"
       {...props}
     >
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" render={<a href={`/auth/${userId}/dashboard`} />}>
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0 glow-purple">
                 <HugeiconsIcon icon={ZapIcon} size={16} />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight min-w-0">
@@ -108,7 +108,7 @@ export function AppSidebar({ userId, user, ...props }: AppSidebarProps) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
-              className="text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground cursor-pointer"
               onClick={() => logout()}
             >
               <HugeiconsIcon icon={Logout01Icon} size={16} />

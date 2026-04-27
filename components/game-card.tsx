@@ -42,17 +42,10 @@ export function GameCard({
 
   return (
     <div
-      className="rounded-2xl border bg-card text-card-foreground overflow-hidden shadow-sm cursor-pointer transition-all duration-200"
-      style={
-        selected
-          ? {
-              outline: `2px solid ${cfg.accent}`,
-              outlineOffset: "2px",
-              boxShadow: `0 0 20px ${cfg.accent}40`,
-              transform: "scale(1.01)",
-            }
-          : { outline: "2px solid transparent" }
-      }
+      className={[
+        "rounded-2xl border bg-card text-card-foreground overflow-hidden cursor-pointer transition-all duration-200 card-gamery",
+        selected ? "accent-outline accent-glow scale-[1.01]" : "accent-outline-none",
+      ].join(" ")}
       onClick={onSelect}
       role="button"
       aria-pressed={selected}
@@ -76,18 +69,14 @@ export function GameCard({
           <img
             src={cfg.logo}
             alt={cfg.label}
-            className="h-5 w-5 object-contain"
-            style={{ filter: `drop-shadow(0 0 4px ${cfg.accent})` }}
+            className="h-5 w-5 object-contain accent-drop-shadow"
           />
-          <h2 className="font-heading font-bold text-lg tracking-tight text-white drop-shadow">
+          <h2 className="font-heading font-black text-base tracking-widest uppercase text-white drop-shadow">
             {cfg.label}
           </h2>
         </div>
         {selected && (
-          <div
-            className="absolute top-2 right-2 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
-            style={{ background: `${cfg.accent}cc`, color: "#fff" }}
-          >
+          <div className="absolute top-2 right-2 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded accent-bg-subtle accent-text">
             Selected
           </div>
         )}

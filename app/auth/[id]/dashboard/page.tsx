@@ -26,6 +26,8 @@ export default async function DashboardPage({
   return (
     <div className="[--header-height:3.5rem]">
       <SidebarProvider className="flex flex-col">
+        <div className="pointer-events-none fixed inset-0 bg-dashboard" aria-hidden="true" />
+        <div className="pointer-events-none fixed inset-0 bg-dashboard-radial" aria-hidden="true" />
         <SiteHeader />
         <div className="flex flex-1">
           <AppSidebar userId={session.userId} user={{ email: session.email, tier: session.tier }} />

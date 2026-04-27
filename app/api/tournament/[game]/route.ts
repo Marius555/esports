@@ -658,7 +658,7 @@ async function createSkillRound(
         referenceImageUrlB: "",
         resolveBy: tournamentEndsAt,
         matchScheduledAt: null,
-        roundNumber: 0,
+        roundNumber: 1,
       },
     }).catch((err: unknown) => {
       // 409 = anchor already exists (concurrent entry), that's fine

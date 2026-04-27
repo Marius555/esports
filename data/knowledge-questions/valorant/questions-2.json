@@ -1,0 +1,929 @@
+[
+  {
+    "id": "d0b1b8ee-533b-475e-83e2-4a28dc380d2d",
+    "game": "valorant",
+    "questionText": "Does the Vandal's fire rate change when you are crouching?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The fire rate of the Vandal remains constant regardless of whether you are standing, crouching, or moving."
+  },
+  {
+    "id": "5ebd3421-3cb4-41a1-aad5-de64c2d7b277",
+    "game": "valorant",
+    "questionText": "Can Killjoy's Turret be destroyed by a teammate's friendly fire?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Friendly fire is disabled for abilities in Valorant, meaning your own team cannot damage your utility."
+  },
+  {
+    "id": "88ed77d9-c6a2-40df-b1f3-86f7be87c6c6",
+    "game": "valorant",
+    "questionText": "Does the Phantom have a damage falloff at distances greater than 30 meters?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Phantom deals 156 damage to the head at close range, but drops to 140 damage beyond 15 meters and 124 beyond 30 meters."
+  },
+  {
+    "id": "a056cb4f-e473-49b8-998a-d1a62fb4066c",
+    "game": "valorant",
+    "questionText": "Is the map 'Icebox' considered part of the current competitive rotation as of late 2024?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Icebox was returned to the competitive map pool in early 2024, replacing other maps in the rotation."
+  },
+  {
+    "id": "af578f02-9565-451d-8e53-bf614a037956",
+    "game": "valorant",
+    "questionText": "Did the team Sentinels win the VCT Masters Madrid event in 2024?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "medium",
+    "explanation": "Sentinels defeated Gen.G in the grand finals of Masters Madrid 2024 to secure the trophy."
+  },
+  {
+    "id": "45402f65-0af2-43fc-8f1d-92bc03dba38e",
+    "game": "valorant",
+    "questionText": "Does the 'Stinger' have a higher fire rate when aiming down sights (ADS)?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "Aiming down sights with the Stinger actually reduces the fire rate to improve accuracy, contrary to its hip-fire mode."
+  },
+  {
+    "id": "f6ec5b6d-4431-43f9-8f23-3f910d3b309a",
+    "game": "valorant",
+    "questionText": "Can Yoru's 'Gatecrash' teleport beacon be destroyed by enemies?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Enemies can see and destroy the Gatecrash beacon before Yoru teleports to it."
+  },
+  {
+    "id": "5e5a6b9c-29b9-4bd5-8ea4-fdb017396ec4",
+    "game": "valorant",
+    "questionText": "Is the 'Ares' price cheaper than the 'Spectre'?",
+    "correctAnswer": false,
+    "category": "economy",
+    "difficulty": "easy",
+    "explanation": "The Ares costs 1600 credits, while the Spectre costs 1600 credits; they are the same price, but the Ares is not cheaper."
+  },
+  {
+    "id": "4d491260-2ad6-49ff-84c1-4ceb45a3376e",
+    "game": "valorant",
+    "questionText": "Can you jump over Raze's 'Boom Bot' to avoid its explosion damage?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "The Boom Bot's explosion radius is spherical and will damage players even if they are mid-air above it."
+  },
+  {
+    "id": "f9ba2e90-71e6-4e3a-be14-f5347eb597e3",
+    "game": "valorant",
+    "questionText": "Did the player 'Aspas' play for the team LOUD during the 2023 season?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "medium",
+    "explanation": "Aspas was a star player for LOUD during their 2023 campaign before moving to LEV in 2024."
+  },
+  {
+    "id": "2cc47fa6-ffb1-4dc9-ba53-ddd27f4bb1fa",
+    "game": "valorant",
+    "questionText": "Does the 'Guardian' have a full-auto firing mode?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Guardian is exclusively a semi-automatic rifle."
+  },
+  {
+    "id": "c104a524-fcda-4643-9f8c-bbced37d725a",
+    "game": "valorant",
+    "questionText": "Is the 'Breeze' map known for having three distinct spike sites?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Breeze is a standard two-site map, not a three-site map like Haven or Lotus."
+  },
+  {
+    "id": "2d8be09e-62ef-4109-aba8-62e04808bdd8",
+    "game": "valorant",
+    "questionText": "Can you see through a Viper smoke if you are playing as Viper?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Viper's smoke obscures vision for everyone, including the agent who deployed it."
+  },
+  {
+    "id": "20dfbd5a-00d6-4b20-83ee-12dc6c3c71b2",
+    "game": "valorant",
+    "questionText": "Does the 'Outlaw' sniper rifle fire two shots before needing to reload?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Outlaw features a double-barrel design allowing for two quick shots before a reload is required."
+  },
+  {
+    "id": "237bfad9-4db2-4fc6-a2ff-7014fe8424b2",
+    "game": "valorant",
+    "questionText": "Did Fnatic win two international events back-to-back in 2023?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "hard",
+    "explanation": "Fnatic won both VCT LOCK//IN and VCT Masters Tokyo in 2023."
+  },
+  {
+    "id": "97e987ed-37bd-4401-a620-753923185df2",
+    "game": "valorant",
+    "questionText": "Does a player's movement speed change when they are holding a knife versus a rifle?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Players move faster while holding their melee weapon compared to holding a primary or secondary gun."
+  },
+  {
+    "id": "5ef994c8-648a-4fb2-a1b6-f9c693ae9943",
+    "game": "valorant",
+    "questionText": "Is the 'Odin' considered a sidearm?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Odin is a heavy machine gun and occupies the primary weapon slot."
+  },
+  {
+    "id": "e0280c84-538b-4419-afa0-d16c48e36499",
+    "game": "valorant",
+    "questionText": "Does the 'Sova' Recon Bolt reveal enemies through walls permanently?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "The Recon Bolt pulses three times and does not provide permanent vision after the pulses end."
+  },
+  {
+    "id": "030fe527-683e-44c0-b290-63942a342021",
+    "game": "valorant",
+    "questionText": "Can you defuse the spike through a wall if you are standing close enough?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "You must have a clear line of sight or be in the immediate vicinity of the spike to initiate a defuse; you cannot defuse through solid walls."
+  },
+  {
+    "id": "6c94c5c2-eebb-42d7-a6ba-80e2c827d6b6",
+    "game": "valorant",
+    "questionText": "Is 'KAY/O' an agent that can suppress enemy abilities?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "KAY/O's 'ZERO/POINT' knife and 'NULL/CMD' ultimate both apply a suppression effect that disables enemy ability usage."
+  },
+  {
+    "id": "a27ae4f0-0d3b-4851-a63a-1507c39770bb",
+    "game": "valorant",
+    "questionText": "Does the 'Sheriff' have a headshot damage of 160 at any range?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Sheriff's damage drops off significantly at long range, dealing less than 160 damage to armored targets past 30 meters."
+  },
+  {
+    "id": "0f789003-8cec-4d83-aa9a-af1f70316b96",
+    "game": "valorant",
+    "questionText": "Is the map 'Bind' set in a desert environment?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Bind is set in Morocco, featuring a Mediterranean-inspired town, not a desert."
+  },
+  {
+    "id": "c9700152-2847-40e2-9d42-09b7b7f37e7b",
+    "game": "valorant",
+    "questionText": "Can you use abilities during the 'buy phase' of a round?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Abilities and movement are restricted during the buy phase until the round officially begins."
+  },
+  {
+    "id": "18ebb3ca-9e83-468b-bd55-7ce1729faa6e",
+    "game": "valorant",
+    "questionText": "Is 'Neon' classified as a Duelist?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Neon is a Duelist agent designed for aggressive entry and movement."
+  },
+  {
+    "id": "1efc2388-a5da-40bf-a062-237ea734449e",
+    "game": "valorant",
+    "questionText": "Did 'Yay' play for the team OpTic Gaming during their 2022 Masters Reykjavik victory?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "medium",
+    "explanation": "Yay was the primary chamber main for OpTic Gaming when they won Masters Reykjavik 2022."
+  },
+  {
+    "id": "118d3ad3-bf84-4afa-9dfc-bf25b3b713cd",
+    "game": "valorant",
+    "questionText": "Does the 'Judge' shotgun have a higher fire rate than the 'Bucky'?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Judge is fully automatic, whereas the Bucky is pump-action, giving the Judge a much higher fire rate."
+  },
+  {
+    "id": "7cd82c62-ab48-4f42-a682-ad90a74ca2fb",
+    "game": "valorant",
+    "questionText": "Are there ultimate orbs located in the spawn areas for each team?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Ultimate orbs are located in neutral areas of the map, never inside the starting spawn zones."
+  },
+  {
+    "id": "324065d1-7bff-4310-abb4-d213e63ee4b3",
+    "game": "valorant",
+    "questionText": "Can you survive the blast of the spike if you are far enough away but behind a wall?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The spike deals lethal damage in a radius, but being behind solid cover can save a player depending on their distance."
+  },
+  {
+    "id": "73470b41-f017-4f61-8ff0-63d2de995a8d",
+    "game": "valorant",
+    "questionText": "Is 'Clove' an agent that can heal themselves upon getting a kill?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Clove's 'Pick-me-up' ability grants them health and speed after they secure a kill or assist."
+  },
+  {
+    "id": "9c3ebc36-57b8-4a19-91eb-106b9c4be246",
+    "game": "valorant",
+    "questionText": "Does 'Omen' have an ability that blinds enemies?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Omen's 'Paranoia' ability sends out a projectile that blinds anyone it hits."
+  },
+  {
+    "id": "c318ba30-c34b-4dbc-8ee8-16a82cfb330e",
+    "game": "valorant",
+    "questionText": "Is the 'Phantom' better than the 'Vandal' for wall-banging through thick surfaces?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Vandal has higher bullet penetration and damage, making it generally better for shooting through surfaces than the Phantom."
+  },
+  {
+    "id": "6f03c22b-81a0-475c-b57f-1a8d563b9e8b",
+    "game": "valorant",
+    "questionText": "Did the team 'Paper Rex' win the VCT Champions trophy in 2023?",
+    "correctAnswer": false,
+    "category": "history",
+    "difficulty": "medium",
+    "explanation": "Evil Geniuses won the 2023 Valorant Champions, defeating Paper Rex in the grand final."
+  },
+  {
+    "id": "467153bb-662e-4a12-9e9d-2750be36ab00",
+    "game": "valorant",
+    "questionText": "Can you drop the spike for a teammate?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Players can drop the spike by pressing the 'drop' key while holding it."
+  },
+  {
+    "id": "74a5a881-7b3f-4529-b8d9-5513a9c942e3",
+    "game": "valorant",
+    "questionText": "Is 'Chamber' a Controller agent?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Chamber is a Sentinel agent focused on defensive play and weapon utility."
+  },
+  {
+    "id": "f5e065c3-470e-404f-bd31-1485eb7d1f10",
+    "game": "valorant",
+    "questionText": "Does the 'Operator' kill a full-health enemy with a body shot?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Operator deals 150 damage on a body shot, which is enough to kill a player with full health and no armor, or full armor."
+  },
+  {
+    "id": "ed580f29-2e47-4f1f-b374-a95371915905",
+    "game": "valorant",
+    "questionText": "Is 'Split' a map that features a central 'mid' area?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Split is well-known for its vertical 'mid' section that connects A and B sites."
+  },
+  {
+    "id": "211b6f5c-381c-489c-83e1-101505ac4328",
+    "game": "valorant",
+    "questionText": "Can 'Cypher' see enemies through his 'Spycam'?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Cypher's Spycam allows him to view an area remotely and tag enemies."
+  },
+  {
+    "id": "a0b7931f-0d9a-49ec-912d-2cba96a869fd",
+    "game": "valorant",
+    "questionText": "Do you need to pay credits for agent abilities at the start of every round?",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "medium",
+    "explanation": "Most agent abilities must be purchased using credits during the buy phase, except for signature abilities that recharge."
+  },
+  {
+    "id": "08452511-e792-4246-9028-e00a79282692",
+    "game": "valorant",
+    "questionText": "Is the 'Ares' magazine capacity 50 bullets?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Ares has a magazine size of 50, providing sustained fire capability."
+  },
+  {
+    "id": "9c1b8844-5277-494a-a3ff-dead4bdf72a0",
+    "game": "valorant",
+    "questionText": "Does 'Iso' have an ability that grants him a temporary shield?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Iso's 'Double Tap' ability allows him to absorb one instance of damage with a temporary shield."
+  },
+  {
+    "id": "e0cb7bf8-40d8-4967-8f3c-43ec373d97e7",
+    "game": "valorant",
+    "questionText": "Is 'Abyss' the first map in Valorant with no boundaries?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "hard",
+    "explanation": "Abyss features open edges where players can fall to their death, distinguishing it from all previous maps."
+  },
+  {
+    "id": "b0060f43-a3de-46be-807f-be9ca0b23b9a",
+    "game": "valorant",
+    "questionText": "Does the 'Shorty' deal more damage at long range than the 'Frenzy'?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "hard",
+    "explanation": "The Shorty has a very severe damage drop-off and is ineffective at long range, whereas the Frenzy is slightly more versatile."
+  },
+  {
+    "id": "d8acc05e-8937-40ab-be27-81bd891ad98e",
+    "game": "valorant",
+    "questionText": "Is 'TenZ' a player who retired from professional Valorant in 2024?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "medium",
+    "explanation": "TenZ announced his retirement from competitive play in September 2024 to pursue content creation."
+  },
+  {
+    "id": "3fbd417c-5986-4fd6-aa90-df0346f2f0ce",
+    "game": "valorant",
+    "questionText": "Can you shoot through the glass on 'Ascent'?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "The glass windows on Ascent are breakable by weapons and some abilities."
+  },
+  {
+    "id": "f92e6b8f-18de-4781-abac-84ef856d0b83",
+    "game": "valorant",
+    "questionText": "Does the 'Stinger' have a high amount of recoil?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Stinger has significant vertical recoil, making it difficult to control during full-auto fire."
+  },
+  {
+    "id": "6efe2b7f-5688-4445-adc1-f6fec487f065",
+    "game": "valorant",
+    "questionText": "Is 'Sage's' ultimate ability capable of reviving a teammate?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Sage's 'Resurrection' ultimate brings a dead teammate back to life with full health."
+  },
+  {
+    "id": "54b91671-7a54-40c3-b859-5bd647ff5f67",
+    "game": "valorant",
+    "questionText": "Does 'Viper' consume fuel when her poison abilities are active?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Viper's abilities require fuel to stay active; if the fuel runs out, the abilities deactivate."
+  },
+  {
+    "id": "b5dc3c7e-e8c9-44a6-b00b-a60122be9a3a",
+    "game": "valorant",
+    "questionText": "Is the 'Classic' pistol accurate while running?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "Like most weapons in Valorant, running significantly reduces the accuracy of the Classic."
+  },
+  {
+    "id": "d059b7e5-1b71-4dea-b4eb-4c6f105dae54",
+    "game": "valorant",
+    "questionText": "Can 'Gekko' pick up his 'Wingman' after it has been used?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Gekko can pick up all of his utility, including Wingman, to reduce their cooldowns."
+  },
+  {
+    "id": "0d6bcdd4-cd3a-4c3f-9b91-760ba5824e84",
+    "game": "valorant",
+    "questionText": "Did the team 'LOUD' win the Valorant Champions 2022 event?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "hard",
+    "explanation": "LOUD defeated OpTic Gaming to win the 2022 Champions tournament in Istanbul."
+  },
+  {
+    "id": "a2e5fb7e-6217-4538-b60e-0b993a04ac59",
+    "game": "valorant",
+    "questionText": "Does the 'Marshal' zoom in when you right-click?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Marshal has a scope that allows for zooming in to increase accuracy at long range."
+  },
+  {
+    "id": "5b5d259b-aa7d-4c90-8acd-e399a98596a9",
+    "game": "valorant",
+    "questionText": "Is 'Breeze' a map that was removed from the rotation in 2024?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Breeze was removed from the competitive map pool mid-2024."
+  },
+  {
+    "id": "f39686dd-3167-4ffd-abf4-7c629af9cd50",
+    "game": "valorant",
+    "questionText": "Does 'Skye' have an ability that heals multiple teammates at once?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Skye's 'Regrowth' ability heals all allies within range and line of sight."
+  },
+  {
+    "id": "9877f5e0-4e37-495d-9532-433fc1cc4b71",
+    "game": "valorant",
+    "questionText": "Is the 'Ares' an SMG?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Ares is classified as a machine gun."
+  },
+  {
+    "id": "33e68f28-752c-462a-a1eb-8b7c129ef9f9",
+    "game": "valorant",
+    "questionText": "Can you see enemy utility through walls if you play as 'Sova'?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "hard",
+    "explanation": "Sova's recon abilities highlight player models, not the utility placed by enemies."
+  },
+  {
+    "id": "3a857fac-1054-4d3a-9bd0-db83011ed7a1",
+    "game": "valorant",
+    "questionText": "Does 'Jett' have a dash ability that can be used twice in one round?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Jett's 'Tailwind' dash can be refreshed if she earns two kills in a single round."
+  },
+  {
+    "id": "47bf8080-2656-41bc-b480-bb3a84353d4c",
+    "game": "valorant",
+    "questionText": "Is 'Haven' the only map with three bomb sites?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "hard",
+    "explanation": "Lotus also features three bomb sites, making Haven not the only one."
+  },
+  {
+    "id": "fdb62c91-dff3-4b2b-9843-6866718c3927",
+    "game": "valorant",
+    "questionText": "Does the 'Spectre' fire faster than the 'Vandal'?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Spectre has a higher fire rate than the Vandal, making it a close-quarters weapon."
+  },
+  {
+    "id": "a04d2e44-f687-455f-9be0-8c5c509174d9",
+    "game": "valorant",
+    "questionText": "Is the 'Sheriff' a semi-automatic weapon?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Sheriff is a revolver-style pistol that fires one shot per click."
+  },
+  {
+    "id": "21205d82-68b0-4012-8a38-23b504725faa",
+    "game": "valorant",
+    "questionText": "Can you jump while holding the spike to move faster?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Jumping does not increase your movement speed while carrying the spike."
+  },
+  {
+    "id": "c8d624be-f637-4ed4-be32-a53771a866b8",
+    "game": "valorant",
+    "questionText": "Did 'Derke' play for the team Fnatic in 2024?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "medium",
+    "explanation": "Derke has been a core member of Fnatic's roster throughout the 2024 season."
+  },
+  {
+    "id": "ae5cd688-a532-45cd-acee-1bd018ed0083",
+    "game": "valorant",
+    "questionText": "Does the 'Frenzy' have a secondary fire mode?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Frenzy only has a primary fire mode and no alternate aim-down-sights or secondary fire."
+  },
+  {
+    "id": "8ec8d9f3-fcf2-49cb-a4ca-6ffcc504807a",
+    "game": "valorant",
+    "questionText": "Is 'Harbor' an Initiator?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Harbor is a Controller agent focused on creating walls of water."
+  },
+  {
+    "id": "e5018b1f-265c-4d95-b75a-c1af13780187",
+    "game": "valorant",
+    "questionText": "Can you hear the spike's ticking sound through walls?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The ticking sound of the spike is audible through thin walls and floors to help defenders locate it."
+  },
+  {
+    "id": "e15445ab-fec1-4a6e-bd31-c167f5c8b181",
+    "game": "valorant",
+    "questionText": "Is the 'Bulldog' capable of firing in a two-round burst?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "When aiming down sights (ADS), the Bulldog fires in a three-round burst, but it is unique for its burst capabilities."
+  },
+  {
+    "id": "ac6dec84-f24f-4b19-a412-2f654e3d7824",
+    "game": "valorant",
+    "questionText": "Does 'Fade's' haunt reveal enemies immediately upon landing?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "There is a short delay after the haunt lands before it activates and pulses to reveal enemies."
+  },
+  {
+    "id": "14aa69d1-2bdf-44ed-a8e7-e68b344281b3",
+    "game": "valorant",
+    "questionText": "Is 'Sunset' a map released in 2023?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "hard",
+    "explanation": "Sunset was added to the game in August 2023."
+  },
+  {
+    "id": "3f52aa7f-8587-4a5f-8984-06983490a53d",
+    "game": "valorant",
+    "questionText": "Does the 'Odin' have a spinning barrel effect before it reaches max fire rate?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Odin starts with a slower fire rate and speeds up as the barrel spins."
+  },
+  {
+    "id": "08ed684c-f780-442b-83c1-025b891efc51",
+    "game": "valorant",
+    "questionText": "Can you use 'Cypher's' cage to slow down enemies?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Cypher's Cyber Cage only blocks vision and emits a sound when enemies pass through it; it does not slow them."
+  },
+  {
+    "id": "76d73f4f-5498-4ce1-b74c-c95c060efc1e",
+    "game": "valorant",
+    "questionText": "Is the 'Ghost' a silenced pistol?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Ghost is equipped with a suppressor that makes its shots quieter than other sidearms."
+  },
+  {
+    "id": "b567d66b-43fa-4231-bc8a-fa8a6b6e5cad",
+    "game": "valorant",
+    "questionText": "Did 'Sentinels' win a trophy in 2021?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "medium",
+    "explanation": "Sentinels won the VCT Masters Reykjavik 2021 without dropping a single map."
+  },
+  {
+    "id": "7a124bb3-b441-452c-bc8d-cebbacee7df5",
+    "game": "valorant",
+    "questionText": "Can you defuse the spike if you are blinded by an enemy flash?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Being blinded does not stop you from interacting with the spike; you can continue the defuse."
+  },
+  {
+    "id": "d42f418f-5cfd-4a22-9848-1d2093743406",
+    "game": "valorant",
+    "questionText": "Is 'Breach' an Initiator?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Breach is an Initiator designed to clear corners and disrupt enemies."
+  },
+  {
+    "id": "56cbfb91-f503-48c4-9bd8-36b71cd921ee",
+    "game": "valorant",
+    "questionText": "Does the 'Guardian' have zero spread when aiming down sights?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "hard",
+    "explanation": "The Guardian is unique because it has perfect accuracy (zero spread) while aiming down sights."
+  },
+  {
+    "id": "ab556e56-1b48-461d-8f1d-940928aa8c7c",
+    "game": "valorant",
+    "questionText": "Can 'Raze' use her satchels to damage herself?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Raze takes minor self-damage if she is standing too close to her own Blast Pack when it detonates."
+  },
+  {
+    "id": "0727d042-a057-4ebc-892e-bbbc15fe786b",
+    "game": "valorant",
+    "questionText": "Is 'Split' a map that has three lanes?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Split is more vertically oriented with complex choke points, not a traditional three-lane layout."
+  },
+  {
+    "id": "8efe30dd-44cf-45dd-b2a4-612c031f5c7b",
+    "game": "valorant",
+    "questionText": "Does the 'Outlaw' one-shot an unarmored enemy to the body?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Outlaw deals 140 damage, which is sufficient to kill an unarmored player with a body shot."
+  },
+  {
+    "id": "39d2d608-ddba-4648-86df-0bb5e12ed548",
+    "game": "valorant",
+    "questionText": "Is 'Astra' a Controller?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Astra is a Controller who uses stars to place smokes and disrupt enemies."
+  },
+  {
+    "id": "7cff77d0-7a2c-4c4c-8499-882abfff7d4e",
+    "game": "valorant",
+    "questionText": "Can you walk to avoid making noise on stairs?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Walking (using shift) silences your footsteps regardless of the terrain, including stairs."
+  },
+  {
+    "id": "e5bf57f5-1a34-4cc9-b9ad-ba391a9b4dc1",
+    "game": "valorant",
+    "questionText": "Is the 'Frenzy' effective at long range?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Frenzy is an automatic pistol designed for short-range combat and has significant damage falloff."
+  },
+  {
+    "id": "b939b3c7-cfd9-46c8-bdf5-3e437c5e0314",
+    "game": "valorant",
+    "questionText": "Does 'Sage's' Slow Orb affect teammates?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Sage's Slow Orb covers an area in ice that slows movement speed for anyone inside, including teammates."
+  },
+  {
+    "id": "40ea51af-e349-4768-9d36-43560aa4b916",
+    "game": "valorant",
+    "questionText": "Is the 'Marshal' better than the 'Operator' for eco-round buys?",
+    "correctAnswer": true,
+    "category": "economy",
+    "difficulty": "medium",
+    "explanation": "The Marshal is significantly cheaper than the Operator, making it the preferred sniper choice for eco or save rounds."
+  },
+  {
+    "id": "684f0121-2635-47e6-b4ab-0c68287dc6ae",
+    "game": "valorant",
+    "questionText": "Can you reload the 'Odin' while walking?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Reloading in Valorant does not stop your movement."
+  },
+  {
+    "id": "f9994581-13a1-455f-bf40-89bd936228af",
+    "game": "valorant",
+    "questionText": "Does the 'Vandal' have higher fire rate than the 'Phantom'?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Phantom has a higher fire rate than the Vandal."
+  },
+  {
+    "id": "5b15cb90-0f1d-479d-a1c5-2f1312e77ee4",
+    "game": "valorant",
+    "questionText": "Is 'Kay/O' a Sentinel?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Kay/O is an Initiator agent."
+  },
+  {
+    "id": "74fdfaf5-8a11-4e95-b70b-73a755603bf7",
+    "game": "valorant",
+    "questionText": "Can you use 'Omen's' smoke to reveal enemies?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Omen's Dark Cover only obscures vision; it does not reveal enemy positions."
+  },
+  {
+    "id": "cbbdeae1-3d24-462e-b35f-220b57288224",
+    "game": "valorant",
+    "questionText": "Is the 'Classic' pistol's right-click burst accurate while jumping?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "Jumping significantly penalizes the accuracy of all weapons in Valorant, including the Classic's burst."
+  },
+  {
+    "id": "ddd93d77-b51c-40ec-9f8a-1cac915127df",
+    "game": "valorant",
+    "questionText": "Does 'Killjoy' need to be alive for her Lockdown ultimate to activate?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "hard",
+    "explanation": "Once deployed and started, the Lockdown will count down and activate even if Killjoy is killed."
+  },
+  {
+    "id": "6e56648b-7e75-4007-b763-fc7b3835538a",
+    "game": "valorant",
+    "questionText": "Is 'Ascent' a map that features a generator on B-site?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "hard",
+    "explanation": "The generator on B-site is a well-known piece of cover on the map."
+  },
+  {
+    "id": "0f76135b-c6cb-400f-9429-8a74c4aa5d9d",
+    "game": "valorant",
+    "questionText": "Does the 'Spectre' have a damage drop-off starting at 15 meters?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Spectre's damage decreases significantly at ranges beyond 15 meters."
+  },
+  {
+    "id": "84adc2ed-711e-4b6f-8899-521e562ee9e6",
+    "game": "valorant",
+    "questionText": "Can you hear the sound of an enemy picking up an ultimate orb?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Picking up an ultimate orb makes a distinct global sound that can be heard by nearby players."
+  },
+  {
+    "id": "d52502d6-6f2b-46cc-b731-a7de430329c0",
+    "game": "valorant",
+    "questionText": "Is 'Neon's' sprint ability limited by a fuel meter?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Neon's 'High Gear' sprint is governed by a energy bar that drains while in use."
+  },
+  {
+    "id": "3d145fc3-efd3-49cd-8b5c-eff492952c3b",
+    "game": "valorant",
+    "questionText": "Does the 'Ares' pierce through thin walls?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "Like the Odin, the Ares has high penetration and can shoot through thin materials."
+  },
+  {
+    "id": "44d3a22c-9d8e-44be-809f-b914a1f80c2e",
+    "game": "valorant",
+    "questionText": "Is 'Reyna' a Duelist?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Reyna is a Duelist agent focused on self-sustain and fragging."
+  },
+  {
+    "id": "d0122424-d7d9-43aa-850b-b1e27d301689",
+    "game": "valorant",
+    "questionText": "Can you see enemy names through walls using 'Cypher's' camera?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "The camera tags enemies, but it does not reveal their nameplates through walls."
+  },
+  {
+    "id": "f96eaece-5ff8-469f-ad37-95c4fef3eebb",
+    "game": "valorant",
+    "questionText": "Did the team 'Team Liquid' win a Masters event in 2023?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "hard",
+    "explanation": "Team Liquid won the VCT EMEA League in 2023, which served as a qualifier for Masters Tokyo."
+  },
+  {
+    "id": "3461d367-8e9d-4f00-a041-c656c4327f27",
+    "game": "valorant",
+    "questionText": "Is 'Lotus' a map that features rotating doors?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Lotus is famous for its rotating stone doors that can be activated by players."
+  },
+  {
+    "id": "4e1b5aa1-650c-4113-87f9-7faa86962749",
+    "game": "valorant",
+    "questionText": "Does the 'Bucky' have a right-click mode?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Bucky's alternate fire (right-click) launches a slug that is more accurate at medium range."
+  },
+  {
+    "id": "283fd0db-a055-43b7-b5c0-1ef0da2851d4",
+    "game": "valorant",
+    "questionText": "Is 'Clove' a Controller?",
+    "correctAnswer": true,
+    "category": "abilities",
+    "difficulty": "medium",
+    "explanation": "Clove is categorized as a Controller, capable of placing smokes even after death."
+  },
+  {
+    "id": "d10f90e5-ea90-4b14-97d4-b7276304b406",
+    "game": "valorant",
+    "questionText": "Can you defuse the spike while standing in Viper's snake bite?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "You can defuse while taking damage from abilities, though you might die before the process completes."
+  },
+  {
+    "id": "1b5a7bae-6207-46d6-aa75-a3967078ef66",
+    "game": "valorant",
+    "questionText": "Is the 'Ghost' a one-tap headshot weapon at all ranges?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Ghost's headshot damage falls off at range, meaning it cannot one-shot armored enemies at long distances."
+  },
+  {
+    "id": "87b72041-5447-4caa-b7d1-a9c8106340d0",
+    "game": "valorant",
+    "questionText": "Does 'Sova' have an ability that can jump-scare enemies with a boom-box?",
+    "correctAnswer": false,
+    "category": "abilities",
+    "difficulty": "easy",
+    "explanation": "Sova has no boom-box ability; Raze is the agent with the Boom Bot."
+  },
+  {
+    "id": "8d5d4afe-8ed9-4e85-9bfb-c7b89f3340b7",
+    "game": "valorant",
+    "questionText": "Is 'Ascent' a map that has been in the pool since the beta?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Ascent was one of the original maps available during the closed beta launch."
+  }
+]

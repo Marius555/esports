@@ -871,5 +871,32 @@
     "category": "mechanics",
     "difficulty": "hard",
     "explanation": "The Aegis cannot be denied; it must expire or be consumed upon death."
+  },
+  {
+    "id": "f021b93b-bdf9-41bf-b7de-ef23c55e4753",
+    "game": "dota2",
+    "questionText": "Is the maximum number of charges a Bottle can hold five?",
+    "correctAnswer": false,
+    "category": "items",
+    "difficulty": "easy",
+    "explanation": "A Bottle has a maximum of three charges, which can be replenished by picking up runes or visiting the fountain."
+  },
+  {
+    "id": "dce7f0cf-32f6-4e58-ac91-93c607b3b04f",
+    "game": "dota2",
+    "questionText": "Does the hero Meepo create permanent clones of himself that share the same experience and gold bounty when killed?",
+    "correctAnswer": false,
+    "category": "heroes",
+    "difficulty": "medium",
+    "explanation": "While Meepo creates clones that share experience, if any of the clones (including the main hero) die, the entire hero unit dies, and the enemy team receives a gold bounty for the kill."
+  },
+  {
+    "id": "601f87c5-4eae-4fab-ab01-7043c313b82e",
+    "game": "dota2",
+    "questionText": "Did a team other than Team Liquid or Team Spirit win The International during the three-year period between 2021 and 2023?",
+    "correctAnswer": false,
+    "category": "tournaments",
+    "difficulty": "hard",
+    "explanation": "Team Spirit won TI10 (2021) and TI12 (2023), while Tundra Esports won TI11 (2022), meaning a team other than those two did win in that period."
   }
 ]

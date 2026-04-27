@@ -1,0 +1,920 @@
+[
+  {
+    "id": "877c183a-f525-40d1-a873-b33b4b46ce44",
+    "game": "counter-strike",
+    "questionText": "Is the SCAR-20 a rifle available to the Terrorist side?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The SCAR-20 is a Counter-Terrorist exclusive sniper rifle."
+  },
+  {
+    "id": "58f87c63-f861-42b3-9840-3438a316df6d",
+    "game": "counter-strike",
+    "questionText": "Can a player hold more than one smoke grenade at a time in their inventory?",
+    "correctAnswer": false,
+    "category": "economy/items",
+    "difficulty": "easy",
+    "explanation": "Players are limited to carrying one smoke grenade at a time."
+  },
+  {
+    "id": "43e0972b-4c4c-45ce-a939-7ad6bfeaaf66",
+    "game": "counter-strike",
+    "questionText": "Does the FAMAS have a burst-fire mode?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The FAMAS features a toggleable three-round burst mode."
+  },
+  {
+    "id": "a4be2648-b668-4415-9a01-ce59eac9af0c",
+    "game": "counter-strike",
+    "questionText": "Is the CZ75-Auto a pistol that replaces the P250 in the loadout?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "In the loadout system, the CZ75-Auto occupies the slot traditionally held by the P250."
+  },
+  {
+    "id": "b1420fcf-23fa-4992-b5fb-48c30acd19b9",
+    "game": "counter-strike",
+    "questionText": "Does the bomb explode exactly 45 seconds after being planted?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The bomb timer in official competitive CS2 matches is 40 seconds."
+  },
+  {
+    "id": "a059f9ae-2749-442c-9ade-1e8458a6d958",
+    "game": "counter-strike",
+    "questionText": "Is the XM1014 an automatic shotgun?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The XM1014 is a semi-automatic shotgun capable of rapid fire."
+  },
+  {
+    "id": "400cce3a-24ed-4cb1-95bf-69814ab4b3d9",
+    "game": "counter-strike",
+    "questionText": "Can a player spectate the enemy team after dying in competitive mode?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "In competitive and premier modes, players can only spectate their own teammates after death."
+  },
+  {
+    "id": "daac2776-b0a6-4c8c-91c2-0510d083b29e",
+    "game": "counter-strike",
+    "questionText": "Is the Nova shotgun considered an eco-round weapon?",
+    "correctAnswer": true,
+    "category": "economy/items",
+    "difficulty": "medium",
+    "explanation": "Due to its low cost and potential for high kill rewards, the Nova is frequently used in force-buy or budget rounds."
+  },
+  {
+    "id": "1f66ae16-fc5e-4680-beac-e2b414755bef",
+    "game": "counter-strike",
+    "questionText": "Did Team Vitality win the BLAST.tv Paris Major 2023?",
+    "correctAnswer": true,
+    "category": "tournaments",
+    "difficulty": "easy",
+    "explanation": "Team Vitality secured the trophy at the final CS:GO Major held in Paris."
+  },
+  {
+    "id": "ea11337a-e653-4552-9e54-92eee5f274c7",
+    "game": "counter-strike",
+    "questionText": "Is the movement speed with a knife faster than with a pistol?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The knife provides the highest movement speed multiplier in the game."
+  },
+  {
+    "id": "57d1ec70-cb60-4833-b6be-41670817aa60",
+    "game": "counter-strike",
+    "questionText": "Are there more than two bomb sites on the map Mirage?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Mirage is a standard defusal map featuring only an A and B site."
+  },
+  {
+    "id": "a7e93d3b-4a01-4bd4-9969-c1523c80b646",
+    "game": "counter-strike",
+    "questionText": "Does the P2000 have a larger magazine capacity than the USP-S?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The P2000 holds 13 rounds in the magazine, while the USP-S holds 12."
+  },
+  {
+    "id": "4db32e4a-88e6-4923-8760-78f875538a79",
+    "game": "counter-strike",
+    "questionText": "Is it possible to defuse the bomb while jumping?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The defuse action is interrupted if the player jumps or moves significantly."
+  },
+  {
+    "id": "04d52fa0-6ab3-4e59-98d5-c980f1447d33",
+    "game": "counter-strike",
+    "questionText": "Was the map Ancient added to the active duty map pool during the CS:GO era?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "medium",
+    "explanation": "Ancient replaced Train in the active duty pool in May 2021."
+  },
+  {
+    "id": "71a06830-9f9e-4a31-b1ad-508ec465fe5b",
+    "game": "counter-strike",
+    "questionText": "Is the Bizon considered to have high armor penetration?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The PP-Bizon has notoriously poor armor penetration, making it ineffective against armored opponents."
+  },
+  {
+    "id": "3d6bd249-fba5-488b-af3c-cd9dead53c22",
+    "game": "counter-strike",
+    "questionText": "Does dropping a weapon make a sound that enemies can hear?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Dropping a weapon creates an audible sound cue at the location of the drop."
+  },
+  {
+    "id": "41bd3da0-87a7-46b6-b8b2-d40bcce99288",
+    "game": "counter-strike",
+    "questionText": "Is the Negev capable of firing continuously without reloading?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Negev has a 150-round belt, allowing for long periods of sustained fire."
+  },
+  {
+    "id": "b0edefa7-8e4a-4a9d-9034-ba885e54c4f2",
+    "game": "counter-strike",
+    "questionText": "Can you use a decoy grenade to fake a flashbang explosion?",
+    "correctAnswer": true,
+    "category": "utility",
+    "difficulty": "medium",
+    "explanation": "Decoy grenades emit a sound that mimics the weapon equipped by the player, but they also produce a distinct pop sound similar to a flashbang."
+  },
+  {
+    "id": "27064fbe-cffe-416e-a6d4-58362fa65c73",
+    "game": "counter-strike",
+    "questionText": "Is the USP-S silenced by default?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The USP-S comes equipped with a suppressor that cannot be removed in-game."
+  },
+  {
+    "id": "88cc8f1b-195a-4cfc-a578-8df7a4818d77",
+    "game": "counter-strike",
+    "questionText": "Did the team Astralis win four consecutive Majors?",
+    "correctAnswer": false,
+    "category": "history",
+    "difficulty": "hard",
+    "explanation": "Astralis won three consecutive Majors (2018-2019), which is a record, but not four."
+  },
+  {
+    "id": "127d78d3-68ab-4f11-81ff-5a9cf9f190fa",
+    "game": "counter-strike",
+    "questionText": "Does the HE grenade deal more damage to unarmored targets?",
+    "correctAnswer": true,
+    "category": "utility",
+    "difficulty": "easy",
+    "explanation": "Armor reduces the explosive damage taken from HE grenades."
+  },
+  {
+    "id": "f7443547-a9df-4aa6-837e-21cc1fc4c07b",
+    "game": "counter-strike",
+    "questionText": "Is 'Connector' a common callout on the map Mirage?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Connector is the area connecting Mid to the A site."
+  },
+  {
+    "id": "ccefb706-89bf-4c5a-bcb7-d8bed10d664e",
+    "game": "counter-strike",
+    "questionText": "Is the M249 the most expensive weapon in the game?",
+    "correctAnswer": true,
+    "category": "economy/items",
+    "difficulty": "medium",
+    "explanation": "The M249 costs $5,200, making it the most expensive weapon to purchase."
+  },
+  {
+    "id": "397d9a59-8966-401f-b607-bd53263fd4d0",
+    "game": "counter-strike",
+    "questionText": "Does NiKo play for the team G2 Esports?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "easy",
+    "explanation": "NiKo has been a core member of the G2 Esports rifling roster for several years."
+  },
+  {
+    "id": "a0ea7321-3c08-4c74-841a-62ae8351e9af",
+    "game": "counter-strike",
+    "questionText": "Is the bomb timer shorter than the round timer?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The round timer is 1 minute and 55 seconds, while the bomb timer is 40 seconds."
+  },
+  {
+    "id": "01fae54a-cf84-400a-851b-28d4fa9f8635",
+    "game": "counter-strike",
+    "questionText": "Can you shoot through the wooden doors on Dust2 with an AK-47?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The AK-47 has high wall-penetration capabilities against wooden surfaces."
+  },
+  {
+    "id": "532c42f9-6752-4b8a-8e9f-180f1a7d766f",
+    "game": "counter-strike",
+    "questionText": "Does the Zeus x27 provide a kill reward?",
+    "correctAnswer": false,
+    "category": "economy/items",
+    "difficulty": "hard",
+    "explanation": "The Zeus x27 does not provide a monetary kill reward to the player."
+  },
+  {
+    "id": "19dc0db5-e3e3-4919-92db-e507c5b86e6d",
+    "game": "counter-strike",
+    "questionText": "Is the map Nuke known for having a 'Vent' system?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Nuke contains a ventilation system that connects the upper and lower levels."
+  },
+  {
+    "id": "c423ff0f-efae-47c0-b9a2-4b313ab3068a",
+    "game": "counter-strike",
+    "questionText": "Is the Desert Eagle an automatic pistol?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Desert Eagle is a semi-automatic handgun."
+  },
+  {
+    "id": "af8ce29c-7b50-4db5-bf26-2b861a47e6bc",
+    "game": "counter-strike",
+    "questionText": "Does the loss bonus reset to $1,400 after a team wins a round?",
+    "correctAnswer": true,
+    "category": "economy/items",
+    "difficulty": "medium",
+    "explanation": "Winning a round resets the loss bonus counter to the base value."
+  },
+  {
+    "id": "509476bd-5d36-4a6f-b54f-efdb191a3543",
+    "game": "counter-strike",
+    "questionText": "Is the R8 Revolver capable of firing instantly upon clicking?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The R8 Revolver has a mandatory trigger delay before it fires."
+  },
+  {
+    "id": "4c7aa222-8299-4c3a-962a-bbf9d70b9d89",
+    "game": "counter-strike",
+    "questionText": "Does the kill reward for the MP9 differ from the kill reward for a rifle?",
+    "correctAnswer": true,
+    "category": "economy/items",
+    "difficulty": "medium",
+    "explanation": "SMGs like the MP9 provide a $600 kill reward, whereas rifles provide $300."
+  },
+  {
+    "id": "ad9fb71b-7efb-4093-9451-9dd6687609c8",
+    "game": "counter-strike",
+    "questionText": "Is the map Overpass set in an urban park environment?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Overpass features a canal and a public park setting."
+  },
+  {
+    "id": "ed3197c4-990b-43cc-b14a-de4bffbe1416",
+    "game": "counter-strike",
+    "questionText": "Did device play for the team Ninjas in Pyjamas after leaving Astralis?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "medium",
+    "explanation": "Device famously transferred from Astralis to NiP in 2021 before eventually returning to Astralis."
+  },
+  {
+    "id": "3bfb7640-1c7b-429f-ae56-77ff8bf105fb",
+    "game": "counter-strike",
+    "questionText": "Are smoke grenades affected by the physics of being thrown against walls?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Grenades bounce off surfaces based on game physics before detonating."
+  },
+  {
+    "id": "8b4e556b-2803-44bb-b99d-95f1bcfab9e5",
+    "game": "counter-strike",
+    "questionText": "Is it possible to defuse the bomb without a kit in 5 seconds?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Defusing the bomb without a kit takes 10 seconds; with a kit, it takes 5 seconds."
+  },
+  {
+    "id": "75c28cc7-35d8-41e9-9f10-916ee97f6877",
+    "game": "counter-strike",
+    "questionText": "Is the AK-47 capable of a one-tap headshot against an armored opponent?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The AK-47 is one of the few rifles capable of a one-hit headshot kill against a helmeted enemy."
+  },
+  {
+    "id": "8120b6cd-1f55-4c6e-9dba-d74022ac2455",
+    "game": "counter-strike",
+    "questionText": "Can you buy a Kevlar vest without a helmet?",
+    "correctAnswer": true,
+    "category": "economy/items",
+    "difficulty": "easy",
+    "explanation": "The buy menu allows players to purchase just the vest or the vest and helmet combo."
+  },
+  {
+    "id": "4505017b-3372-4d24-a954-0e5c28b619dc",
+    "game": "counter-strike",
+    "questionText": "Is the 'A' bomb site on Mirage located near the 'Palace' area?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Palace is the primary entry point for Terrorists to access the A site."
+  },
+  {
+    "id": "2aed61bc-727a-40fd-becc-1b35118794b6",
+    "game": "counter-strike",
+    "questionText": "Is the Negev's price lower than $2,000?",
+    "correctAnswer": true,
+    "category": "economy/items",
+    "difficulty": "medium",
+    "explanation": "The Negev costs $1,700, making it one of the cheapest heavy weapons."
+  },
+  {
+    "id": "40aab81b-9fc8-4f48-ba2c-dcb330fc6d1e",
+    "game": "counter-strike",
+    "questionText": "Does the Flashbang blind teammates?",
+    "correctAnswer": true,
+    "category": "utility",
+    "difficulty": "easy",
+    "explanation": "Flashbangs affect anyone in their line of sight, including teammates."
+  },
+  {
+    "id": "056c138c-5324-4ba6-b3fd-1767386dbd3c",
+    "game": "counter-strike",
+    "questionText": "Is the AWP a scoped weapon?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The AWP features a two-stage zoom scope."
+  },
+  {
+    "id": "f9a90992-479b-45a9-82d9-0b0267b4e650",
+    "game": "counter-strike",
+    "questionText": "Are there ladders on the map Vertigo?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Vertigo contains multiple ladder sections to traverse between height levels."
+  },
+  {
+    "id": "891547a6-0852-4bd3-9fa6-930d58b5ab1c",
+    "game": "counter-strike",
+    "questionText": "Is s1mple a Ukrainian professional player?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "easy",
+    "explanation": "Oleksandr 's1mple' Kostyliev is a legendary Ukrainian player, largely associated with Natus Vincere."
+  },
+  {
+    "id": "a64d50f7-d0bf-4e1f-b621-72e28f033870",
+    "game": "counter-strike",
+    "questionText": "Does the decoy grenade cause damage to players?",
+    "correctAnswer": false,
+    "category": "utility",
+    "difficulty": "easy",
+    "explanation": "Decoy grenades do not deal damage, although they emit a tiny 'pop' sound upon detonation."
+  },
+  {
+    "id": "c19fa775-ea8f-41b2-8b15-8737ed6431da",
+    "game": "counter-strike",
+    "questionText": "Is it possible to block a doorway with a smoke grenade?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "Smoke grenades are objects that can be walked through; they do not act as physical barriers."
+  },
+  {
+    "id": "f0f65ff3-e4aa-4278-b9af-b213a4a004b1",
+    "game": "counter-strike",
+    "questionText": "Did the team Liquid reach the Major final in Berlin 2019?",
+    "correctAnswer": false,
+    "category": "history",
+    "difficulty": "hard",
+    "explanation": "Team Liquid did not reach the final of the Starladder Berlin Major 2019."
+  },
+  {
+    "id": "18a3790c-245f-490a-8bb9-0cd9189cd681",
+    "game": "counter-strike",
+    "questionText": "Is the CZ75-Auto a semi-automatic pistol?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The CZ75-Auto is a fully automatic machine pistol."
+  },
+  {
+    "id": "18b120c4-ddf3-4f5b-9ebf-4132ba140dea",
+    "game": "counter-strike",
+    "questionText": "Is the bomb site on Vertigo designated as Site A and Site B?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Like most standard maps, Vertigo features an A and B bomb site."
+  },
+  {
+    "id": "eae87923-a1f3-4630-b95f-a66eceef5f37",
+    "game": "counter-strike",
+    "questionText": "Does the SG 553 have a higher fire rate than the AK-47?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "hard",
+    "explanation": "The SG 553 has a slower fire rate than the AK-47."
+  },
+  {
+    "id": "678c494c-0c2b-4de8-9c16-791db5b874ec",
+    "game": "counter-strike",
+    "questionText": "Is the Tec-9 a CT-exclusive pistol?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Tec-9 is a Terrorist-exclusive pistol."
+  },
+  {
+    "id": "0ba78e8f-f771-488f-9d59-9bdafd5ee164",
+    "game": "counter-strike",
+    "questionText": "Are there health packs available to pick up on standard competitive maps?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "There are no health packs in competitive CS2; player health does not regenerate."
+  },
+  {
+    "id": "374385e8-93eb-484a-b526-61211bcda270",
+    "game": "counter-strike",
+    "questionText": "Is the USP-S capable of a one-tap headshot against an armored enemy at close range?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The USP-S cannot kill an armored opponent with a single headshot."
+  },
+  {
+    "id": "298f812b-ae72-4d9e-9f67-dc792ce49637",
+    "game": "counter-strike",
+    "questionText": "Is Mirage considered a 'classic' map in the active duty pool?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "Mirage has been a staple of the competitive map pool for over a decade."
+  },
+  {
+    "id": "d7f539a1-24b2-4504-aefa-e0f11fbeb22f",
+    "game": "counter-strike",
+    "questionText": "Can you use a Molotov to damage yourself?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Fire damage from Molotovs and incendiaries applies to all players, including the thrower."
+  },
+  {
+    "id": "e41a2d64-2c6a-4626-98c4-eaca5aa05d74",
+    "game": "counter-strike",
+    "questionText": "Is the Galil AR capable of full-auto fire?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Galil AR is an assault rifle with full-auto capability."
+  },
+  {
+    "id": "af604fc5-5053-4b5c-92c8-b8ab9fa89e24",
+    "game": "counter-strike",
+    "questionText": "Did ZywOo play for the team Vitality since his professional debut?",
+    "correctAnswer": false,
+    "category": "history",
+    "difficulty": "hard",
+    "explanation": "ZywOo played for several smaller French teams before joining Team Vitality."
+  },
+  {
+    "id": "aaf8f61b-d8d3-4f6d-879c-a850a3d4e55e",
+    "game": "counter-strike",
+    "questionText": "Is the map Ancient located in a jungle environment?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Ancient is themed around an overgrown archaeological site in a jungle."
+  },
+  {
+    "id": "ba51fc13-8748-472e-9c40-82ffc981b39e",
+    "game": "counter-strike",
+    "questionText": "Does the defuse kit increase the defuse speed by exactly 50%?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The kit reduces the time from 10 seconds to 5 seconds, which is a 50% reduction."
+  },
+  {
+    "id": "6a189c5a-2b64-4116-a6ee-2c9a8960f027",
+    "game": "counter-strike",
+    "questionText": "Is the Revolver considered an accurate weapon while running?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Like most pistols, the R8 Revolver suffers from severe inaccuracy while moving."
+  },
+  {
+    "id": "853df18a-e191-435b-b3c4-8aae5afddae8",
+    "game": "counter-strike",
+    "questionText": "Is the scout (SSG 08) faster to move with than the AWP?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The SSG 08 is much lighter, allowing for faster movement than the AWP."
+  },
+  {
+    "id": "fbbd255e-5c66-400a-a01e-6116a2d384e4",
+    "game": "counter-strike",
+    "questionText": "Is it possible to view an enemy's POV through a demo file?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "Demo files allow players to view the match from any player's perspective."
+  },
+  {
+    "id": "f1b2bfef-0fd7-4999-83d7-0066d4c53ba3",
+    "game": "counter-strike",
+    "questionText": "Is the Five-SeveN a CT-exclusive pistol?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Five-SeveN is a pistol available only to the Counter-Terrorist side."
+  },
+  {
+    "id": "2c3fe70f-dd42-419f-a39d-a9f6d20c5712",
+    "game": "counter-strike",
+    "questionText": "Does the round end immediately if the bomb is destroyed?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The bomb cannot be 'destroyed'; it can only be defused or exploded."
+  },
+  {
+    "id": "974b32ed-a618-4c36-aef3-4fb39cbf0a28",
+    "game": "counter-strike",
+    "questionText": "Is the P250 a weapon that can be purchased by both sides?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The P250 is available to both Terrorists and Counter-Terrorists."
+  },
+  {
+    "id": "aee04526-62c5-4ddd-bab5-85b07cd88dd9",
+    "game": "counter-strike",
+    "questionText": "Is the MP9's recoil pattern considered easy to control?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "The MP9 has a high fire rate and a relatively erratic recoil pattern, making it difficult to control at long range."
+  },
+  {
+    "id": "4c271fca-4a7e-424f-b519-3fec5121655d",
+    "game": "counter-strike",
+    "questionText": "Is the map Inferno known for its 'Apartments' area?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "The building area near the B site is commonly referred to as 'Apps' or 'Apartments'."
+  },
+  {
+    "id": "981a0fac-a6c6-4670-98d0-44db6ab43e6a",
+    "game": "counter-strike",
+    "questionText": "Can you earn money by losing a round?",
+    "correctAnswer": true,
+    "category": "economy/items",
+    "difficulty": "easy",
+    "explanation": "The loss bonus system rewards teams with cash after they lose a round."
+  },
+  {
+    "id": "ce108315-86bb-44ed-9ac5-ac12dbcab144",
+    "game": "counter-strike",
+    "questionText": "Is sh1ro a Russian professional player?",
+    "correctAnswer": true,
+    "category": "players",
+    "difficulty": "medium",
+    "explanation": "Dmitry 'sh1ro' Sokolov is a renowned Russian AWPer."
+  },
+  {
+    "id": "8ddab3da-a13e-4a4b-8bfd-0d90f3f9e043",
+    "game": "counter-strike",
+    "questionText": "Does the flashbang screen effect fade faster if you are further from the blast?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The intensity and duration of the flash effect depend on the distance and angle relative to the blast."
+  },
+  {
+    "id": "24d536cd-39c0-4d08-beda-149bc5a71fd3",
+    "game": "counter-strike",
+    "questionText": "Is the M4A1-S magazine size exactly 30 rounds?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The M4A1-S has a 20-round magazine."
+  },
+  {
+    "id": "2632d8b6-8713-4930-80cd-0f40172aff91",
+    "game": "counter-strike",
+    "questionText": "Is it possible to jump and shoot accurately with the AWP?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "The AWP is extremely inaccurate while in the air."
+  },
+  {
+    "id": "03d83f16-cd1b-405c-ad1f-449a2d6df653",
+    "game": "counter-strike",
+    "questionText": "Did Astralis win the IEM Katowice 2019 Major?",
+    "correctAnswer": true,
+    "category": "tournaments",
+    "difficulty": "medium",
+    "explanation": "Astralis won the IEM Katowice Major in 2019, cementing their era."
+  },
+  {
+    "id": "31ab7b03-2b52-4102-8ee6-db506ac862b4",
+    "game": "counter-strike",
+    "questionText": "Is the Deagle (Desert Eagle) effective at very long range?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The Desert Eagle has high damage fall-off but maintains good accuracy for precision shots at long range."
+  },
+  {
+    "id": "c9d528db-cd36-4c18-be75-53e9c9733ff3",
+    "game": "counter-strike",
+    "questionText": "Are there hostage rescue maps in the active duty competitive pool?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "easy",
+    "explanation": "The active duty pool consists entirely of bomb defusal maps."
+  },
+  {
+    "id": "204b2d4f-c58b-438e-8da2-c38b7ff9b0e9",
+    "game": "counter-strike",
+    "questionText": "Does the armor cover the head?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Buying a helmet along with the vest provides protection for both the body and the head."
+  },
+  {
+    "id": "1465374d-468a-42d0-bce8-ee99c11098a2",
+    "game": "counter-strike",
+    "questionText": "Is the Glock-18 capable of firing in burst mode?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Glock-18 can be switched between semi-automatic and three-round burst fire."
+  },
+  {
+    "id": "3c1e141d-a351-4fa4-a66a-0153165137c1",
+    "game": "counter-strike",
+    "questionText": "Is the smoke grenade effective against Molotov fire?",
+    "correctAnswer": true,
+    "category": "utility",
+    "difficulty": "easy",
+    "explanation": "A smoke grenade will extinguish fire if it lands in the flames."
+  },
+  {
+    "id": "47894cc9-8af9-42f0-848f-ad79f83f9246",
+    "game": "counter-strike",
+    "questionText": "Are there more than 5 players on a professional team in a match?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Standard professional play is strictly 5 versus 5."
+  },
+  {
+    "id": "fb1d9c4b-843b-4906-a68c-2930c78f14ac",
+    "game": "counter-strike",
+    "questionText": "Is the AUG a scoped assault rifle?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The AUG is a scoped rifle available to the CT side."
+  },
+  {
+    "id": "cb1be3e6-7992-48ea-8ed0-2ecd3ffc8d26",
+    "game": "counter-strike",
+    "questionText": "Does the bomb carrier icon show up on the radar for teammates?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Teammates can see the bomb carrier's location on the radar."
+  },
+  {
+    "id": "717a2bbc-37ca-4ed8-8853-930bf4354dcc",
+    "game": "counter-strike",
+    "questionText": "Is the Mac-10 a weapon that can be purchased by the CTs?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The MAC-10 is exclusive to the Terrorist side."
+  },
+  {
+    "id": "a2390762-6d36-4984-b7c0-92e2456cb0b8",
+    "game": "counter-strike",
+    "questionText": "Does the knife deal more damage to the back of an opponent?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "A knife backstab deals significantly more damage than a frontal slash."
+  },
+  {
+    "id": "b4cb6c8f-535f-4dee-9bee-75578f8e575d",
+    "game": "counter-strike",
+    "questionText": "Is the map Mirage based on a fictional Middle Eastern city?",
+    "correctAnswer": true,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Mirage features architecture and aesthetics common to Middle Eastern urban environments."
+  },
+  {
+    "id": "6e8e12cb-5e58-49da-83e2-a1db9a72b694",
+    "game": "counter-strike",
+    "questionText": "Is it possible to see through the smoke if you are standing inside it?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "The interior of the smoke is opaque, preventing players from seeing out while standing inside."
+  },
+  {
+    "id": "dc4fc5d0-6643-4411-beae-d942bd59366a",
+    "game": "counter-strike",
+    "questionText": "Is the M4A4 considered a high-damage rifle?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "Compared to the AK-47, the M4A4 has lower per-bullet damage and cannot one-tap armored enemies."
+  },
+  {
+    "id": "85dce247-0023-4d9b-b586-c1e7cca11b07",
+    "game": "counter-strike",
+    "questionText": "Does the bomb beep get faster as the timer nears zero?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The interval between bomb beeps decreases as the timer approaches detonation."
+  },
+  {
+    "id": "35aa0f12-c608-476e-9a66-07f7d2c8fa36",
+    "game": "counter-strike",
+    "questionText": "Did FaZe Clan win the PGL Major Antwerp 2022?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "medium",
+    "explanation": "FaZe Clan won their first Major title at PGL Antwerp 2022."
+  },
+  {
+    "id": "8df08fab-1727-4691-baca-9f276caee30c",
+    "game": "counter-strike",
+    "questionText": "Is the Zeus x27 a long-range weapon?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "easy",
+    "explanation": "The Zeus x27 is only effective at extremely close, point-blank range."
+  },
+  {
+    "id": "1d667b98-e003-4f95-8cb4-c0503c242078",
+    "game": "counter-strike",
+    "questionText": "Does the Molotov provide a tactical advantage in controlling areas?",
+    "correctAnswer": true,
+    "category": "strategy",
+    "difficulty": "easy",
+    "explanation": "Molotovs are essential for flushing out enemies from common camping spots."
+  },
+  {
+    "id": "b2b608c6-9c4f-4caf-86c4-df7db2f6cd64",
+    "game": "counter-strike",
+    "questionText": "Is the Negev's fire rate constant once it starts firing?",
+    "correctAnswer": false,
+    "category": "mechanics",
+    "difficulty": "hard",
+    "explanation": "The Negev's fire rate accelerates slightly for the first few shots before stabilizing."
+  },
+  {
+    "id": "e2de95c0-6c54-48f4-808e-4439e07d83f5",
+    "game": "counter-strike",
+    "questionText": "Are players able to drop grenades to their teammates?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "Players can drop grenades directly to teammates in CS2."
+  },
+  {
+    "id": "97438f73-5454-429b-9fd4-083be984447d",
+    "game": "counter-strike",
+    "questionText": "Is the MP7 available to both sides?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The MP7 is a shared SMG available for purchase by both CT and T teams."
+  },
+  {
+    "id": "f624e4d4-d8ab-4947-a9d8-3cfb4cbc5f41",
+    "game": "counter-strike",
+    "questionText": "Is the bomb defuse sound audible to the enemy team?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "easy",
+    "explanation": "The defuse sound is a critical audio cue that enemies can hear to bait or attack the defuser."
+  },
+  {
+    "id": "11fdc0bf-fc4d-4797-8a3c-ffa00f88b116",
+    "game": "counter-strike",
+    "questionText": "Is the map Vertigo designed to be played on a single level?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "medium",
+    "explanation": "Vertigo is famous for its distinct two-level vertical design."
+  },
+  {
+    "id": "525e3d3e-0c28-4db0-a585-b6bfdbe33e6f",
+    "game": "counter-strike",
+    "questionText": "Did device win multiple majors with Astralis?",
+    "correctAnswer": true,
+    "category": "history",
+    "difficulty": "easy",
+    "explanation": "Device was a key part of the Astralis roster that won four Major championships."
+  },
+  {
+    "id": "4766ccf5-8865-4431-8e01-c2cfd8a970d5",
+    "game": "counter-strike",
+    "questionText": "Is the price of the AWP $4,750?",
+    "correctAnswer": true,
+    "category": "economy/items",
+    "difficulty": "easy",
+    "explanation": "The AWP is the most expensive sniper rifle in the game at $4,750."
+  },
+  {
+    "id": "8ae25fcc-6b80-4869-9b1d-e84b6ca90a78",
+    "game": "counter-strike",
+    "questionText": "Does the M4A1-S deal more damage than the M4A4?",
+    "correctAnswer": false,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "The M4A1-S and M4A4 have very similar damage profiles, with neither being strictly more powerful than the other."
+  },
+  {
+    "id": "cc6412f8-8c33-41ba-8067-0f6676427995",
+    "game": "counter-strike",
+    "questionText": "Are there water elements on the map Anubis?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "hard",
+    "explanation": "Anubis is set in an urban environment with no significant water traversal areas like Overpass."
+  },
+  {
+    "id": "78785623-9669-4681-b798-dbac1abea9a5",
+    "game": "counter-strike",
+    "questionText": "Is the AUG considered a 'laser' weapon when zoomed in?",
+    "correctAnswer": true,
+    "category": "weapons",
+    "difficulty": "medium",
+    "explanation": "When scoped, the AUG has very high accuracy, often described by players as a 'laser'."
+  },
+  {
+    "id": "0224c809-b64f-4676-ab51-5e68d6ecc15e",
+    "game": "counter-strike",
+    "questionText": "Is the Negev capable of killing enemies through walls?",
+    "correctAnswer": true,
+    "category": "mechanics",
+    "difficulty": "medium",
+    "explanation": "The Negev has high-capacity ammo and moderate penetration, allowing for wall-banging."
+  },
+  {
+    "id": "adf0d49f-16b1-4156-8736-9505c5fe7bef",
+    "game": "counter-strike",
+    "questionText": "Is the bomb site on Nuke often referred to as 'Rafters'?",
+    "correctAnswer": false,
+    "category": "maps",
+    "difficulty": "hard",
+    "explanation": "Rafters is a specific area above the A site, but it is not the name of the bomb site itself."
+  }
+]

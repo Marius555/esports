@@ -21,12 +21,12 @@
 process.loadEnvFile(".env.local")
 
 import { GoogleGenAI } from "@google/genai"
-import { writeFileSync, mkdirSync, existsSync, readFileSync } from "fs"
+import { writeFileSync, mkdirSync, existsSync, readFileSync, readdirSync } from "fs"
 import { join } from "path"
 import { randomUUID } from "crypto"
 
 const MODEL = "gemini-3.1-flash-lite-preview"
-const TARGET_TOTAL = 100 // desired question count per game
+const BATCH_SIZE = 100 // questions to generate per run
 
 const GAMES = [
   {
@@ -61,13 +61,30 @@ interface KnowledgeQuestion {
   explanation: string
 }
 
-function loadExisting(filePath: string): KnowledgeQuestion[] {
-  if (!existsSync(filePath)) return []
-  try {
-    return JSON.parse(readFileSync(filePath, "utf8")) as KnowledgeQuestion[]
-  } catch {
-    return []
+function loadAllExisting(dir: string): KnowledgeQuestion[] {
+  if (!existsSync(dir)) return []
+  return readdirSync(dir)
+    .filter((f) => f.endsWith(".json"))
+    .flatMap((f) => {
+      try {
+        const data = JSON.parse(readFileSync(join(dir, f), "utf8"))
+        return Array.isArray(data) ? (data as KnowledgeQuestion[]) : []
+      } catch {
+        return []
+      }
+    })
+}
+
+function nextOutputFile(dir: string): string {
+  if (!existsSync(dir)) return join(dir, "questions.json")
+  const existing = readdirSync(dir).filter((f) => /^questions(-\d+)?\.json$/.test(f))
+  if (!existing.includes("questions.json")) return join(dir, "questions.json")
+  let max = 1
+  for (const f of existing) {
+    const m = f.match(/^questions-(\d+)\.json$/)
+    if (m) max = Math.max(max, parseInt(m[1]))
   }
+  return join(dir, `questions-${max + 1}.json`)
 }
 
 function normalizeText(s: string): string {
@@ -193,42 +210,35 @@ async function main() {
   for (const game of GAMES) {
     const outputDir = join(outputBase, game.key)
     mkdirSync(outputDir, { recursive: true })
-    const filePath = join(outputDir, "questions.json")
 
-    const existing = loadExisting(filePath)
-    const existingTexts = existing.map((q) => q.questionText)
+    const allExisting = loadAllExisting(outputDir)
+    const existingTexts = allExisting.map((q) => q.questionText)
     const existingNorm = new Set(existingTexts.map(normalizeText))
-
-    const needed = TARGET_TOTAL - existing.length
-    if (needed <= 0) {
-      console.log(`✅  ${game.label}: already has ${existing.length} questions, skipping.`)
-      continue
-    }
+    const outputFile = nextOutputFile(outputDir)
 
     console.log(
-      `⏳  ${game.label}: ${existing.length} existing, generating ${needed} more...`
+      `⏳  ${game.label}: ${allExisting.length} existing across all files, generating ${BATCH_SIZE} more...`
     )
 
     let newQuestions: KnowledgeQuestion[] = []
     try {
-      newQuestions = await generateBatch(ai, game, needed, existingTexts)
+      newQuestions = await generateBatch(ai, game, BATCH_SIZE, existingTexts)
     } catch (err) {
       console.error(`  ❌  Failed: ${err instanceof Error ? err.message : err}`)
       continue
     }
 
-    // Deduplicate against existing questions
+    // Deduplicate against all existing questions
     const deduped = newQuestions.filter(
       (q) => !existingNorm.has(normalizeText(q.questionText))
     )
     const skipped = newQuestions.length - deduped.length
     if (skipped > 0) console.log(`  ⚠️  Skipped ${skipped} duplicate(s) returned by Gemini`)
 
-    const combined = [...existing, ...deduped]
-    writeFileSync(filePath, JSON.stringify(combined, null, 2), "utf8")
+    writeFileSync(outputFile, JSON.stringify(deduped, null, 2), "utf8")
 
     console.log(
-      `  ✓  ${deduped.length} new questions saved → ${filePath}  (total: ${combined.length})`
+      `  ✓  ${deduped.length} new questions saved → ${outputFile}  (total across all files: ${allExisting.length + deduped.length})`
     )
 
     // Pause between games to stay within free-tier RPM limits

@@ -208,6 +208,41 @@
       linear-gradient(90deg, rgb(168 85 247 / 4%) 1px, transparent 1px);
     background-size: 60px 60px;
   }
+
+  /* Game accent system — reads --game-accent CSS var set on ancestor */
+  .accent-glow {
+    box-shadow:
+      0 0 14px color-mix(in srgb, var(--game-accent) 40%, transparent),
+      0 0 40px color-mix(in srgb, var(--game-accent) 12%, transparent);
+  }
+  .accent-outline      { outline: 2px solid var(--game-accent); outline-offset: 2px; }
+  .accent-outline-none { outline: 2px solid transparent; }
+  .accent-bg-faint     { background: color-mix(in srgb, var(--game-accent) 7%, transparent); }
+  .accent-bg-subtle    { background: color-mix(in srgb, var(--game-accent) 15%, transparent); }
+  .accent-border       { border-color: color-mix(in srgb, var(--game-accent) 40%, transparent); }
+  .accent-text         { color: var(--game-accent); }
+  .accent-drop-shadow  { filter: drop-shadow(0 0 5px var(--game-accent)); }
+
+  /* Dashboard page background */
+  .bg-dashboard {
+    background-image:
+      linear-gradient(rgb(168 85 247 / 3%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(168 85 247 / 3%) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .bg-dashboard-radial {
+    background-image: radial-gradient(
+      ellipse 80% 60% at 15% 0%,
+      rgb(168 85 247 / 8%),
+      transparent 70%
+    );
+  }
+
+  /* GAMERY card surface — unified border glow */
+  .card-gamery {
+    border-color: rgb(168 85 247 / 18%);
+    box-shadow: 0 0 0 1px rgb(168 85 247 / 6%), 0 4px 24px rgb(0 0 0 / 30%);
+  }
 }
 
 @keyframes card-enter {

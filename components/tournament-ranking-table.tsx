@@ -368,14 +368,14 @@ export function TournamentRankingTable({
   const winner = resolved && rankings.length > 0 ? rankings[0] : null;
 
   return (
-    <div className="rounded-2xl border bg-card text-card-foreground shadow-sm overflow-hidden">
+    <div className="rounded-2xl border bg-card text-card-foreground overflow-hidden card-gamery">
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-border/60">
         <div className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={cfg.logo} alt={cfg.label} className="h-5 w-5 object-contain shrink-0" style={{ filter: `drop-shadow(0 0 5px ${cfg.accent})` }} />
+          <img src={cfg.logo} alt={cfg.label} className="h-5 w-5 object-contain shrink-0 accent-drop-shadow" />
           <div>
-            <h2 className="font-heading font-bold text-base tracking-tight">{cfg.label} Tournament Standings</h2>
+            <h2 className="font-heading font-black text-base tracking-widest uppercase">{cfg.label} Tournament Standings</h2>
             <p className="text-xs text-muted-foreground mt-0.5">
               {tournamentId
                 ? resolved
@@ -387,10 +387,7 @@ export function TournamentRankingTable({
         </div>
         <div className="flex flex-col items-end gap-1">
           {resolved ? (
-            <span
-              className="text-xs font-bold uppercase tracking-widest px-2 py-1 rounded border"
-              style={{ color: cfg.accent, borderColor: `${cfg.accent}40`, background: `${cfg.accent}11` }}
-            >
+            <span className="text-xs font-bold uppercase tracking-widest px-2 py-1 rounded border accent-text accent-border accent-bg-faint">
               Ended
             </span>
           ) : (
@@ -407,7 +404,7 @@ export function TournamentRankingTable({
 
       {/* Winner banner */}
       {winner && (
-        <div className="flex items-center gap-3 px-5 py-3 border-b border-border/60" style={{ background: `${cfg.accent}0d` }}>
+        <div className="flex items-center gap-3 px-5 py-3 border-b border-border/60 accent-bg-faint">
           <span className="text-2xl">🏆</span>
           <div className="flex-1 min-w-0">
             <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Tournament Winner</p>
@@ -417,19 +414,19 @@ export function TournamentRankingTable({
             </p>
           </div>
           {winner.userId === userId && (
-            <span className="text-xs font-black uppercase tracking-wider px-2 py-0.5 rounded" style={{ background: `${cfg.accent}33`, color: cfg.accent }}>You!</span>
+            <span className="text-xs font-black uppercase tracking-wider px-2 py-0.5 rounded accent-bg-subtle accent-text">You!</span>
           )}
         </div>
       )}
 
       {/* Prize banner */}
-      <div className="flex items-center gap-5 px-5 py-2.5 border-b border-border/40" style={{ background: `${cfg.accent}11` }}>
+      <div className="flex items-center gap-5 px-5 py-2.5 border-b border-border/40 accent-bg-faint">
         <span className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Prize Pool</span>
         <div className="flex items-center gap-4">
           {PRIZES.map((prize, i) => (
             <span key={i} className="flex items-center gap-1.5 text-xs">
               <span>{RANK_LABELS[i]}</span>
-              <span className="font-bold" style={{ color: cfg.accent }}>{prize}</span>
+              <span className="font-bold accent-text">{prize}</span>
             </span>
           ))}
         </div>
@@ -437,7 +434,7 @@ export function TournamentRankingTable({
 
       {/* Round progress indicator for current user */}
       {status?.hasEntered && status.latestRound && (
-        <div className="px-5 py-2 border-b border-border/30 flex items-center justify-between" style={{ background: `${cfg.accent}08` }}>
+        <div className="px-5 py-2 border-b border-border/30 flex items-center justify-between">
           <span className="text-xs text-muted-foreground">
             Your progress · Round {status.latestRound.roundNumber}
             {" "}
@@ -498,7 +495,7 @@ export function TournamentRankingTable({
                     <div className="flex items-center gap-2">
                       <span className={`text-sm ${isCurrentUser ? "text-foreground" : "text-muted-foreground"}`}>{entry.displayName}</span>
                       {isCurrentUser && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider" style={{ background: `${cfg.accent}22`, color: cfg.accent }}>You</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider accent-bg-subtle accent-text">You</span>
                       )}
                     </div>
                   </TableCell>

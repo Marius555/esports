@@ -114,9 +114,10 @@ async function main() {
     process.exit(1)
   }
 
-  const games = readdirSync(dataDir).filter((g) =>
-    existsSync(join(dataDir, g, "questions.json"))
-  )
+  const games = readdirSync(dataDir).filter((g) => {
+    const dir = join(dataDir, g)
+    return existsSync(dir) && readdirSync(dir).some((f) => /^questions(-\d+)?\.json$/.test(f))
+  })
 
   if (games.length === 0) {
     console.error("❌  No questions.json files found. Run `npm run knowledge:generate` first.")
@@ -130,8 +131,17 @@ async function main() {
   let totalFailed = 0
 
   for (const game of games) {
-    const filePath = join(dataDir, game, "questions.json")
-    const questions: KnowledgeQuestion[] = JSON.parse(readFileSync(filePath, "utf8"))
+    const gameDir = join(dataDir, game)
+    const questions: KnowledgeQuestion[] = readdirSync(gameDir)
+      .filter((f) => /^questions(-\d+)?\.json$/.test(f))
+      .flatMap((f) => {
+        try {
+          const data = JSON.parse(readFileSync(join(gameDir, f), "utf8"))
+          return Array.isArray(data) ? (data as KnowledgeQuestion[]) : []
+        } catch {
+          return []
+        }
+      })
 
     console.log(`\n📂  ${game}  (${questions.length} local questions)`)
     console.log("  🔍  Checking Appwrite for duplicates...")
